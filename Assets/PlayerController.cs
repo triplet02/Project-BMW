@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // 게임 시작 위치로 캐릭터 위치 이동
-        player.transform.position = Vector3.SmoothDamp(gameObject.transform.position, gameStartPlayerPosition, ref velocity, standByTime);
+        //player.transform.position = Vector3.SmoothDamp(gameObject.transform.position, gameStartPlayerPosition, ref velocity, standByTime);
 
         //맵 이동
         //map.transform.Translate(-0.006f, 0, 0);
@@ -89,29 +89,19 @@ public class PlayerController : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.Space)){}
 
-        //현재 있는 y축 좌표에 따라 점프 높이가 달라짐(??? 원인 모르겠음)
-        //y축 좌표로 점프할 때 부여하는 velocity에 보정해 주는 방식으로 일관성 있게 구현
-        float y_axis_coord = player.transform.position.y;
-        float adjustedJumpForce = jumpForce + y_axis_coord;
-
-        if(adjustedJumpForce < 0)
-        {
-            adjustedJumpForce = 1.0f;
-        }
-
         if (jumpCount < maxJumpCount)
         {
             if (jumpCount == 0)
             {
                 animator.SetBool("isJump", true);
                 isGround = false;
-                rigidbody.velocity = Vector3.up * adjustedJumpForce;
+                rigidbody.velocity = Vector3.up * jumpForce;
             }
             else
             {
                 animator.SetBool("isDoubleJump", true);
                 isDoubleJump = true;
-                rigidbody.velocity = Vector3.up * adjustedJumpForce;
+                rigidbody.velocity = Vector3.up * jumpForce;
             }
             jumpCount++;
         }
