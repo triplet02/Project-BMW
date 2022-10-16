@@ -9,35 +9,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject map;
 
-    // °ÔÀÓ ½ÃÀÛ À§Ä¡ ÁöÁ¤
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
     Vector3 initialPlayerPosition = new Vector3(-5.0f, 0.01f, 0.0f);
     Vector3 gameStartPlayerPosition = new Vector3(0.0f, 0.01f, 0.0f);
     Vector3 velocity = Vector3.zero;
     [SerializeField] float standByTime = 1.3f;
 
-    // Á¡ÇÁ ÄÁÆ®·Ñ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
     [SerializeField] float jumpForce = 5.0f;
     [SerializeField] int maxJumpCount = 0;
     int jumpCount = 0;
     bool isDoubleJump = false;
 
-    //½½¶óÀÌµå ÄÁÆ®·Ñ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
     [SerializeField] float slideTime = 1.5f;
     bool isSlide = false;
 
-    // ÂøÁö °¨Áö Raycast
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Raycast
     float distance = 0.0f;
     bool isGround = true;
 
-    // Physics ¹× Ãæµ¹ °¨Áö
+    // Physics ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½
     new Rigidbody rigidbody;
     CapsuleCollider capsuleCollider;
     [SerializeField] LayerMask layerMask = 0;
 
-    // Map ÄÁÆ®·Ñ
+    // Map ï¿½ï¿½Æ®ï¿½ï¿½
     Rigidbody mapRigidbody;
 
-    // ¾Ö´Ï¸ÞÀÌ¼Ç
+    // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
     Animator animator = null;
 
     // UI
@@ -64,10 +64,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // °ÔÀÓ ½ÃÀÛ À§Ä¡·Î Ä³¸¯ÅÍ À§Ä¡ ÀÌµ¿
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ìµï¿½
         //player.transform.position = Vector3.SmoothDamp(gameObject.transform.position, gameStartPlayerPosition, ref velocity, standByTime);
 
-        //¸Ê ÀÌµ¿
+        //ï¿½ï¿½ ï¿½Ìµï¿½
         //map.transform.Translate(-0.006f, 0, 0);
         
 
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     public void TrySlide()
     {
-        Debug.Log("½½¶óÀÌµå Å¬¸¯");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ Å¬ï¿½ï¿½");
         if (!isSlide)
         {
             isSlide = true;
@@ -123,19 +123,19 @@ public class PlayerController : MonoBehaviour
 
         if (rigidbody.velocity.y < -0.0f)
         {
-            //ÂøÁö°¨Áö ¹× ¸ÞÀÎ Ä«¸Þ¶ó Á¦¾î¿ë
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
             isGround = Physics.Raycast(centerPosition, Vector3.down, distance, layerMask);
 
             if (isGround)
             {
 
-                // Á¡ÇÁ È½¼ö ÃÊ±âÈ­
+                // ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ ï¿½Ê±ï¿½È­
                 jumpCount = 0;
                 
-                //¸ÞÀÎ Ä«¸Þ¶ó Á¦¾î º¯¼ö
+                //ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 isDoubleJump = false;
 
-                //¾Ö´Ï¸ÞÀÌ¼Ç Á¦¾î º¯¼ö
+                //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 animator.SetBool("isJump", false);
                 animator.SetBool("isDoubleJump", false);
 
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
+    {        
         if (collision.collider.gameObject.CompareTag("StartBlock"))
         {
             return;
