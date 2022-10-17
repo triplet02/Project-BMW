@@ -8,6 +8,9 @@ TagManager:
   - StartBlock
   - SlideObstacle
   - Ramp
+  - Coin
+  - Obstacle
+  - Beer
   layers:
   - Default
   - TransparentFX

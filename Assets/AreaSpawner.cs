@@ -17,7 +17,7 @@ public class AreaSpawner : MonoBehaviour
     public void SpawnArea()
     {
         GameObject clone = null;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < areaPrefabs.Length; i++)
         {
             clone = Instantiate(areaPrefabs[i]);
             clone.transform.position = new Vector3( i * xDistance, 0, 0);

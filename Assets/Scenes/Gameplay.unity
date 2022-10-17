@@ -1571,11 +1571,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaPrefabs:
+  - {fileID: 5326689026232395275, guid: 59bc6f6bba46341a4a3ca9b6a2403a08, type: 3}
   - {fileID: 5326689026232395275, guid: 4202a143db6a14dc0bb1a630c58c9c13, type: 3}
   - {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
   - {fileID: 5326689026232395275, guid: 99e279f06fd704b6ca100341f89d55ac, type: 3}
   - {fileID: 5326689026232395275, guid: 4106729563da545e48ddf07a3ebc9e69, type: 3}
   - {fileID: 5326689026232395275, guid: bca9395dd3c924500866f1a9fc2e0433, type: 3}
+  - {fileID: 5326689026232395275, guid: 59bc6f6bba46341a4a3ca9b6a2403a08, type: 3}
+  - {fileID: 5326689026232395275, guid: 4202a143db6a14dc0bb1a630c58c9c13, type: 3}
+  - {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
 --- !u!4 &1368319961
 Transform:
   m_ObjectHideFlags: 0

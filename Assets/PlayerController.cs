@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     Text velocityMonitor;
     Text debug;
 
+    int beer = 0;
+    int coin = 0;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -82,7 +85,9 @@ public class PlayerController : MonoBehaviour
             "isDoubleJump : " + animator.GetBool("isDoubleJump").ToString() + "\n" +
             "isSlide : " + animator.GetBool("isSlide").ToString() + "\n" +
             "isGround : " + isGround.ToString() + "\n" +
-            "y_axis_coord : " + player.transform.position.y.ToString();
+            "y_axis_coord : " + player.transform.position.y.ToString() + "\n\n" +
+            "Beer : " + beer.ToString() + "\n" +
+            "Coin : " + coin.ToString(); 
     }
 
     public void TryJump()
@@ -173,6 +178,19 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("SlideObstacle"))
         {
             GetComponent<SceneController>().toGameoverScene();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Beer"))
+        {
+            beer++;
+        }
+
+        if (other.tag.Equals("Coin"))
+        {
+            coin++;
         }
     }
 
