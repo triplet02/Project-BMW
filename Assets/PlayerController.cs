@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     new Rigidbody rigidbody;
     CapsuleCollider capsuleCollider;
     [SerializeField] LayerMask layerMask = 0;
+    [SerializeField] public Slider skillGauge;
 
     // Map ��Ʈ��
     Rigidbody mapRigidbody;
@@ -57,7 +58,8 @@ public class PlayerController : MonoBehaviour
         capsuleCollider = player.GetComponent<CapsuleCollider>();
         distance = capsuleCollider.bounds.extents.y + 0.05f;
         animator = player.GetComponentInChildren<Animator>();
-
+        
+        skillGauge = GameObject.Find("SkillGauge").GetComponent<Slider>();
         velocityMonitor = GameObject.Find("Velocity Monitor").GetComponent<Text>();
         debug = GameObject.Find("Game UI").GetComponent<Text>();
 
@@ -186,6 +188,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag.Equals("Beer"))
         {
             beer++;
+            skillGauge.value += beer;
         }
 
         if (other.tag.Equals("Coin"))
