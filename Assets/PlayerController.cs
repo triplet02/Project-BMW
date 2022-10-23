@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour
     Text debuggingUI;
 
     // Player Status
-    int health = 3;
+    int maxHealth = 3;
+    int playerHealth;
     int beer = 0;
     int coin = 0;
 
@@ -58,6 +59,8 @@ public class PlayerController : MonoBehaviour
         
         skillGauge = GameObject.Find("SkillGauge").GetComponent<Slider>();
         debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
+
+        playerHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -76,7 +79,7 @@ public class PlayerController : MonoBehaviour
             "y_axis_coord : " + player.transform.position.y.ToString() + "\n\n" +*/
             "Beer : " + beer.ToString() + "\n" +
             "Coin : " + coin.ToString() + "\n" +
-            "Health : " + health.ToString() + "\n" +
+            "Health : " + playerHealth.ToString() + "\n" +
             "isOnGround : " + isOnGround.ToString() + "\n" +
             "isOnObstacle : " + isOnObstacle.ToString(); 
     }
@@ -150,14 +153,10 @@ public class PlayerController : MonoBehaviour
     {        
         if (collision.collider.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("!!!");
-            if (!isOnObstacle)
-            {
-                Debug.Log("collision");
-                //GetComponent<SceneController>().toGameoverScene();
-                health--;
-                rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
-            }
+            Debug.Log("collision");
+            //GetComponent<SceneController>().toGameoverScene();
+            playerHealth--;
+            rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
         }
     }
 
@@ -172,11 +171,6 @@ public class PlayerController : MonoBehaviour
         if (other.tag.Equals("Coin"))
         {
             coin++;
-        }
-
-        if (other.tag.Equals("Obstacle"))
-        {
-            Debug.Log("trigger");
         }
     }
 
@@ -198,5 +192,15 @@ public class PlayerController : MonoBehaviour
     public float Get_y_Velocity()
     {
         return rigidbody.velocity.y;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public int GetPlayerHealth()
+    {
+        return playerHealth;
     }
 }
