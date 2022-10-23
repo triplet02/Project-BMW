@@ -153,10 +153,20 @@ public class PlayerController : MonoBehaviour
     {        
         if (collision.collider.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("collision");
-            //GetComponent<SceneController>().toGameoverScene();
-            playerHealth--;
-            rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
+            BoxCollider boxCollider = collision.collider.gameObject.GetComponent<BoxCollider>();
+
+            float playerYPosition = player.transform.position.y;
+            float obstacleTopYPosition = boxCollider.bounds.center.y + boxCollider.bounds.extents.y - 0.03f;
+
+            Debug.Log(playerYPosition.ToString() + " / " + obstacleTopYPosition.ToString());
+
+            if (playerYPosition < obstacleTopYPosition)
+            {
+                Debug.Log("collision");
+                //GetComponent<SceneController>().toGameoverScene();
+                playerHealth--;
+                rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
+            }
         }
     }
 
