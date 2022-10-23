@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4162885963719119850}
   - component: {fileID: 4162885963719119851}
   - component: {fileID: 4162885963719119848}
-  - component: {fileID: -4905455732566246967}
+  - component: {fileID: 1191088804295198827}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4162885963719119849}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: -7.14}
-  m_LocalScale: {x: 0.5, y: 0.05, z: 0.5}
+  m_LocalScale: {x: 0.5000001, y: 0.05000002, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-4905455732566246967
+--- !u!114 &1191088804295198827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

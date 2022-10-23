@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     new Rigidbody rigidbody;
     CapsuleCollider capsuleCollider;
     [SerializeField] LayerMask layerMask = 0;
-    [SerializeField] public Slider skillGauge;
+    [SerializeField] Slider skillGauge;
 
     // Map ��Ʈ��
     Rigidbody mapRigidbody;

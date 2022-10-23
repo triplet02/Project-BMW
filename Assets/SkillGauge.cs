@@ -1,19 +1,23 @@
-using UnityEngine;
 using System.Collections;
-using UnityEngine.UI; // Required when Using UI elements.
+using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine;
 
 public class SkillGauge : MonoBehaviour
 {
-    public Slider skillGauge;
-
+    Image skillGaugeFill;
+    private Slider slider;
+    
     void Start(){
-        skillGauge = GetComponent<Slider>();
+        skillGaugeFill = GameObject.Find("Fill").GetComponent<Image>();
+        slider = gameObject.GetComponent<Slider>();
     }
     void Update(){
-
+        if(slider.value == 100){
+            skillGaugeFill.color = Color.red;
+        }
+        else{
+            skillGaugeFill.color = Color.green;
+        }
     }
-    // public void setValue(int value){
-    //     skillGauge.value = value;
-    // }
-
 }
