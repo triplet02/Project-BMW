@@ -14,10 +14,10 @@ public class SkillGauge : MonoBehaviour
     }
     void Update(){
         if(slider.value == 100){
-            skillGaugeFill.color = Color.red;
+            skillGaugeFill.color = Color.green;
         }
         else{
-            skillGaugeFill.color = Color.green;
+            skillGaugeFill.color = Color.red;
         }
     }
 }

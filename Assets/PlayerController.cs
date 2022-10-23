@@ -1,50 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject mainCamera;
-    [SerializeField] GameObject map;
 
-    // ���� ���� ��ġ ����
+    // Game Scene Initializing
     Vector3 initialPlayerPosition = new Vector3(-5.0f, 0.01f, 0.0f);
     Vector3 gameStartPlayerPosition = new Vector3(0.0f, 0.01f, 0.0f);
     Vector3 velocity = Vector3.zero;
     [SerializeField] float standByTime = 1.3f;
 
-    // ���� ��Ʈ��
+    // Jump Control
     [SerializeField] float jumpForce = 5.0f;
     [SerializeField] int maxJumpCount = 0;
     int jumpCount = 0;
     bool isDoubleJump = false;
 
-    //�����̵� ��Ʈ��
+    // Slide Control
     [SerializeField] float slideTime = 1.5f;
     bool isSlide = false;
 
-    // ���� ���� Raycast
+    // Raycast for Ground Check
     float distance = 0.0f;
-    bool isGround = true;
+    bool isOnGround = true;
+    bool isOnObstacle = false;
 
-    // Physics �� �浹 ����
+    // Physics and Collision
     new Rigidbody rigidbody;
     CapsuleCollider capsuleCollider;
-    [SerializeField] LayerMask layerMask = 0;
+    [SerializeField] LayerMask groundLayerMask = 0;
+    [SerializeField] LayerMask obstacleLayerMask = 0;
     [SerializeField] Slider skillGauge;
 
-    // Map ��Ʈ��
-    Rigidbody mapRigidbody;
-
-    // �ִϸ��̼�
+    // Animation Control
     Animator animator = null;
 
-    // UI
-    Text velocityMonitor;
-    Text debug;
+    // UI, Debugging
+    Text debuggingUI;
 
+    // Player Status
+    int health = 3;
     int beer = 0;
     int coin = 0;
 
@@ -54,42 +52,33 @@ public class PlayerController : MonoBehaviour
         player.transform.position = initialPlayerPosition;
 
         rigidbody = player.GetComponent<Rigidbody>();
-        mapRigidbody = map.GetComponent<Rigidbody>();
         capsuleCollider = player.GetComponent<CapsuleCollider>();
         distance = capsuleCollider.bounds.extents.y + 0.05f;
         animator = player.GetComponentInChildren<Animator>();
         
         skillGauge = GameObject.Find("SkillGauge").GetComponent<Slider>();
-        velocityMonitor = GameObject.Find("Velocity Monitor").GetComponent<Text>();
-        debug = GameObject.Find("Game UI").GetComponent<Text>();
-
-        mapRigidbody.velocity = new Vector3(-3.0f, 0, 0);
+        debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        // ���� ���� ��ġ�� ĳ���� ��ġ �̵�
-        //player.transform.position = Vector3.SmoothDamp(gameObject.transform.position, gameStartPlayerPosition, ref velocity, standByTime);
-
-        //�� �̵�
-        //map.transform.Translate(-0.006f, 0, 0);
-        
-
         CheckGround();
         if (isSlide)
         {
             StartCoroutine(Slide());
         }
 
-        velocityMonitor.text = rigidbody.velocity.ToString();
-        debug.text = "isJump : " + animator.GetBool("isJump").ToString() + "\n" +
+        debuggingUI.text = /*"isJump : " + animator.GetBool("isJump").ToString() + "\n" +
             "isDoubleJump : " + animator.GetBool("isDoubleJump").ToString() + "\n" +
             "isSlide : " + animator.GetBool("isSlide").ToString() + "\n" +
             "isGround : " + isGround.ToString() + "\n" +
-            "y_axis_coord : " + player.transform.position.y.ToString() + "\n\n" +
+            "y_axis_coord : " + player.transform.position.y.ToString() + "\n\n" +*/
             "Beer : " + beer.ToString() + "\n" +
-            "Coin : " + coin.ToString(); 
+            "Coin : " + coin.ToString() + "\n" +
+            "Health : " + health.ToString() + "\n" +
+            "isOnGround : " + isOnGround.ToString() + "\n" +
+            "isOnObstacle : " + isOnObstacle.ToString(); 
     }
 
     public void TryJump()
@@ -101,7 +90,7 @@ public class PlayerController : MonoBehaviour
             if (jumpCount == 0)
             {
                 animator.SetBool("isJump", true);
-                isGround = false;
+                isOnGround = false;
                 rigidbody.velocity = Vector3.up * jumpForce;
             }
             else
@@ -116,7 +105,6 @@ public class PlayerController : MonoBehaviour
 
     public void TrySlide()
     {
-        Debug.Log("�����̵� Ŭ��");
         if (!isSlide)
         {
             isSlide = true;
@@ -130,19 +118,15 @@ public class PlayerController : MonoBehaviour
 
         if (rigidbody.velocity.y < -0.0f)
         {
-            //�������� �� ���� ī�޶� �����
-            isGround = Physics.Raycast(centerPosition, Vector3.down, distance, layerMask);
+            isOnGround = Physics.Raycast(centerPosition, Vector3.down, distance, groundLayerMask);
+            isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, distance, obstacleLayerMask);
 
-            if (isGround)
+            if (isOnGround || isOnObstacle)
             {
-
-                // ���� Ƚ�� �ʱ�ȭ
                 jumpCount = 0;
                 
-                //���� ī�޶� ���� ����
                 isDoubleJump = false;
 
-                //�ִϸ��̼� ���� ����
                 animator.SetBool("isJump", false);
                 animator.SetBool("isDoubleJump", false);
 
@@ -164,22 +148,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {        
-        if (collision.collider.gameObject.CompareTag("StartBlock"))
+        if (collision.collider.gameObject.CompareTag("Obstacle"))
         {
-            return;
-        }
-
-        if(collision.collider.gameObject.CompareTag("Ground"))
-        {
-            if(player.transform.position.y <= collision.collider.gameObject.transform.position.y)
+            Debug.Log("!!!");
+            if (!isOnObstacle)
             {
-                GetComponent<SceneController>().toGameoverScene();
+                Debug.Log("collision");
+                //GetComponent<SceneController>().toGameoverScene();
+                health--;
+                rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
             }
-        }
-
-        if (collision.collider.gameObject.CompareTag("SlideObstacle"))
-        {
-            GetComponent<SceneController>().toGameoverScene();
         }
     }
 
@@ -195,6 +173,11 @@ public class PlayerController : MonoBehaviour
         {
             coin++;
         }
+
+        if (other.tag.Equals("Obstacle"))
+        {
+            Debug.Log("trigger");
+        }
     }
 
     public int GetJumpCount()
@@ -204,7 +187,7 @@ public class PlayerController : MonoBehaviour
 
     public bool GetIsGround()
     {
-        return isGround;
+        return (isOnGround || isOnObstacle);
     }
 
     public bool GetIsDoubleJump()
