@@ -28,7 +28,7 @@ public class AreaSpawner : MonoBehaviour
 
     public void onAreaDestroyed()
     {
-        Debug.Log("onAreadestroyed => " + currentIdx.ToString());
+        // Debug.Log("onAreadestroyed => " + currentIdx.ToString());
         GameObject clone = null;
         if (currentIdx < areaPrefabs.Length)
         {

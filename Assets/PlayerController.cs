@@ -114,6 +114,15 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Slide());
         }
     }
+
+    public void TrySkill()
+    {
+        if (skillGauge.value == 100)
+        {
+            Debug.Log("Skill~~~~~~~");
+            skillGauge.value = 0;
+        }
+    }
      
     private void CheckGround()
     {
