@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1598,6 +1598,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   skillGauge: {fileID: 1873893989}
+  immuneTime: 1
 --- !u!114 &966534706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,6 +1729,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   skillGauge: {fileID: 0}
+  immuneTime: 1
 --- !u!54 &1195656137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1777,7 +1779,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: f531292bc8711d84f84d2eb890d031c4, type: 2}
     - target: {fileID: -3521212144732176796, guid: 99f7c8f093b0a53498977df82047195b, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5962506490016014211, guid: 99f7c8f093b0a53498977df82047195b, type: 3}
       propertyPath: m_Controller
@@ -2563,6 +2565,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: 4202a143db6a14dc0bb1a630c58c9c13, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: 99e279f06fd704b6ca100341f89d55ac, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: 4106729563da545e48ddf07a3ebc9e69, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: 88add6fb01a0842cb8aee6b23c549fba, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: 59bc6f6bba46341a4a3ca9b6a2403a08, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: 4202a143db6a14dc0bb1a630c58c9c13, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
     - target: {fileID: 8434822362100358526, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: m_Name
       value: AreaSpawner

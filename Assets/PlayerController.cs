@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayerMask = 0;
     [SerializeField] LayerMask obstacleLayerMask = 0;
     [SerializeField] Slider skillGauge;
+    [SerializeField] float immuneTime = 1.0f;
 
     // Animation Control
     Animator animator = null;
@@ -81,7 +82,8 @@ public class PlayerController : MonoBehaviour
             "Coin : " + coin.ToString() + "\n" +
             "Health : " + playerHealth.ToString() + "\n" +
             "isOnGround : " + isOnGround.ToString() + "\n" +
-            "isOnObstacle : " + isOnObstacle.ToString(); 
+            "isOnObstacle : " + isOnObstacle.ToString() +
+            "collider set to trigger : " + capsuleCollider.isTrigger.ToString();
     }
 
     public void TryJump()
@@ -158,6 +160,16 @@ public class PlayerController : MonoBehaviour
         isSlide = false;
     }
 
+    IEnumerator AfterCollisionImmune()
+    {
+        Debug.Log("immune subroutine started");
+        capsuleCollider.isTrigger = true;
+        Debug.Log("isTrigger setted True");
+        yield return new WaitForSeconds(immuneTime);
+        capsuleCollider.isTrigger = false;
+        Debug.Log("isTrigger setted False");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {        
         if (collision.collider.gameObject.CompareTag("Obstacle"))
@@ -174,7 +186,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("collision");
                 //GetComponent<SceneController>().toGameoverScene();
                 playerHealth--;
-                rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
+                //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
+                StartCoroutine(AfterCollisionImmune());
             }
         }
     }
