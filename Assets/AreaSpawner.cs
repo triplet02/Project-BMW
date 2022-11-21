@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class StageInfo
+{
+    public static int stageNumber = 0;
+}
+
 public class AreaSpawner : MonoBehaviour
 {
     [SerializeField]

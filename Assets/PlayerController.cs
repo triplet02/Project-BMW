@@ -2,6 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+public static class CharacterInfo
+{
+    public static int characterNumber = 0;
+}
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject player;
@@ -185,9 +190,20 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("collision");
                 //GetComponent<SceneController>().toGameoverScene();
-                playerHealth--;
-                //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
-                StartCoroutine(AfterCollisionImmune());
+                if(playerHealth > 1)
+                {
+                    playerHealth--;
+                    //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
+                    StartCoroutine(AfterCollisionImmune());
+                }
+                else
+                {
+                    // stop and show left(or moved) distance to user?
+                    // ...
+
+                    player.GetComponent<SceneController>().toGameoverScene();
+                }
+                
             }
         }
     }
