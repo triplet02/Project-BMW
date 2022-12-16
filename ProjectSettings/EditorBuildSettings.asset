@@ -15,7 +15,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage Selection.unity
     guid: 6794b4cd4b72fa74882443e51752a069
   - enabled: 1
-    path: Assets/Scenes/SideView Gameplay.unity
+    path: Assets/Scenes/SideView Gameplay 1.unity
+    guid: 4c2231b7b80504125a3db12857398cf1
+  - enabled: 1
+    path: Assets/Scenes/SideView Gameplay 2.unity
+    guid: ce5448e3ec7664bc7bc4056a438eaf53
+  - enabled: 1
+    path: Assets/Scenes/SideView Gameplay 3.unity
     guid: bbb34241f9a823c4d9b57747d6e90423
   - enabled: 1
     path: Assets/Scenes/TopView Gameplay.unity

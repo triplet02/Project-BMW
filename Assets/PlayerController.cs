@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
             "isSlide : " + animator.GetBool("isSlide").ToString() + "\n" +
             "isGround : " + isGround.ToString() + "\n" +
             "y_axis_coord : " + player.transform.position.y.ToString() + "\n\n" +*/
+            "Stage : " + StageInfo.stageNumber + "\n" +
             "Beer : " + beer.ToString() + "\n" +
             "Coin : " + coin.ToString() + "\n" +
             "Health : " + playerHealth.ToString() + "\n" +

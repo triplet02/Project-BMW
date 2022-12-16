@@ -54,6 +54,6 @@ public class SceneController : MonoBehaviour
     {
         GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
         CharacterInfo.characterNumber = characterDict[clickedObject.name];
-        SceneManager.LoadScene("SideView Gameplay");
+        SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
     }
 }
