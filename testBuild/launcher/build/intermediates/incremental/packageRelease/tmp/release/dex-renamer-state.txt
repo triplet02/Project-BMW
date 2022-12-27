@@ -1,4 +1,4 @@
-#Mon Oct 10 21:21:37 KST 2022
+#Sun Dec 18 19:49:34 KST 2022
 base.0=D\:\\UnityProject\\Project BMW\\testBuild\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

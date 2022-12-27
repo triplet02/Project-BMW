@@ -36,7 +36,7 @@ public class HealthController : MonoBehaviour
         {
             if (i < playerHealth)
             {
-                healthIndicator += "¢¾ ";
+                healthIndicator += "@ ";
             }
         }
 

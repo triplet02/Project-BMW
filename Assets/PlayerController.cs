@@ -159,8 +159,10 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isSlide", true);
         capsuleCollider.height = 0.8f;
         capsuleCollider.center = new Vector3(0.0f, 0.4f, -0.2f);
+        rigidbody.useGravity = false;
         yield return new WaitForSeconds(slideTime);
         animator.SetBool("isSlide", false);
+        rigidbody.useGravity = true;
         capsuleCollider.height = 1.5f;
         capsuleCollider.center = new Vector3(0.0f, 0.75f, 0.0f);
         isSlide = false;
