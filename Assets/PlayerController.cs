@@ -183,6 +183,8 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("Obstacle"))
         {
             BoxCollider boxCollider = collision.collider.gameObject.GetComponent<BoxCollider>();
+            boxCollider.isTrigger = true;
+            Destroy(collision.gameObject, 0.2f);
 
             float playerYPosition = player.transform.position.y;
             float obstacleTopYPosition = boxCollider.bounds.center.y + boxCollider.bounds.extents.y - 0.03f;
@@ -210,6 +212,11 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void OnCollisionExit(Collision collision)
+    {
+        capsuleCollider.isTrigger = false;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
