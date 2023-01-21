@@ -9,16 +9,16 @@ public class Movement : MonoBehaviour
     private GameController gameController;
     */
 
-    // x �� �̵�
+    // x-axis movement
     private float moveXWidth = 2.0f;
     private float moveTimeX = 0.1f;
     private bool isXMove = false;
-    //  y�� �̵�
+    // y-axis movement
     private float originY = 0.55f;
     private float gravity = -9.81f;
     private float moveTimeY = 0.3f;
     private bool isJump = false;
-    // z�� �̵�
+    // z-axis movement
     [SerializeField]
     private float moveSpeed = 2.0f;
 
@@ -43,16 +43,16 @@ public class Movement : MonoBehaviour
     {
         //if (gameController.IsGameStart == false) return;
 
-        // z�� �̵�
+        // z-axis movement
         //transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
 
-        // ������Ʈȸ�� (x��)
+        // object rotation x-axis
         //transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
 
-        // �������� ���
+        // cliff death
         if (transform.position.y < limitY)
         {
-            Debug.Log("���� ����");
+            Debug.Log("GAME OVER");
         }
 
         if (OnSlope())
