@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - Beer
   - SettingButton
+  - Slope
   layers:
   - Default
   - TransparentFX

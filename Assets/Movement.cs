@@ -9,16 +9,16 @@ public class Movement : MonoBehaviour
     private GameController gameController;
     */
 
-    // x 축 이동
+    // x-axis movement
     private float moveXWidth = 2.0f;
     private float moveTimeX = 0.1f;
     private bool isXMove = false;
-    //  y축 이동
+    // y-axis movement
     private float originY = 0.55f;
     private float gravity = -9.81f;
     private float moveTimeY = 0.3f;
     private bool isJump = false;
-    // z축 이동
+    // z-axis movement
     [SerializeField]
     private float moveSpeed = 2.0f;
 
@@ -27,6 +27,12 @@ public class Movement : MonoBehaviour
     private float limitY = -1.0f;
 
     private Rigidbody rigidbody;
+
+    [Header("Slope Handling")]
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    private bool exitingSlope;
+    Vector3 moveDirection;
 
     private void Awake()
     {
@@ -37,16 +43,25 @@ public class Movement : MonoBehaviour
     {
         //if (gameController.IsGameStart == false) return;
 
-        // z축 이동
+        // z-axis movement
         //transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
 
-        // 오브젝트회전 (x축)
+        // object rotation x-axis
         //transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
 
-        // 낭떠러지 사망
+        // cliff death
         if (transform.position.y < limitY)
         {
-            Debug.Log("게임 오버");
+            Debug.Log("GAME OVER");
+        }
+
+        if (OnSlope())
+        {
+            // upward slope
+            rigidbody.AddForce(GetSlopeMoveDirection() * moveSpeed * 10f, ForceMode.Force );
+            // downward slope
+            if(rigidbody.velocity.magnitude > moveSpeed)
+                rigidbody.velocity = rigidbody.velocity.normalized * moveSpeed * 0.5f;
         }
     }
 
@@ -114,4 +129,23 @@ public class Movement : MonoBehaviour
         isJump = false;
         rigidbody.useGravity = true;
     }
+
+    private bool OnSlope()
+    {
+        float playerHeight = 0.75f;
+        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+        return false;
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        Vector3 moveDirection = Vector3.forward;
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+
 }
