@@ -9,16 +9,16 @@ public class Movement : MonoBehaviour
     private GameController gameController;
     */
 
-    // x Ãà ÀÌµ¿
+    // x ï¿½ï¿½ ï¿½Ìµï¿½
     private float moveXWidth = 2.0f;
     private float moveTimeX = 0.1f;
     private bool isXMove = false;
-    //  yÃà ÀÌµ¿
+    //  yï¿½ï¿½ ï¿½Ìµï¿½
     private float originY = 0.55f;
     private float gravity = -9.81f;
     private float moveTimeY = 0.3f;
     private bool isJump = false;
-    // zÃà ÀÌµ¿
+    // zï¿½ï¿½ ï¿½Ìµï¿½
     [SerializeField]
     private float moveSpeed = 2.0f;
 
@@ -27,6 +27,12 @@ public class Movement : MonoBehaviour
     private float limitY = -1.0f;
 
     private Rigidbody rigidbody;
+
+    [Header("Slope Handling")]
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    private bool exitingSlope;
+    Vector3 moveDirection;
 
     private void Awake()
     {
@@ -37,16 +43,25 @@ public class Movement : MonoBehaviour
     {
         //if (gameController.IsGameStart == false) return;
 
-        // zÃà ÀÌµ¿
+        // zï¿½ï¿½ ï¿½Ìµï¿½
         //transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
 
-        // ¿ÀºêÁ§Æ®È¸Àü (xÃà)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®È¸ï¿½ï¿½ (xï¿½ï¿½)
         //transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
 
-        // ³¶¶°·¯Áö »ç¸Á
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (transform.position.y < limitY)
         {
-            Debug.Log("°ÔÀÓ ¿À¹ö");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+        }
+
+        if (OnSlope())
+        {
+            // upward slope
+            rigidbody.AddForce(GetSlopeMoveDirection() * moveSpeed * 10f, ForceMode.Force );
+            // downward slope
+            if(rigidbody.velocity.magnitude > moveSpeed)
+                rigidbody.velocity = rigidbody.velocity.normalized * moveSpeed * 0.5f;
         }
     }
 
@@ -114,4 +129,23 @@ public class Movement : MonoBehaviour
         isJump = false;
         rigidbody.useGravity = true;
     }
+
+    private bool OnSlope()
+    {
+        float playerHeight = 0.75f;
+        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+        return false;
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        Vector3 moveDirection = Vector3.forward;
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+
 }
