@@ -31,7 +31,7 @@ public class HealthController : MonoBehaviour
         playerHealth = player.GetComponent<PlayerController>().GetPlayerHealth();
 
         string healthIndicator = "";
-
+        /*
         for (int i = 0; i < maxHealth; i++)
         {
             if (i < playerHealth)
@@ -39,6 +39,10 @@ public class HealthController : MonoBehaviour
                 healthIndicator += "@ ";
             }
         }
+        */
+
+        int leftDistance = playerHealth * 15;
+        healthIndicator += "<- " + leftDistance.ToString() + " m";
 
         health.text = healthIndicator;
     }
