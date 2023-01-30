@@ -34,9 +34,24 @@ public class Movement : MonoBehaviour
     private bool exitingSlope;
     Vector3 moveDirection;
 
+    [Header("Jump Control")]
+    [SerializeField] float jumpForce = 5.0f;
+    [SerializeField] int maxJumpCount = 0;
+    int jumpCount = 0;
+    bool isDoubleJump = false;
+    bool isOnGround = true;
+    [SerializeField] LayerMask groundLayerMask = 0;
+    float distance = 0.0f;
+
+    [Header("Animation Control")]
+    Animator animator = null;
+    
+
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -61,7 +76,7 @@ public class Movement : MonoBehaviour
             rigidbody.AddForce(GetSlopeMoveDirection() * moveSpeed * 10f, ForceMode.Force );
             // downward slope
             if(rigidbody.velocity.magnitude > moveSpeed)
-                rigidbody.velocity = rigidbody.velocity.normalized * moveSpeed * 0.5f;
+                rigidbody.velocity = rigidbody.velocity.normalized * moveSpeed * 2.0f;
         }
     }
 
@@ -147,5 +162,21 @@ public class Movement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Trampoline"))
+        {
+            Debug.Log("Enter Trampoline");
+            TryJump();
+        }
+    }
+
+    public void TryJump()
+    {   
+        animator.SetBool("isJump", true);
+        isOnGround = false;
+        GetComponent<Rigidbody>().velocity = Vector3.up * jumpForce;
+        animator.SetBool("isJump", false); 
+    }
 
 }

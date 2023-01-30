@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     [SerializeField] float standByTime = 1.3f;
 
-    // Jump Control
+    [Header("Jump Control")]
     [SerializeField] float jumpForce = 5.0f;
     [SerializeField] int maxJumpCount = 0;
     int jumpCount = 0;
