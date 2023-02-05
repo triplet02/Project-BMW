@@ -46,4 +46,8 @@ public class MainCameraController : MonoBehaviour
             transform.position = player.transform.position + cameraDistance;
         }
     }
+    public Vector3 GetCameraPosition()
+    {
+        return this.transform.position;
+    }
 }
