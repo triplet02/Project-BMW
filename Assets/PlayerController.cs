@@ -128,6 +128,13 @@ public class PlayerController : MonoBehaviour
         if (skillGauge.value == 100)
         {
             Debug.Log("Skill~~~~~~~");
+
+            //Skill Demo(Cat Skill)
+            if(playerHealth < maxHealth)
+            {
+                playerHealth++;
+            }
+
             skillGauge.value = 0;
         }
     }
