@@ -14,6 +14,7 @@ TagManager:
   - SettingButton
   - Slope
   - Trampoline
+  - Deadzone
   layers:
   - Default
   - TransparentFX

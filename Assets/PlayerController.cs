@@ -218,6 +218,32 @@ public class PlayerController : MonoBehaviour
                 
             }
         }
+
+        if (collision.collider.gameObject.CompareTag("Deadzone"))
+        {
+            Debug.Log("DeadZone Detected!");
+            playerHealth = 0;
+            player.GetComponent<SceneController>().toGameoverScene();
+        }
+
+        if(collision.collider.gameObject.CompareTag("Ground") && !isOnGround)
+        {
+            Debug.Log("Mid-air Collision!");
+
+            if (playerHealth > 1)
+            {
+                playerHealth--;
+                //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
+                StartCoroutine(AfterCollisionImmune());
+            }
+            else
+            {
+                // stop and show left(or moved) distance to user?
+                // ...
+
+                player.GetComponent<SceneController>().toGameoverScene();
+            }
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
