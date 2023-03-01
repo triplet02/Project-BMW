@@ -20,6 +20,8 @@ public class SceneController : MonoBehaviour
         {"Character3Button", 3 },
     };
 
+    bool isPaused = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,5 +57,17 @@ public class SceneController : MonoBehaviour
         GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
         CharacterInfo.characterNumber = characterDict[clickedObject.name];
         SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
+    }
+
+    public void gamePause()
+    {
+        if(isPaused){
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+        else{
+            Time.timeScale = 0;
+            isPaused = true;
+        }
     }
 }
