@@ -5,10 +5,15 @@ using UnityEngine;
 public class TentacleController : MonoBehaviour
 {
     [SerializeField]
+    float approachDistance;
+        [SerializeField]
     float triggerDistance;
+    [SerializeField]
+    float threshold = 50.0f;
 
     GameObject player;
     float distance;
+    bool approached = false;
     bool triggered = false;
 
     //Temp
@@ -32,10 +37,14 @@ public class TentacleController : MonoBehaviour
             distance = Vector3.Distance(player.transform.position, this.transform.position);
             //Debug.Log(distance.ToString());
 
-            if(distance <= triggerDistance && !triggered)
+            if(distance <= triggerDistance && triggered){
+                triggerTentacle();
+            }
+
+            if(distance <= approachDistance && !approached)
             {
-                triggered = true;
-                initiateTentacle();
+                approached = true;
+                checkTentacle();
             }
         }
         else
@@ -44,13 +53,26 @@ public class TentacleController : MonoBehaviour
         }
     }
 
-    void initiateTentacle()
+    void checkTentacle()
     {
-        Debug.Log("tentacle triggered!");
+        float check = Random.Range(0.0f, 100.0f);
+        Debug.Log("[Tentacle Check] : " + check.ToString());
+        if(check <= threshold){
+            triggered = true;
+            Debug.Log("tentacle triggered!");
+            
+        }
+        else{
+            Debug.Log("tentacle NOT triggered!");
+        }
+    }
+
+    void triggerTentacle()
+    {
         this.GetComponent<MeshRenderer>().material = mat[1];
         this.GetComponent<BoxCollider>().center = new Vector3(0.0f, 0.5f, 0.0f);
         this.GetComponent<BoxCollider>().size = new Vector3(1.0f, 2.0f, 1.0f);
-        
+
         Vector3 currentPosition = this.transform.position;
         this.transform.position = new Vector3(currentPosition.x, triggeredPosition, currentPosition.z);
         this.transform.localScale = tirggeredScale;

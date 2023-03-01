@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
     int beer = 0;
     int coin = 0;
 
+    // Chaser(Health(Distance) Decrease) System
+    [SerializeField] int healthDecrease;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -138,7 +141,7 @@ public class PlayerController : MonoBehaviour
             skillGauge.value = 0;
         }
     }
-     
+    
     private void CheckGround()
     {
         Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;

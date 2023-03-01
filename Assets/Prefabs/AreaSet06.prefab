@@ -127,7 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c73f35a18389084789412a695d10451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerDistance: 7
+  approachDistance: 7
+  triggerDistance: 4
+  threshold: 50
   mat:
   - {fileID: 2100000, guid: 008553e1c3c4c564da370a312f1bad75, type: 2}
   - {fileID: 2100000, guid: c686408d9a4054d449a53a7a78104898, type: 2}
