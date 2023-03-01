@@ -176,7 +176,8 @@ public class Movement : MonoBehaviour
         animator.SetBool("isJump", true);
         isOnGround = false;
         GetComponent<Rigidbody>().velocity = Vector3.up * jumpForce;
-        animator.SetBool("isJump", false); 
+        animator.SetBool("isJump", false);
+        Debug.Log(GetComponent<Rigidbody>().velocity.ToString());
     }
 
 }
