@@ -18,6 +18,12 @@ public class AreaSpawner : MonoBehaviour
     private void Start()
     {
         InitializeArea();
+        Debug.Log(areaPrefabs.Length.ToString());
+        Debug.Log(areaPrefabs[areaPrefabs.Length-1].name);
+        foreach (var areaSet in areaPrefabs)
+        {
+            Debug.Log(areaSet.name);
+        }
     }
 
 //TODO: Need a branch - vertial / horizontal spawner
@@ -37,9 +43,11 @@ public class AreaSpawner : MonoBehaviour
         GameObject clone = null;
         if (currentIdx < areaPrefabs.Length)
         {
+            Debug.Log(areaPrefabs[currentIdx].name);
             clone = Instantiate(areaPrefabs[currentIdx]);
             clone.transform.position = new Vector3(xDistance, 0, 0);
+            currentIdx += 1;
         }
-        currentIdx += 1;
+        Debug.Log("[map index] " + currentIdx.ToString());
     }
 }
