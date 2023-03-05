@@ -70,4 +70,9 @@ public class SceneController : MonoBehaviour
             isPaused = true;
         }
     }
+
+    public void toTopViewScene()
+    {
+        SceneManager.LoadScene("TopView Gameplay");
+    }
 }

@@ -261,10 +261,14 @@ public class PlayerController : MonoBehaviour
             beer++;
             skillGauge.value += beer;
         }
-
         if (other.tag.Equals("Coin"))
         {
             coin++;
+        }
+        if (other.tag.Equals("Portal"))
+        {
+            Debug.Log("Portal");
+            player.GetComponent<SceneController>().toTopViewScene();
         }
     }
 
@@ -296,5 +300,11 @@ public class PlayerController : MonoBehaviour
     public int GetPlayerHealth()
     {
         return playerHealth;
+    }
+
+    public void SetPlayerHealth(int health)
+    {
+        playerHealth = health;
+        return;
     }
 }

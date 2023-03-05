@@ -15,6 +15,7 @@ TagManager:
   - Slope
   - Trampoline
   - Deadzone
+  - Portal
   layers:
   - Default
   - TransparentFX
