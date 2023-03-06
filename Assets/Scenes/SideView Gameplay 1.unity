@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3395,7 +3395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.size
-      value: 11
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[1]
@@ -3440,7 +3440,19 @@ PrefabInstance:
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[11]
       value: 
-      objectReference: {fileID: 5326689026232395275, guid: 561a7f28e55a028489b1df5b3faac8dc, type: 3}
+      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[14]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[15]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
+    - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      propertyPath: areaPrefabs.Array.data[16]
+      value: 
+      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
     - target: {fileID: 8434822362100358526, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: m_Name
       value: AreaSpawner
