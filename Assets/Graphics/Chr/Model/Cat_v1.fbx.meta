@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: 1d12aa9eefe03c547bee430b5abf1f9b
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #26
+    second: {fileID: 2100000, guid: 503c5758f7e198f49a5b443abae462bf, type: 2}
+  materials:
+    materialImportMode: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Cat_Bip Pelvis
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Thigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Thigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Calf
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Calf
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Forearm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Forearm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Toe0
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Toe0
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Finger0
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Finger1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip L Finger2
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Finger0
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Finger1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Cat_Bip R Finger2
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Cat_v1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_v1
+      parentName: Cat_v1(Clone)
+      position: {x: -0, y: 0, z: -0.030057373}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip
+      parentName: Cat_v1(Clone)
+      position: {x: -8.553304e-10, y: 0.3331471, z: -0.019567681}
+      rotation: {x: -0.50000036, y: 0.49999964, z: 0.49999964, w: 0.50000036}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Pelvis
+      parentName: Cat_Bip
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.5, y: 0.5, z: 0.4999993, w: 0.5000007}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Spine
+      parentName: Cat_Bip Pelvis
+      position: {x: -0.14911659, y: -0.00014787196, z: 0.00000020545332}
+      rotation: {x: 0.0000027022145, y: -0.012012254, z: -0.0003981386, w: 0.99992776}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Spine1
+      parentName: Cat_Bip Spine
+      position: {x: -0.18572937, y: -0.00014789104, z: -0.0000000023841857}
+      rotation: {x: -2.7105054e-20, y: 9.313226e-10, z: 2.910383e-11, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Neck
+      parentName: Cat_Bip Spine1
+      position: {x: -0.20020615, y: -0.00007079363, z: 0}
+      rotation: {x: -2.7105054e-20, y: 9.313226e-10, z: 2.910383e-11, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Clavicle
+      parentName: Cat_Bip Neck
+      position: {x: 0.054701995, y: 0.00010276556, z: 0.02063274}
+      rotation: {x: 0.7071077, y: 0.00028154056, z: -0.70710576, w: 0.00028154135}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L UpperArm
+      parentName: Cat_Bip L Clavicle
+      position: {x: -0.107137255, y: 0, z: 0}
+      rotation: {x: 0.049655974, y: -0.0048953854, z: -0.012378147, w: 0.99867773}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Forearm
+      parentName: Cat_Bip L UpperArm
+      position: {x: -0.22270735, y: -0.000000009536743, z: 0}
+      rotation: {x: 0.0016701333, y: -0.0057309545, z: 0.043163996, w: 0.9990502}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Hand
+      parentName: Cat_Bip L Forearm
+      position: {x: -0.18748291, y: -0.000000019073486, z: -0.000000076293944}
+      rotation: {x: -0.7068252, y: 0.0000000025487463, z: -0.000000007821232, w: 0.7073883}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Finger0
+      parentName: Cat_Bip L Hand
+      position: {x: -0.1568932, y: 0.0015670013, z: -0.07005407}
+      rotation: {x: -0.0021083157, y: -0.11907644, z: 0.0118700545, w: 0.9928119}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Finger0Nub
+      parentName: Cat_Bip L Finger0
+      position: {x: -0.07759407, y: -0.000000076293944, z: 0.000000038146972}
+      rotation: {x: -0.0000000037252907, y: 0.000000011641533, z: 0.0000000018626454, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Finger1
+      parentName: Cat_Bip L Hand
+      position: {x: -0.16506958, y: 0.008153992, z: -0.00005973816}
+      rotation: {x: 0.004080265, y: 0.12312239, z: -0.03743183, w: 0.9916769}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Finger1Nub
+      parentName: Cat_Bip L Finger1
+      position: {x: -0.07769863, y: 0, z: -0.000000038146972}
+      rotation: {x: 0.0000000037252907, y: 0.0000000013969839, z: -5.204171e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Finger2
+      parentName: Cat_Bip L Hand
+      position: {x: -0.16466334, y: 0.012806091, z: 0.07008354}
+      rotation: {x: 0.000896394, y: 0.12112082, z: -0.014273137, w: 0.99253476}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Finger2Nub
+      parentName: Cat_Bip L Finger2
+      position: {x: -0.06886947, y: -0.00000015258789, z: -0.000000019073486}
+      rotation: {x: 3.035766e-18, y: 0.0000000016298145, z: -0.0000000018626451, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Clavicle
+      parentName: Cat_Bip Neck
+      position: {x: 0.054701917, y: 0.00010288238, z: -0.02063274}
+      rotation: {x: 0.7071077, y: 0.00028154056, z: 0.70710576, w: -0.00028154135}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R UpperArm
+      parentName: Cat_Bip R Clavicle
+      position: {x: -0.10713725, y: 0, z: -0.000000076293944}
+      rotation: {x: -0.049344268, y: -0.01909843, z: -0.013567516, w: 0.9985071}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Forearm
+      parentName: Cat_Bip R UpperArm
+      position: {x: -0.22270736, y: 0, z: 0}
+      rotation: {x: 0.000000007470827, y: -0.000000001284311, z: 0.015101331, w: 0.999886}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Hand
+      parentName: Cat_Bip R Forearm
+      position: {x: -0.18748298, y: 0, z: 0}
+      rotation: {x: 0.7068252, y: 4.939738e-10, z: -1.6443945e-10, w: 0.7073882}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Finger0
+      parentName: Cat_Bip R Hand
+      position: {x: -0.1568932, y: 0.0015670013, z: 0.070054024}
+      rotation: {x: 0.0021083194, y: 0.11907642, z: 0.011870055, w: 0.9928119}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Finger0Nub
+      parentName: Cat_Bip R Finger0
+      position: {x: -0.077594146, y: 0.000000076293944, z: -0.000000019073486}
+      rotation: {x: -0.000000009720679, y: 0.0000000037252907, z: 1, w: 9.7444695e-17}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Cat_Bip R Finger1
+      parentName: Cat_Bip R Hand
+      position: {x: -0.16506961, y: 0.008153992, z: 0.0000596714}
+      rotation: {x: 0.0003948212, y: -0.12479662, z: -0.022752, w: 0.99192137}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Finger1Nub
+      parentName: Cat_Bip R Finger1
+      position: {x: -0.07769859, y: 0, z: 0}
+      rotation: {x: 2.9103828e-10, y: -1.3552521e-19, z: 1, w: 4.6566112e-10}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Cat_Bip R Finger2
+      parentName: Cat_Bip R Hand
+      position: {x: -0.16466334, y: 0.012806167, z: -0.07008359}
+      rotation: {x: -0.00089636433, y: -0.12112011, z: -0.014272744, w: 0.9925349}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Finger2Nub
+      parentName: Cat_Bip R Finger2
+      position: {x: -0.06886947, y: 0, z: 0}
+      rotation: {x: 0.000000005995389, y: -2.791821e-18, z: 1, w: 4.6566134e-10}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Cat_Bip Head
+      parentName: Cat_Bip Neck
+      position: {x: -0.074429855, y: 0, z: 0}
+      rotation: {x: -0.000004774473, y: 0.012012948, z: 0.00039883514, w: 0.99992776}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip HeadNub
+      parentName: Cat_Bip Head
+      position: {x: -0.4773841, y: 0, z: 0}
+      rotation: {x: -4.1174657e-20, y: -3.3881318e-21, z: -1.39505e-40, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Ponytail1
+      parentName: Cat_Bip Head
+      position: {x: -0.42171118, y: -0.01320719, z: 0.28767794}
+      rotation: {x: 0.8649692, y: -0.23114467, z: -0.43481895, w: 0.09660714}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Ponytail11
+      parentName: Cat_Bip Ponytail1
+      position: {x: -0.10813019, y: -0.00008575439, z: -0.000000076293944}
+      rotation: {x: 0.0000000064855907, y: -0.00000013395353, z: 0.04836007, w: 0.99882996}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Ponytail1Nub
+      parentName: Cat_Bip Ponytail11
+      position: {x: -0.108138576, y: 0, z: 0}
+      rotation: {x: 0.7073883, y: -0.7068252, z: -0.0000010119102, w: -0.0000009689746}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Ponytail2
+      parentName: Cat_Bip Head
+      position: {x: -0.42171118, y: -0.013205597, z: -0.28767803}
+      rotation: {x: 0.8649692, y: -0.2311471, z: 0.43481767, w: -0.09660707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Ponytail21
+      parentName: Cat_Bip Ponytail2
+      position: {x: -0.10813019, y: -0.000085716245, z: 0}
+      rotation: {x: -0.00000000911876, y: -0.00000011979043, z: 0.048360046, w: 0.99882996}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Ponytail2Nub
+      parentName: Cat_Bip Ponytail21
+      position: {x: -0.10813865, y: 0, z: -0.000000076293944}
+      rotation: {x: 0.7073883, y: -0.7068252, z: -0.0000010013777, w: -0.0000009795156}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Tail
+      parentName: Cat_Bip Spine
+      position: {x: 0.10779633, y: -0.1968146, z: -0.0025871599}
+      rotation: {x: 0.0084899105, y: 0.0084970035, z: 0.7072419, w: 0.7068696}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Tail1
+      parentName: Cat_Bip Tail
+      position: {x: -0.5129615, y: -0.00044807434, z: -0.0000000012423698}
+      rotation: {x: -3.9005417e-14, y: -0.0000000021497757, z: 0.00077510276, w: 0.9999997}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip Tail2
+      parentName: Cat_Bip Tail1
+      position: {x: -0.56274354, y: -0.00044803618, z: -0.0000000012433156}
+      rotation: {x: 1.4534934e-13, y: -0.000000021012786, z: 0.0075760167, w: 0.99997133}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip TailNub
+      parentName: Cat_Bip Tail2
+      position: {x: -0.5627507, y: -0.000000038146972, z: 2.1827872e-13}
+      rotation: {x: 0.7073882, y: -0.7068252, z: -0.0000009802252, w: -0.0000009810061}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Thigh
+      parentName: Cat_Bip Spine
+      position: {x: 0.15247524, y: 0.00026892303, z: 0.13797781}
+      rotation: {x: 0.06011112, y: 0.94123304, z: 0.32988858, w: -0.040503543}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Calf
+      parentName: Cat_Bip L Thigh
+      position: {x: -0.20617539, y: -0.000000009536743, z: 0}
+      rotation: {x: -0.0064503276, y: -0.024918089, z: -0.17511767, w: 0.984211}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Foot
+      parentName: Cat_Bip L Calf
+      position: {x: -0.09168283, y: 0.000000009536743, z: -0.000000009536743}
+      rotation: {x: 0.16559574, y: 0.03303823, z: 0.117504045, w: 0.97861093}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Toe0
+      parentName: Cat_Bip L Foot
+      position: {x: -0.03354213, y: 0.0519826, z: -0.0006182289}
+      rotation: {x: 0.027234295, y: 0.0038463823, z: -0.7065821, w: 0.70709634}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip L Toe0Nub
+      parentName: Cat_Bip L Toe0
+      position: {x: -0.0155114075, y: 0, z: 0.000000009536743}
+      rotation: {x: 0.000000024359903, y: -1.4916139e-24, z: 1, w: 6.123234e-17}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Cat_Bip R Thigh
+      parentName: Cat_Bip Spine
+      position: {x: 0.14567153, y: 0.00026429057, z: -0.14514261}
+      rotation: {x: 0.06229852, y: 0.9413133, z: -0.33104134, w: 0.021443168}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Calf
+      parentName: Cat_Bip R Thigh
+      position: {x: -0.2061754, y: 0, z: 0.000000009536743}
+      rotation: {x: 0.005829682, y: 0.022519879, z: -0.18540543, w: 0.98238677}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Foot
+      parentName: Cat_Bip R Calf
+      position: {x: -0.09168287, y: 0, z: 0}
+      rotation: {x: -0.16487792, y: -0.030641878, z: 0.11760009, w: 0.9787986}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Toe0
+      parentName: Cat_Bip R Foot
+      position: {x: -0.03354213, y: 0.05198261, z: 0.0006182289}
+      rotation: {x: -0.027234295, y: -0.0038463853, z: -0.7065821, w: 0.7070964}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cat_Bip R Toe0Nub
+      parentName: Cat_Bip R Toe0
+      position: {x: -0.015511417, y: 0, z: 0}
+      rotation: {x: 1.7347235e-17, y: 0.000000018626451, z: -9.313226e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 1
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 0
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

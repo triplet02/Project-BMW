@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject mainCamera;
 
     // Game Scene Initializing
-    Vector3 initialPlayerPosition = new Vector3(-5.0f, 0.01f, 0.0f);
+    Vector3 initialPlayerPosition = new Vector3(-5.0f, 0.1f, 0.0f);
     Vector3 gameStartPlayerPosition = new Vector3(0.0f, 0.01f, 0.0f);
     Vector3 velocity = Vector3.zero;
     [SerializeField] float standByTime = 1.3f;
@@ -270,6 +270,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Portal");
             player.GetComponent<SceneController>().toTopViewScene();
         }
+    }
+
+    private void ModifyPosition(float x, float y, float z)
+    {
+        Vector3 currentPosition = player.transform.position;
+        Vector3 newPosition = currentPosition + new Vector3(x, y, z);
+
+        player.transform.position = newPosition;
     }
 
     public int GetJumpCount()
