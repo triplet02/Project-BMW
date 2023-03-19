@@ -11,6 +11,7 @@ public class SkillGauge : MonoBehaviour
     void Start(){
         skillGaugeFill = GameObject.Find("Fill").GetComponent<Image>();
         slider = gameObject.GetComponent<Slider>();
+        slider.value = SideViewGameplay1.sideViewGameplay1.skillValue;
     }
     void Update(){
         if(slider.value == 100){
