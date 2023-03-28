@@ -10,6 +10,7 @@ public class SideViewGameplay1 : MonoBehaviour
     public Text gameUIText;
     public int skillValue;
     public int playerHealth;
+    public int coin;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class SideViewGameplay1 : MonoBehaviour
     {
         skillValue = 60;
         playerHealth = 3;
+        coin = 0;
     }
     
     private void Update()
