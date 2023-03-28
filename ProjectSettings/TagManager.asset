@@ -16,6 +16,8 @@ TagManager:
   - Trampoline
   - Deadzone
   - Portal
+  - PortalSide1
+  - Portal1
   layers:
   - Default
   - TransparentFX

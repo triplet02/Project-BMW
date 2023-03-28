@@ -41,7 +41,8 @@ public class HealthController : MonoBehaviour
         }
         */
 
-        int leftDistance = playerHealth * 15;
+        // int leftDistance = playerHealth * 15;
+        int leftDistance = SideViewGameplay1.sideViewGameplay1.playerHealth * 15;
         healthIndicator += "<- " + leftDistance.ToString() + " m";
 
         health.text = healthIndicator;

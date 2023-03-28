@@ -208,6 +208,7 @@ public class PlayerController : MonoBehaviour
                 if(playerHealth > 1)
                 {
                     playerHealth--;
+                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
                     //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
                     StartCoroutine(AfterCollisionImmune());
                 }
@@ -260,6 +261,7 @@ public class PlayerController : MonoBehaviour
         {
             beer++;
             skillGauge.value += beer;
+            SideViewGameplay1.sideViewGameplay1.skillValue += beer;
         }
         if (other.tag.Equals("Coin"))
         {
@@ -269,6 +271,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Portal");
             player.GetComponent<SceneController>().toTopViewScene();
+        }
+        if (other.tag.Equals("Portal1"))
+        {
+            Debug.Log("Portal1");
+            player.GetComponent<SceneController>().toSideViewScene();
         }
     }
 
