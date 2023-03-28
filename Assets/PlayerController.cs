@@ -50,8 +50,6 @@ public class PlayerController : MonoBehaviour
     // Player Status
     int maxHealth = 3;
     int playerHealth;
-    int beer = 0;
-    int coin = 0;
 
     // Chaser(Health(Distance) Decrease) System
     [SerializeField] int healthDecrease;
@@ -67,6 +65,7 @@ public class PlayerController : MonoBehaviour
         animator = player.GetComponentInChildren<Animator>();
         
         skillGauge = GameObject.Find("SkillGauge").GetComponent<Slider>();
+        skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
         debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
 
         playerHealth = maxHealth;
@@ -87,11 +86,10 @@ public class PlayerController : MonoBehaviour
             "isGround : " + isGround.ToString() + "\n" +
             "y_axis_coord : " + player.transform.position.y.ToString() + "\n\n" +*/
             "Stage : " + StageInfo.stageNumber + "\n" +
-            "Beer : " + beer.ToString() + "\n" +
-            "Coin : " + coin.ToString() + "\n" +
-            "Health : " + playerHealth.ToString() + "\n" +
+            "Coin : " + SideViewGameplay1.sideViewGameplay1.coin.ToString() + "\n" +
+            "Health : " + SideViewGameplay1.sideViewGameplay1.playerHealth.ToString() + "\n" +
             "isOnGround : " + isOnGround.ToString() + "\n" +
-            "isOnObstacle : " + isOnObstacle.ToString() +
+            "isOnObstacle : " + isOnObstacle.ToString() + "\n" +
             "collider set to trigger : " + capsuleCollider.isTrigger.ToString();
     }
 
@@ -259,13 +257,12 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag.Equals("Beer"))
         {
-            beer++;
-            skillGauge.value += beer;
-            SideViewGameplay1.sideViewGameplay1.skillValue += beer;
+            SideViewGameplay1.sideViewGameplay1.skillValue += 1;
+            skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
         }
         if (other.tag.Equals("Coin"))
         {
-            coin++;
+            SideViewGameplay1.sideViewGameplay1.coin += 1;
         }
         if (other.tag.Equals("Portal"))
         {
