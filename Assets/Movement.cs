@@ -28,12 +28,6 @@ public class Movement : MonoBehaviour
 
     private Rigidbody rigidbody;
 
-    [Header("Slope Handling")]
-    public float maxSlopeAngle;
-    private RaycastHit slopeHit;
-    private bool exitingSlope;
-    Vector3 moveDirection;
-
     [Header("Jump Control")]
     [SerializeField] float jumpForce = 5.0f;
     [SerializeField] int maxJumpCount = 0;
@@ -68,15 +62,6 @@ public class Movement : MonoBehaviour
         if (transform.position.y < limitY)
         {
             Debug.Log("GAME OVER");
-        }
-
-        if (OnSlope())
-        {
-            // upward slope
-            rigidbody.AddForce(GetSlopeMoveDirection() * moveSpeed * 10f, ForceMode.Force );
-            // downward slope
-            if(rigidbody.velocity.magnitude > moveSpeed)
-                rigidbody.velocity = rigidbody.velocity.normalized * moveSpeed * 2.0f;
         }
     }
 
@@ -143,23 +128,6 @@ public class Movement : MonoBehaviour
         }
         isJump = false;
         rigidbody.useGravity = true;
-    }
-
-    private bool OnSlope()
-    {
-        float playerHeight = 0.75f;
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
-        {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxSlopeAngle && angle != 0;
-        }
-        return false;
-    }
-
-    private Vector3 GetSlopeMoveDirection()
-    {
-        Vector3 moveDirection = Vector3.forward;
-        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 
     private void OnTriggerEnter(Collider other)
