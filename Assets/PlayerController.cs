@@ -272,6 +272,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Portal");
             player.GetComponent<SceneController>().toTopViewScene();
         }
+        if (other.tag.Equals("Portal1"))
+        {
+            Debug.Log("Portal1");
+            player.GetComponent<SceneController>().toSideViewScene();
+        }
     }
 
     private void ModifyPosition(float x, float y, float z)

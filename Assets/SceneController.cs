@@ -75,4 +75,9 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("TopView Gameplay");
     }
+
+    public void toSideViewScene()
+    {
+        SceneManager.LoadScene("SideView Gameplay 1");
+    }
 }
