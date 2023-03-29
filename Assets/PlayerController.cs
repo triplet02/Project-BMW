@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        player.transform.position = initialPlayerPosition;
+        player.transform.position = gameStartPlayerPosition;
 
         rigidbody = player.GetComponent<Rigidbody>();
         capsuleCollider = player.GetComponent<CapsuleCollider>();
@@ -266,12 +266,14 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag.Equals("Portal"))
         {
-            Debug.Log("Portal");
+            Debug.Log("From Side To Top View");
+            SideViewGameplay1.sideViewGameplay1.currentView = "top";
             player.GetComponent<SceneController>().toTopViewScene();
         }
         if (other.tag.Equals("Portal1"))
         {
-            Debug.Log("Portal1");
+            Debug.Log("From Top To Side View");
+            SideViewGameplay1.sideViewGameplay1.currentView = "side";
             player.GetComponent<SceneController>().toSideViewScene();
         }
     }

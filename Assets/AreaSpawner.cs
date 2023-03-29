@@ -18,6 +18,7 @@ public class AreaSpawner : MonoBehaviour
     private void Start()
     {
         InitializeArea();
+        Debug.Log(SideViewGameplay1.sideViewGameplay1.currentView);
         Debug.Log(areaPrefabs.Length.ToString());
         Debug.Log(areaPrefabs[areaPrefabs.Length-1].name);
         foreach (var areaSet in areaPrefabs)
@@ -33,7 +34,12 @@ public class AreaSpawner : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             clone = Instantiate(areaPrefabs[i]);
-            clone.transform.position = new Vector3(i * xDistance, 0, 0);
+            if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
+                clone.transform.position = new Vector3(i * xDistance, 0, 0);
+            }
+            else {
+                clone.transform.position = new Vector3(0, 0, i * xDistance);
+            }
         }
     }
 
@@ -45,7 +51,12 @@ public class AreaSpawner : MonoBehaviour
         {
             Debug.Log(areaPrefabs[currentIdx].name);
             clone = Instantiate(areaPrefabs[currentIdx]);
-            clone.transform.position = new Vector3(xDistance, 0, 0);
+            if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
+                clone.transform.position = new Vector3(xDistance, 0, 0);
+            }
+            else {
+                clone.transform.position = new Vector3(0, 0, xDistance);
+            }
             currentIdx += 1;
         }
         Debug.Log("[map index] " + currentIdx.ToString());

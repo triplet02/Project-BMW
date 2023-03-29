@@ -12,7 +12,6 @@ public class TopviewPlayerController : MonoBehaviour
     [SerializeField] GameObject player;
 
     private Movement movement;
-    int playerHealth;
 
     // Start is called before the first frame update
     void Start()
