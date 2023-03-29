@@ -11,9 +11,14 @@ public class SideViewGameplay1 : MonoBehaviour
     public int skillValue;
     public int playerHealth;
     public int coin;
+    public string currentView;  //side, top
 
     private void Awake()
     {
+        skillValue = 60;
+        playerHealth = 3;
+        coin = 0;
+        currentView = "side";
         if (sideViewGameplay1 == null)
         {
             sideViewGameplay1 = this;
@@ -27,9 +32,7 @@ public class SideViewGameplay1 : MonoBehaviour
 
     private void Start()
     {
-        skillValue = 60;
-        playerHealth = 3;
-        coin = 0;
+        
     }
     
     private void Update()
