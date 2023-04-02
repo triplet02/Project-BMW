@@ -75,11 +75,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         CheckGround();
+        /*
         if (isSlide)
         {
             StartCoroutine(Slide());
         }
-
+        */
         debuggingUI.text = /*"isJump : " + animator.GetBool("isJump").ToString() + "\n" +
             "isDoubleJump : " + animator.GetBool("isDoubleJump").ToString() + "\n" +
             "isSlide : " + animator.GetBool("isSlide").ToString() + "\n" +
@@ -114,7 +115,7 @@ public class PlayerController : MonoBehaviour
             jumpCount++;
         }
     }
-
+    /*
     public void TrySlide()
     {
         if (!isSlide)
@@ -123,6 +124,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Slide());
         }
     }
+    */
 
     public void TrySkill()
     {
@@ -162,13 +164,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Slide()
+    /*IEnumerator Slide()
     {
         animator.SetBool("isSlide", true);
         capsuleCollider.height = 0.8f;
         capsuleCollider.center = new Vector3(0.0f, 0.4f, -0.2f);
         rigidbody.useGravity = false;
         yield return new WaitForSeconds(slideTime);
+        animator.SetBool("isSlide", false);
+        rigidbody.useGravity = true;
+        capsuleCollider.height = 1.5f;
+        capsuleCollider.center = new Vector3(0.0f, 0.75f, 0.0f);
+        isSlide = false;
+    }*/
+
+    public void StartSlide()
+    {
+        isSlide = true;
+        animator.SetBool("isSlide", true);
+        capsuleCollider.height = 0.8f;
+        capsuleCollider.center = new Vector3(0.0f, 0.4f, -0.2f);
+        rigidbody.useGravity = false;
+    }
+
+    public void EndSlide()
+    {
         animator.SetBool("isSlide", false);
         rigidbody.useGravity = true;
         capsuleCollider.height = 1.5f;
