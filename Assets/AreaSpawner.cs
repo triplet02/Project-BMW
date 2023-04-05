@@ -13,8 +13,8 @@ public class AreaSpawner : MonoBehaviour
     private GameObject[] areaPrefabs;
     private float xDistance = 15;
     [System.NonSerialized]
-    private int currentIdx = 3;
-
+    private static int currentIdx;
+    
     private void Start()
     {
         InitializeArea();
@@ -27,19 +27,25 @@ public class AreaSpawner : MonoBehaviour
         }
     }
 
-//TODO: Need a branch - vertial / horizontal spawner
     public void InitializeArea()
     {
         GameObject clone = null;
+        int mapIdx = 0;
+        if (SideViewGameplay1.sideViewGameplay1.currentView == "side") {
+            mapIdx = SideViewGameplay1.sideViewGameplay1.currentMapIdx;
+        }
         for (int i = 0; i < 3; i++)
         {
-            clone = Instantiate(areaPrefabs[i]);
+            clone = Instantiate(areaPrefabs[mapIdx]);
             if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
                 clone.transform.position = new Vector3(i * xDistance, 0, 0);
             }
             else {
                 clone.transform.position = new Vector3(0, 0, i * xDistance);
             }
+            mapIdx += 1;
+            currentIdx += 1;
+            SideViewGameplay1.sideViewGameplay1.currentMapIdx += 1;
         }
     }
 
@@ -49,16 +55,17 @@ public class AreaSpawner : MonoBehaviour
         GameObject clone = null;
         if (currentIdx < areaPrefabs.Length)
         {
-            Debug.Log(areaPrefabs[currentIdx].name);
+            Debug.Log("new area::" + areaPrefabs[currentIdx].name);
             clone = Instantiate(areaPrefabs[currentIdx]);
             if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
                 clone.transform.position = new Vector3(xDistance, 0, 0);
+                SideViewGameplay1.sideViewGameplay1.currentMapIdx = currentIdx;
             }
             else {
                 clone.transform.position = new Vector3(0, 0, xDistance);
             }
             currentIdx += 1;
         }
-        Debug.Log("[map index] " + currentIdx.ToString());
+        // Debug.Log("[map index] " + currentIdx.ToString());
     }
 }
