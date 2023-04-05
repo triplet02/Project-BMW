@@ -14,14 +14,14 @@ public class Area : MonoBehaviour
     private void Update()
     {
         if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
-            transform.position += Vector3.left * Time.deltaTime * 5;    //speed = 5
+            transform.position += Vector3.left * Time.deltaTime * 5;    //speed 
             if(gameObject.transform.position.x < -30) {
                 Destroy(gameObject);
                 onAreaDestroyed.Invoke();
             }
         }
         else {
-            transform.position += Vector3.back * Time.deltaTime * 5; //speed = 2
+            transform.position += Vector3.back * Time.deltaTime * 5; //speed
             if(gameObject.transform.position.z < -30) {
                 Destroy(gameObject);
                 onAreaDestroyed.Invoke();

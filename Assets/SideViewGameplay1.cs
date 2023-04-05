@@ -12,6 +12,7 @@ public class SideViewGameplay1 : MonoBehaviour
     public int playerHealth;
     public int coin;
     public string currentView;  //side, top
+    public int currentMapIdx;  //sideview area index
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class SideViewGameplay1 : MonoBehaviour
         playerHealth = 3;
         coin = 0;
         currentView = "side";
+        currentMapIdx = 0;
         if (sideViewGameplay1 == null)
         {
             sideViewGameplay1 = this;
