@@ -252,7 +252,7 @@ MonoBehaviour:
   onAreaDestroyed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+      - m_Target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
         m_TargetAssemblyTypeName: AreaSpawner, Assembly-CSharp
         m_MethodName: onAreaDestroyed
         m_Mode: 1
