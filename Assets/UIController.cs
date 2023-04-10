@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIController : MonoBehaviour
 {
     [SerializeField] GameObject characterTooltip;
     [SerializeField] GameObject settings;
@@ -18,24 +18,6 @@ public class UIController : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     void Update()
     {
         
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log(eventData.pointerEnter.tag.ToString());
-        Debug.Log(eventData.pointerEnter.tag.Equals("SettingButton"));
-        if (!eventData.pointerEnter.tag.Equals("SettingButton"))
-        {
-            characterTooltip.SetActive(true);
-        } 
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!eventData.pointerEnter.tag.Equals("SettingButton"))
-        {
-            characterTooltip.SetActive(false);
-        }
     }
 
     public void ShowSettings()
