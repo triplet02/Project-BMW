@@ -15,9 +15,9 @@ public class SceneController : MonoBehaviour
 
     Dictionary<string, int> characterDict = new Dictionary<string, int>()
     {
-        {"Character1Button", 1 },
-        {"Character2Button", 2 },
-        {"Character3Button", 3 },
+        {"CatButton", 1 },
+        {"Dog2Button", 2 },
+        {"MouseButton", 3 },
     };
 
     bool isPaused = false;
@@ -54,9 +54,13 @@ public class SceneController : MonoBehaviour
 
     public void toSideViewGameplayScene()
     {
+        SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
+    }
+
+    public void characterSelection()
+    {
         GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
         CharacterInfo.characterNumber = characterDict[clickedObject.name];
-        SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
     }
 
     public void gamePause()
@@ -79,5 +83,20 @@ public class SceneController : MonoBehaviour
     public void toSideViewScene()
     {
         SceneManager.LoadScene("SideView Gameplay 1");
+    }
+
+    public void toCharacterSelectionScene()
+    {
+        SceneManager.LoadScene("Character Selection");
+    }
+
+    public void toLobby()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
+    public void toCharacterSettingsScene()
+    {
+        SceneManager.LoadScene("Character Settings");
     }
 }
