@@ -30,15 +30,15 @@ ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidMa
 activity#com.unity3d.player.UnityPlayerActivity
 ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:5-11:16
 	android:screenOrientation
-		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:111-155
+		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:111-147
 	android:launchMode
-		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:156-187
+		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:148-179
 	android:hardwareAccelerated
-		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:405-440
+		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:397-432
 	android:resizeableActivity
-		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:370-404
+		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:362-396
 	android:configChanges
-		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:188-369
+		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:180-361
 	android:theme
 		ADDED from D:\UnityProject\Project BMW\testBuild\unityLibrary\src\main\AndroidManifest.xml:4:69-110
 	android:name

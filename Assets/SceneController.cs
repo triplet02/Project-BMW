@@ -25,7 +25,7 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetScreenDirection();
     }
 
     // Update is called once per frame
@@ -98,5 +98,18 @@ public class SceneController : MonoBehaviour
     public void toCharacterSettingsScene()
     {
         SceneManager.LoadScene("Character Settings");
+    }
+
+    public void SetScreenDirection()
+    {
+        Scene CurrentScene = SceneManager.GetActiveScene();
+        if (CurrentScene.name.Contains("TopView"))
+        {
+            Screen.orientation = ScreenOrientation.Portrait;
+        }
+        else
+        {
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
+        }
     }
 }
