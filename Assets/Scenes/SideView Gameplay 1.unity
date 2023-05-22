@@ -2172,6 +2172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 401210580}
+  jumpCameraHeight: 1.5
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,15 +2891,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00000423213
+      value: 0.00000422191
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027045662
+      value: -0.027045673
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0008910615
+      value: -0.00089106103
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2942,11 +2943,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7986346354754113825, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000014369774
+      value: 0.000014380019
       objectReference: {fileID: 0}
     - target: {fileID: 7986346354754113825, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.01789239
+      value: -0.01789238
       objectReference: {fileID: 0}
     - target: {fileID: 7986346354754113825, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.z
