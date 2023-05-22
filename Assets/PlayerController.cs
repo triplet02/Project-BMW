@@ -201,6 +201,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("immune subroutine started");
         capsuleCollider.isTrigger = true;
         Debug.Log("isTrigger setted True");
+        
         yield return new WaitForSeconds(immuneTime);
         capsuleCollider.isTrigger = false;
         Debug.Log("isTrigger setted False");
@@ -223,6 +224,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("collision");
                 //GetComponent<SceneController>().toGameoverScene();
+                CameraShaker.Invoke();
                 if(playerHealth > 1)
                 {
                     playerHealth--;
@@ -340,5 +342,10 @@ public class PlayerController : MonoBehaviour
     {
         playerHealth = health;
         return;
+    }
+
+    public float GetImmuneTime()
+    {
+        return immuneTime;
     }
 }
