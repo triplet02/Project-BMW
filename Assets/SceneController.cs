@@ -16,8 +16,8 @@ public class SceneController : MonoBehaviour
     Dictionary<string, int> characterDict = new Dictionary<string, int>()
     {
         {"CatButton", 1 },
-        {"Dog2Button", 2 },
-        {"MouseButton", 3 },
+        {"MouseButton", 2 },
+        {"DogButton", 3 },
     };
 
     bool isPaused = false;
@@ -25,6 +25,7 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         SetScreenDirection();
     }
 
@@ -61,6 +62,7 @@ public class SceneController : MonoBehaviour
     {
         GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
         CharacterInfo.characterNumber = characterDict[clickedObject.name];
+        Debug.Log(CharacterInfo.characterNumber.ToString());
     }
 
     public void gamePause()
@@ -73,6 +75,11 @@ public class SceneController : MonoBehaviour
             Time.timeScale = 0;
             isPaused = true;
         }
+    }
+
+    public void toOpeningScene()
+    {
+        SceneManager.LoadScene("Opening");
     }
 
     public void toTopViewScene()

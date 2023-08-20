@@ -19,8 +19,8 @@ public class AreaSpawner : MonoBehaviour
     {
         InitializeArea();
         Debug.Log(SideViewGameplay1.sideViewGameplay1.currentView);
-        Debug.Log(areaPrefabs.Length.ToString());
-        Debug.Log(areaPrefabs[areaPrefabs.Length-1].name);
+        //Debug.Log(areaPrefabs.Length.ToString());
+        //Debug.Log(areaPrefabs[areaPrefabs.Length-1].name);
         foreach (var areaSet in areaPrefabs)
         {
             Debug.Log(areaSet.name);
@@ -55,7 +55,7 @@ public class AreaSpawner : MonoBehaviour
         GameObject clone = null;
         if (currentIdx < areaPrefabs.Length)
         {
-            Debug.Log("new area::" + areaPrefabs[currentIdx].name);
+            //Debug.Log("new area::" + areaPrefabs[currentIdx].name);
             clone = Instantiate(areaPrefabs[currentIdx]);
             if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
                 clone.transform.position = new Vector3(xDistance, 0, 0);

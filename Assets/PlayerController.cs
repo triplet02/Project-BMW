@@ -50,9 +50,15 @@ public class PlayerController : MonoBehaviour
     // Player Status
     int maxHealth = 3;
     int playerHealth;
+    int additionalHealth;
+    bool isPlayerImmuned = false;
 
     // Chaser(Health(Distance) Decrease) System
     [SerializeField] int healthDecrease;
+
+    //Skills
+    [SerializeField] float MouseBuffTime = 3.0f;
+    [SerializeField] float DogImmuneTime = 3.0f;
 
     // Start is called before the first frame update
     private void Start()
@@ -68,7 +74,7 @@ public class PlayerController : MonoBehaviour
         skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
         debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
 
-        playerHealth = maxHealth;
+        playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
     }
 
     // Update is called once per frame
@@ -91,7 +97,8 @@ public class PlayerController : MonoBehaviour
             "Health : " + SideViewGameplay1.sideViewGameplay1.playerHealth.ToString() + "\n" +
             "isOnGround : " + isOnGround.ToString() + "\n" +
             "isOnObstacle : " + isOnObstacle.ToString() + "\n" +
-            "collider set to trigger : " + capsuleCollider.isTrigger.ToString();
+            "collider set to trigger : " + capsuleCollider.isTrigger.ToString() + "\n" +
+            "Character Number : " + CharacterInfo.characterNumber.ToString();
     }
 
     public void TryJump()
@@ -130,16 +137,75 @@ public class PlayerController : MonoBehaviour
     {
         if (skillGauge.value == 100)
         {
-            Debug.Log("Skill~~~~~~~");
-
+            /*
             //Skill Demo(Cat Skill)
             if(playerHealth < maxHealth)
             {
                 playerHealth++;
             }
+            */
+
+            switch(CharacterInfo.characterNumber)
+            {
+                case 1:
+                    CaffeineDash();
+                    break;
+                case 2:
+                    StartCoroutine(UnitedWeStand());
+                    break;
+                case 3:
+                    StartCoroutine(NoGutsNoGlory());
+                    break;
+            }
+        }
+    }
+
+    public void CaffeineDash()
+    {
+        if (playerHealth<maxHealth)
+        {
+            Debug.Log("[Caffeine Dash!]");
+            playerHealth++;
+            SideViewGameplay1.sideViewGameplay1.playerHealth++;
 
             skillGauge.value = 0;
         }
+        else
+        {
+            Debug.Log("이미 최대 거리입니다.");
+        }
+    }
+
+    IEnumerator UnitedWeStand()
+    {
+        Debug.Log("[United We Stand!]");
+        maxHealth += 2;
+        SideViewGameplay1.sideViewGameplay1.maxHealth += 2;
+
+        playerHealth += 2;
+        SideViewGameplay1.sideViewGameplay1.playerHealth += 2;
+
+        yield return new WaitForSeconds(MouseBuffTime);
+
+        Debug.Log("버프 시간 종료");
+        if(playerHealth > 3)
+        {
+            playerHealth = 3;
+            SideViewGameplay1.sideViewGameplay1.playerHealth = 3;
+        }
+
+        maxHealth -= 2;
+        SideViewGameplay1.sideViewGameplay1.maxHealth -= 2;
+
+    }
+
+    IEnumerator NoGutsNoGlory()
+    {
+        Debug.Log("[No Guts No Glory!]");
+        isPlayerImmuned = true;
+        yield return new WaitForSeconds(DogImmuneTime);
+        isPlayerImmuned = false;
+
     }
     
     private void CheckGround()
@@ -227,9 +293,11 @@ public class PlayerController : MonoBehaviour
                 CameraShaker.Invoke();
                 if(playerHealth > 1)
                 {
-                    playerHealth--;
-                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
-                    //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
+                    if (!isPlayerImmuned)
+                    {
+                        playerHealth--;
+                        SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    }
                     StartCoroutine(AfterCollisionImmune());
                 }
                 else

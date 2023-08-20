@@ -1016,6 +1016,8 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   healthDecrease: 0
+  MouseBuffTime: 3
+  DogImmuneTime: 3
 --- !u!114 &401210582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1866,6 +1868,7 @@ MonoBehaviour:
   gameUI: {fileID: 0}
   gameUIText: {fileID: 0}
   skillValue: 0
+  maxHealth: 0
   playerHealth: 0
   coin: 0
   currentView: 
@@ -1899,7 +1902,7 @@ GameObject:
   - component: {fileID: 923467377}
   - component: {fileID: 923467380}
   m_Layer: 5
-  m_Name: SliceButton
+  m_Name: SlideButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2187,8 +2190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 963194228}
   shakeTime: 0.3
-  positionStrength: {x: 0.3, y: 0.3, z: 0}
-  rotationStrength: {x: 0.3, y: 0.3, z: 0}
+  positionStrength: {x: 0.3, y: 0.5, z: 0}
+  rotationStrength: {x: 0.3, y: 0.5, z: 0}
 --- !u!1 &966534700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5962506490023308739, guid: 99f7c8f093b0a53498977df82047195b, type: 3}
@@ -2237,6 +2240,8 @@ MonoBehaviour:
   skillGauge: {fileID: 1873893989}
   immuneTime: 1
   healthDecrease: 0
+  MouseBuffTime: 0
+  DogImmuneTime: 0
 --- !u!114 &966534706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2389,6 +2394,8 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   healthDecrease: 0
+  MouseBuffTime: 0
+  DogImmuneTime: 0
 --- !u!54 &1195656137
 Rigidbody:
   m_ObjectHideFlags: 0

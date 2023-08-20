@@ -9,6 +9,7 @@ public class SideViewGameplay1 : MonoBehaviour
     public GameObject gameUI;
     public Text gameUIText;
     public int skillValue;
+    public int maxHealth;
     public int playerHealth;
     public int coin;
     public string currentView;  //side, top
@@ -16,8 +17,9 @@ public class SideViewGameplay1 : MonoBehaviour
 
     private void Awake()
     {
-        skillValue = 60;
-        playerHealth = 3;
+        skillValue = 100;
+        maxHealth = 3;
+        playerHealth = maxHealth;
         coin = 0;
         currentView = "side";
         currentMapIdx = 0;
