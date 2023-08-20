@@ -8,6 +8,10 @@ public class TopviewPlayerController : MonoBehaviour
     private float dragDistance = 50.0f;
     private Vector3 touchStart;
     private Vector3 touchEnd;
+    bool isLeftObstacle = false;
+    bool isRightObstacle = false;
+    private RaycastHit hit;
+    private int layerMask;
 
     [SerializeField] GameObject player;
 
@@ -30,6 +34,22 @@ public class TopviewPlayerController : MonoBehaviour
         {
             OnPCPlatform();
         }
+        // detect obstacle
+        layerMask = 1 << 8;     //obstacle layer
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, Mathf.Infinity, layerMask))
+        {
+            isRightObstacle = true;
+            Debug.Log("Hit obstacle " + hit.collider.gameObject.name);
+            Debug.DrawRay(transform.position, Vector3.left* hit.distance, Color.red);
+        }
+        else isLeftObstacle = false;
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, Mathf.Infinity, layerMask))
+        {
+            isLeftObstacle = true;
+            Debug.Log("Hit obstacle " + hit.collider.gameObject.name);
+            Debug.DrawRay(transform.position, Vector3.right * hit.distance, Color.red);
+        }
+        else isRightObstacle = false;
     }
 
     private void OnMobilePlatform()
@@ -66,6 +86,11 @@ public class TopviewPlayerController : MonoBehaviour
     {
         if (Mathf.Abs(touchEnd.x - touchStart.x) >= dragDistance)
         {
+            bool isHeadingLeft = touchEnd.x - touchStart.x > 0 ? true : false;
+            if (movement.isOnGround) {
+                if (isHeadingLeft && isLeftObstacle) return;
+                if (!isHeadingLeft && isRightObstacle) return;
+            }
             movement.MoveToX((int)Mathf.Sign(touchEnd.x - touchStart.x));
             return;
         }
