@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
     [SerializeField] int maxJumpCount = 0;
     int jumpCount = 0;
     bool isDoubleJump = false;
-    bool isOnGround = true;
+    public bool isOnGround = true;
     [SerializeField] LayerMask groundLayerMask = 0;
     float distance = 0.0f;
 
@@ -68,6 +68,8 @@ public class Movement : MonoBehaviour
     public void MoveToX(int x)
     {
         if (isXMove == true) return;
+        // if (isOnGround) return;
+        // console.log()
         if (x > 0 && transform.position.x < moveXWidth)
         {
             StartCoroutine(OnMoveToX(x));
