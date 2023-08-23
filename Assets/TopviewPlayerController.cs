@@ -36,14 +36,14 @@ public class TopviewPlayerController : MonoBehaviour
             OnPCPlatform();
         }
         // detect obstacle
-        if (Physics.Raycast(transform.position, Vector3.left, out hit, Mathf.Infinity, LayerMask.GetMask("Obstacle")))
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, 2.0f, LayerMask.GetMask("Obstacle")))
         {
             isLeftObstacle = true;
             Debug.Log("Hit obstacle " + hit.collider.gameObject.name);
             Debug.DrawRay(transform.position, Vector3.left* hit.distance, Color.red);
         }
         else isLeftObstacle = false;
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, Mathf.Infinity, LayerMask.GetMask("Obstacle")))
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, 2.0f, LayerMask.GetMask("Obstacle")))
         {
             isRightObstacle = true;
             Debug.Log("Hit obstacle " + hit.collider.gameObject.name);

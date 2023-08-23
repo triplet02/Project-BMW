@@ -87,12 +87,29 @@ public class Movement : MonoBehaviour
         StartCoroutine(OnMoveToY());
     }
 
+    private float findClosetValue(float val) {
+        float[] arr = {-2, 0, 2};
+        float dest = val;
+        float minDiff = 10000;
+        for (int i=0; i<arr.Length; i++)
+        {
+            float diff = Mathf.Abs(val - arr[i]);
+            if(diff < minDiff)
+            {
+                minDiff = diff;
+                dest = arr[i];
+            }
+        }
+        return dest;
+    }
+
     private IEnumerator OnMoveToX(int direction)
     {
         float current = 0;
         float percent = 0;
         float start = transform.position.x;
         float end = transform.position.x + direction * moveXWidth;
+        end = findClosetValue(end);
 
         isXMove = true;
 
