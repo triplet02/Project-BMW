@@ -87,10 +87,8 @@ public class TopviewPlayerController : MonoBehaviour
         if (Mathf.Abs(touchEnd.x - touchStart.x) >= dragDistance)
         {
             bool isHeadingLeft = touchEnd.x - touchStart.x > 0 ? true : false;
-            if (movement.isOnGround) {
                 if (isHeadingLeft && isLeftObstacle) return;
                 if (!isHeadingLeft && isRightObstacle) return;
-            }
             movement.MoveToX((int)Mathf.Sign(touchEnd.x - touchStart.x));
             return;
         }
