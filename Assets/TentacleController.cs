@@ -70,8 +70,8 @@ public class TentacleController : MonoBehaviour
     void triggerTentacle()
     {
         this.GetComponent<MeshRenderer>().material = mat[1];
-        this.GetComponent<BoxCollider>().center = new Vector3(0.0f, 0.5f, 0.0f);
-        this.GetComponent<BoxCollider>().size = new Vector3(1.0f, 2.0f, 1.0f);
+        this.GetComponent<BoxCollider>().center = new Vector3(0.0f, 0.0f, 0.0f);
+        this.GetComponent<BoxCollider>().size = new Vector3(1.0f, 1.0f, 1.0f);
 
         Vector3 currentPosition = this.transform.position;
         this.transform.position = new Vector3(currentPosition.x, triggeredPosition, currentPosition.z);
