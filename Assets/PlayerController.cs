@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
         if (playerHealth<maxHealth)
         {
             Debug.Log("[Caffeine Dash!]");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat);
             playerHealth++;
             SideViewGameplay1.sideViewGameplay1.playerHealth++;
 
@@ -172,13 +173,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("ÀÌ¹Ì ÃÖ´ë °Å¸®ÀÔ´Ï´Ù.");
+            Debug.Log("ï¿½Ì¹ï¿½ ï¿½Ö´ï¿½ ï¿½Å¸ï¿½ï¿½Ô´Ï´ï¿½.");
         }
     }
 
     IEnumerator UnitedWeStand()
     {
         Debug.Log("[United We Stand!]");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Mouse);
         maxHealth += 2;
         SideViewGameplay1.sideViewGameplay1.maxHealth += 2;
 
@@ -187,7 +189,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(MouseBuffTime);
 
-        Debug.Log("¹öÇÁ ½Ã°£ Á¾·á");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½");
         if(playerHealth > 3)
         {
             playerHealth = 3;
@@ -202,6 +204,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator NoGutsNoGlory()
     {
         Debug.Log("[No Guts No Glory!]");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Dog);
         isPlayerImmuned = true;
         yield return new WaitForSeconds(DogImmuneTime);
         isPlayerImmuned = false;
@@ -295,10 +298,15 @@ public class PlayerController : MonoBehaviour
                 {
                     if (!isPlayerImmuned)
                     {
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
                         playerHealth--;
                         SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                        StartCoroutine(AfterCollisionImmune());
                     }
-                    StartCoroutine(AfterCollisionImmune());
+                    else{
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                    }
+                    
                 }
                 else
                 {
@@ -324,6 +332,7 @@ public class PlayerController : MonoBehaviour
 
             if (playerHealth > 1)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
                 playerHealth--;
                 //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
                 StartCoroutine(AfterCollisionImmune());
@@ -347,22 +356,26 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag.Equals("Beer"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Drink);
             SideViewGameplay1.sideViewGameplay1.skillValue += 1;
             skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
         }
         if (other.tag.Equals("Coin"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
             SideViewGameplay1.sideViewGameplay1.coin += 1;
         }
         if (other.tag.Equals("Portal"))
         {
             Debug.Log("From Side To Top View");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "top";
             player.GetComponent<SceneController>().toTopViewScene();
         }
         if (other.tag.Equals("Portal1"))
         {
             Debug.Log("From Top To Side View");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
             player.GetComponent<SceneController>().toSideViewScene();
         }
