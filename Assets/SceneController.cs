@@ -21,11 +21,20 @@ public class SceneController : MonoBehaviour
     };
 
     bool isPaused = false;
+    GameObject AudioManager; 
+
+    private void Awake()
+    {
+        AudioManager = GameObject.Find("AudioManager");
+        DontDestroyOnLoad(AudioManager);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log(currentScene.name.ToString());
+        AudioManager.GetComponent<AudioManager>().PlayBGM();
         SetScreenDirection();
     }
 

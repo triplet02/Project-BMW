@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    public enum Bgm { Ending, Stage1, Stage2, Stage3, Title }
+    public enum Sfx { Coin, Drink, Collision, Portal, Cat, Mouse, Dog, Immune }
 
     public static AudioManager instance;
 
     [Header("#BGM")]
-    public AudioClip bgmClip;
+    public AudioClip[] bgmClips;
     public float bgmVolume;
     AudioSource bgmPlayer;
 
@@ -19,7 +22,7 @@ public class AudioManager : MonoBehaviour
     AudioSource[] sfxPlayers;
     int channelIndex;
 
-    public enum Sfx { Coin, Drink, Collision, Portal, Cat, Mouse, Dog, Immune }
+    Bgm currentBgm;
 
     void Awake(){
         instance = this;
@@ -34,7 +37,6 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
         bgmPlayer.volume = bgmVolume;
-        bgmPlayer.clip = bgmClip;
 
         //sfxPlayer initialize
         GameObject sfxObject = new GameObject("SfxPlayer");
@@ -60,6 +62,41 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
             sfxPlayers[loopIndex].Play();
             break;
+        }
+    }
+
+    public void PlayBGM()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        Bgm nextBgm = BgmForCurrentScene(currentScene);
+        Debug.Log(currentBgm.ToString() + " / " + nextBgm.ToString());
+        if(currentBgm != nextBgm)
+        {
+            Debug.Log(currentBgm.ToString() + " / " + nextBgm.ToString());
+            bgmPlayer.Stop();
+            bgmPlayer.clip = bgmClips[(int)nextBgm];
+            bgmPlayer.Play();
+            currentBgm = nextBgm;
+        }
+    }
+    Bgm BgmForCurrentScene(Scene scene)
+    {
+        string currentSceneName = scene.name;
+
+        switch (currentSceneName)
+        {
+            case "SideView Gameplay 1":
+                return Bgm.Stage1;
+            case "SideView Gameplay 2":
+                return Bgm.Stage2;
+            case "SideView Gameplay 3":
+                return Bgm.Stage3;
+            case "TopView Gameplay":
+                return Bgm.Stage1;
+            case "Gameover":
+                return Bgm.Ending;
+            default:
+                return Bgm.Title;
         }
     }
 }
