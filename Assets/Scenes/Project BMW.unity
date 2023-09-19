@@ -689,11 +689,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmClips:
-  - {fileID: 8300000, guid: 833e1d2856d6b804f8ca5f8d083b0ea8, type: 3}
+  - {fileID: 8300000, guid: 8116aa83cb2a54f4490a6d055566047a, type: 3}
   - {fileID: 8300000, guid: d18c377e253e9f740aa39b633f891390, type: 3}
   - {fileID: 8300000, guid: 24bba7957b6736046a5f2e7081b038fc, type: 3}
   - {fileID: 8300000, guid: 3247e7129697a5241a60b61fc99cd13b, type: 3}
-  - {fileID: 8300000, guid: 8116aa83cb2a54f4490a6d055566047a, type: 3}
+  - {fileID: 8300000, guid: 833e1d2856d6b804f8ca5f8d083b0ea8, type: 3}
   bgmVolume: 0.2
   sfxClips:
   - {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
