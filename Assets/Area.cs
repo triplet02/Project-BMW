@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Area : MonoBehaviour
 {
     [SerializeField]
-    private float destroyDistance = 45;
+    private float destroyDistance = 60;
     [SerializeField]
     private float speed = 5;
     public UnityEvent onAreaDestroyed;
@@ -14,15 +14,15 @@ public class Area : MonoBehaviour
     private void Update()
     {
         if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
-            transform.position += Vector3.left * Time.deltaTime * 5;    //speed 
-            if(gameObject.transform.position.x < -30) {
-                Destroy(gameObject);
+            transform.position += Vector3.left * Time.deltaTime * speed;    //speed 
+            if(gameObject.transform.position.x < -destroyDistance) {
                 onAreaDestroyed.Invoke();
+                Destroy(gameObject);
             }
         }
         else {
-            transform.position += Vector3.back * Time.deltaTime * 5; //speed
-            if(gameObject.transform.position.z < -30) {
+            transform.position += Vector3.back * Time.deltaTime * speed; //speed
+            if(gameObject.transform.position.z < -destroyDistance) {
                 Destroy(gameObject);
                 onAreaDestroyed.Invoke();
             }

@@ -18,6 +18,9 @@ TagManager:
   - Portal
   - PortalSide1
   - Portal1
+  - Undefined
+  - BoxObstacle
+  - MeshObstacle
   layers:
   - Default
   - TransparentFX

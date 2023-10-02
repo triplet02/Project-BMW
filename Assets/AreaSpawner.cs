@@ -10,8 +10,8 @@ public static class StageInfo
 public class AreaSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] areaPrefabs;
-    private float xDistance = 15;
+    public GameObject[] areaPrefabs;
+    private float xDistance = 30;
     [System.NonSerialized]
     private static int currentIdx;
     
@@ -19,7 +19,7 @@ public class AreaSpawner : MonoBehaviour
     {
         InitializeArea();
         Debug.Log(SideViewGameplay1.sideViewGameplay1.currentView);
-        //Debug.Log(areaPrefabs.Length.ToString());
+        Debug.Log(areaPrefabs.Length.ToString());
         //Debug.Log(areaPrefabs[areaPrefabs.Length-1].name);
         foreach (var areaSet in areaPrefabs)
         {
@@ -38,6 +38,7 @@ public class AreaSpawner : MonoBehaviour
         {
             clone = Instantiate(areaPrefabs[mapIdx]);
             if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
+                Debug.Log(areaPrefabs[mapIdx].ToString());
                 clone.transform.position = new Vector3(i * xDistance, 0, 0);
             }
             else {
@@ -51,11 +52,17 @@ public class AreaSpawner : MonoBehaviour
 
     public void onAreaDestroyed()
     {
-        // Debug.Log("onAreadestroyed => " + currentIdx.ToString());
+
+        foreach (var areaSet in areaPrefabs)
+        {
+            Debug.Log("// " + areaSet.name);
+        }
+        Debug.Log("onAreadestroyed => " + currentIdx.ToString());
         GameObject clone = null;
         if (currentIdx < areaPrefabs.Length)
         {
-            //Debug.Log("new area::" + areaPrefabs[currentIdx].name);
+            Debug.Log("new area::" + areaPrefabs[currentIdx].name);
+            Debug.Log(areaPrefabs[currentIdx].ToString());
             clone = Instantiate(areaPrefabs[currentIdx]);
             if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
                 clone.transform.position = new Vector3(xDistance, 0, 0);
@@ -67,5 +74,10 @@ public class AreaSpawner : MonoBehaviour
             currentIdx += 1;
         }
         // Debug.Log("[map index] " + currentIdx.ToString());
+    }
+
+    public GameObject[] GetAreaPrefabs()
+    {
+        return areaPrefabs;
     }
 }

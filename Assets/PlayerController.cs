@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     // Game Scene Initializing
     Vector3 initialPlayerPosition = new Vector3(-5.0f, 0.1f, 0.0f);
-    Vector3 gameStartPlayerPosition = new Vector3(0.0f, 0.01f, 0.0f);
+    Vector3 gameStartPlayerPosition = new Vector3(2.0f, 0.01f, 0.0f);
     Vector3 velocity = Vector3.zero;
     [SerializeField] float standByTime = 1.3f;
 
@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpCount == 0)
             {
+                Debug.Log("jump");
                 animator.SetBool("isJump", true);
                 isOnGround = false;
                 rigidbody.velocity = Vector3.up * jumpForce;
@@ -226,9 +227,14 @@ public class PlayerController : MonoBehaviour
                 
                 isDoubleJump = false;
 
+                animator.SetBool("isFalling", false);
                 animator.SetBool("isJump", false);
                 animator.SetBool("isDoubleJump", false);
 
+            }
+            else
+            {
+                animator.SetBool("isFalling", true);
             }
         }
     }
@@ -250,7 +256,8 @@ public class PlayerController : MonoBehaviour
     public void StartSlide()
     {
         isSlide = true;
-        animator.SetBool("isSlide", true);
+        animator.SetBool("isStartSlide", true);
+        animator.SetBool("isSliding", true);
         capsuleCollider.height = 0.8f;
         capsuleCollider.center = new Vector3(0.0f, 0.4f, -0.2f);
         rigidbody.useGravity = false;
@@ -258,7 +265,9 @@ public class PlayerController : MonoBehaviour
 
     public void EndSlide()
     {
-        animator.SetBool("isSlide", false);
+        animator.SetBool("isStartSlide", false);
+        animator.SetBool("isSliding", false);
+        animator.SetBool("isEndSlide", true);
         rigidbody.useGravity = true;
         capsuleCollider.height = 1.5f;
         capsuleCollider.center = new Vector3(0.0f, 0.75f, 0.0f);
@@ -277,9 +286,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {        
-        if (collision.collider.gameObject.CompareTag("Obstacle"))
+    {
+        Debug.Log("collision");
+        
+        if (collision.collider.gameObject.CompareTag("BoxObstacle"))
         {
+                        Debug.Log(collision.collider.gameObject.ToString());
             BoxCollider boxCollider = collision.collider.gameObject.GetComponent<BoxCollider>();
             boxCollider.isTrigger = true;
             Destroy(collision.gameObject, 0.2f);
@@ -293,6 +305,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("collision");
                 //GetComponent<SceneController>().toGameoverScene();
+                animator.SetBool("isHit", true);
                 CameraShaker.Invoke();
                 if(playerHealth > 1)
                 {
@@ -312,11 +325,46 @@ public class PlayerController : MonoBehaviour
                 {
                     // stop and show left(or moved) distance to user?
                     // ...
-
+                    animator.SetBool("isDead", true);
                     player.GetComponent<SceneController>().toGameoverScene();
                 }
                 
             }
+        }
+        else if (collision.collider.gameObject.CompareTag("MeshObstacle"))
+        {
+            Debug.Log(collision.collider.gameObject.ToString());
+            MeshCollider meshCollider = collision.collider.gameObject.GetComponent<MeshCollider>();
+            meshCollider.isTrigger = true;
+            Destroy(collision.gameObject, 0.2f);
+
+            //GetComponent<SceneController>().toGameoverScene();
+            animator.SetBool("isHit", true);
+            CameraShaker.Invoke();
+            if (playerHealth > 1)
+            {
+                if (!isPlayerImmuned)
+                {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                    playerHealth--;
+                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    StartCoroutine(AfterCollisionImmune());
+                }
+                else
+                {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                }
+
+            }
+            else
+            {
+                // stop and show left(or moved) distance to user?
+                // ...
+
+                animator.SetBool("isDead", true);
+                player.GetComponent<SceneController>().toGameoverScene();
+            }
+
         }
 
         if (collision.collider.gameObject.CompareTag("Deadzone"))
@@ -348,6 +396,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
+        animator.SetBool("isHit", false);
         capsuleCollider.isTrigger = false;
     }
 
