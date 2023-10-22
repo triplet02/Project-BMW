@@ -42,12 +42,12 @@ public class MainCameraController : MonoBehaviour
             //transform.position = Vector3.SmoothDamp(transform.position, jumpCameraPosition + cameraDistance, ref vel, 0.1f);
         }
 
-        if(yVelocity < -0.2f && !isGround)
+        if(yVelocity < -0.2f)//&& !isGround
         {
             transform.position = jumpCameraPosition + cameraDistance;
         }
 
-        if (isGround)
+        if (isGround && playerYPosition < 2.0f)
         {
             transform.position = player.transform.position + cameraDistance;
         }

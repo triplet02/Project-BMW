@@ -110,6 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6118702670630225296}
+  - component: {fileID: 3744919301013236378}
   m_Layer: 0
   m_Name: St1_S_Module_Gate_in
   m_TagString: Untagged
@@ -136,6 +137,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &3744919301013236378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6118702670630225297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e3f059fce4e4a5ba024f9aa1a853a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDistance: 60
+  speed: 5
+  onAreaDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
+        m_TargetAssemblyTypeName: AreaSpawner, Assembly-CSharp
+        m_MethodName: onAreaDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6118702670824610005
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +421,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6118702671459118221}
     m_Modifications:
+    - target: {fileID: -7111179246728371098, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}
+      propertyPath: m_Size.z
+      value: 8.312692
+      objectReference: {fileID: 0}
+    - target: {fileID: -7111179246728371098, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}
+      propertyPath: m_Center.y
+      value: -0.007787821
+      objectReference: {fileID: 0}
+    - target: {fileID: -7111179246728371098, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}
+      propertyPath: m_Center.z
+      value: -2.5123074
+      objectReference: {fileID: 0}
+    - target: {fileID: -7111179246728371098, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3535517374636627624, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}
       propertyPath: m_Name
       value: Platform_B_Gate_001
@@ -442,6 +488,10 @@ PrefabInstance:
     - target: {fileID: 4205094303896194066, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906319068426751083, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b01084b9d5b0a84ab5cf8b4474ac146, type: 3}

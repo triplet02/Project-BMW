@@ -21,6 +21,7 @@ TagManager:
   - Undefined
   - BoxObstacle
   - MeshObstacle
+  - Goal
   layers:
   - Default
   - TransparentFX

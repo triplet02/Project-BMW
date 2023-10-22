@@ -8,9 +8,9 @@ public class SceneController : MonoBehaviour
 {
     Dictionary<string, int> stageDict = new Dictionary<string, int>()
     {
-        {"Stage1Button", 1 },
-        {"Stage2Button", 2 },
-        {"Stage3Button", 3 },
+        {"Stage1", 1 },
+        {"Stage2", 2 },
+        {"Stage3", 3 },
     };
 
     Dictionary<string, int> characterDict = new Dictionary<string, int>()

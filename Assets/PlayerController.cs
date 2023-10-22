@@ -267,7 +267,6 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("isStartSlide", false);
         animator.SetBool("isSliding", false);
-        animator.SetBool("isEndSlide", true);
         rigidbody.useGravity = true;
         capsuleCollider.height = 1.5f;
         capsuleCollider.center = new Vector3(0.0f, 0.75f, 0.0f);
