@@ -13,10 +13,12 @@ public class AreaSpawner : MonoBehaviour
     public GameObject[] areaPrefabs;
     private float xDistance = 30;
     [System.NonSerialized]
-    private static int currentIdx;
+    private static int mapIdx = 0;
+    //private static int currentIdx = 0;
     
     private void Start()
     {
+        Debug.Log("[ Start() ] mapIdx ===> " + mapIdx.ToString());
         InitializeArea();
         Debug.Log(SideViewGameplay1.sideViewGameplay1.currentView);
         Debug.Log(areaPrefabs.Length.ToString());
@@ -30,12 +32,13 @@ public class AreaSpawner : MonoBehaviour
     public void InitializeArea()
     {
         GameObject clone = null;
-        int mapIdx = 0;
+        mapIdx = 0;
         if (SideViewGameplay1.sideViewGameplay1.currentView == "side") {
             mapIdx = SideViewGameplay1.sideViewGameplay1.currentMapIdx;
         }
         for (int i = 0; i < 3; i++)
         {
+            Debug.Log("[ Init() ] mapIdx ===> " + mapIdx.ToString());
             clone = Instantiate(areaPrefabs[mapIdx]);
             if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
                 Debug.Log(areaPrefabs[mapIdx].ToString());
@@ -45,33 +48,40 @@ public class AreaSpawner : MonoBehaviour
                 clone.transform.position = new Vector3(0, 0, i * xDistance);
             }
             mapIdx += 1;
-            currentIdx += 1;
-            SideViewGameplay1.sideViewGameplay1.currentMapIdx += 1;
+            //currentIdx += 1;
+            if (SideViewGameplay1.sideViewGameplay1.currentView == "side")
+            {
+                SideViewGameplay1.sideViewGameplay1.currentMapIdx += 1;
+            }
+            //SideViewGameplay1.sideViewGameplay1.currentMapIdx += 1;
         }
     }
 
     public void onAreaDestroyed()
     {
-
+        Debug.Log("[ onDest() ] mapIdx ===> " + mapIdx.ToString());
         foreach (var areaSet in areaPrefabs)
         {
             Debug.Log("// " + areaSet.name);
         }
-        Debug.Log("onAreadestroyed => " + currentIdx.ToString());
+        //Debug.Log("onAreadestroyed => " + currentIdx.ToString());
         GameObject clone = null;
-        if (currentIdx < areaPrefabs.Length)
+        if (mapIdx < areaPrefabs.Length)
         {
-            Debug.Log("new area::" + areaPrefabs[currentIdx].name);
-            Debug.Log(areaPrefabs[currentIdx].ToString());
-            clone = Instantiate(areaPrefabs[currentIdx]);
+            //Debug.Log("new area::" + areaPrefabs[currentIdx].name);
+            //Debug.Log(areaPrefabs[currentIdx].ToString());
+            //clone = Instantiate(areaPrefabs[currentIdx]);
+            clone = Instantiate(areaPrefabs[mapIdx]);
             if (SideViewGameplay1.sideViewGameplay1.currentView == "side"){
                 clone.transform.position = new Vector3(xDistance, 0, 0);
-                SideViewGameplay1.sideViewGameplay1.currentMapIdx = currentIdx;
+                //SideViewGameplay1.sideViewGameplay1.currentMapIdx = currentIdx;
+                SideViewGameplay1.sideViewGameplay1.currentMapIdx = mapIdx;
             }
             else {
                 clone.transform.position = new Vector3(0, 0, xDistance);
             }
-            currentIdx += 1;
+            //currentIdx += 1;
+            mapIdx += 1;
         }
         // Debug.Log("[map index] " + currentIdx.ToString());
     }

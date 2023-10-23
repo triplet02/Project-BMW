@@ -1400,6 +1400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: T_Platform_B_Gate_001
       objectReference: {fileID: 0}
+    - target: {fileID: 1470926129046590365, guid: e930b4f8ef02c7446ad6524302bcd1a1, type: 3}
+      propertyPath: m_TagString
+      value: Portal1
+      objectReference: {fileID: 0}
     - target: {fileID: 2243381033508129063, guid: e930b4f8ef02c7446ad6524302bcd1a1, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1451,6 +1455,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2243381033508129063, guid: e930b4f8ef02c7446ad6524302bcd1a1, type: 3}
   m_PrefabInstance: {fileID: 4490881900679556426}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3043051051106565847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1470926129046590365, guid: e930b4f8ef02c7446ad6524302bcd1a1, type: 3}
+  m_PrefabInstance: {fileID: 4490881900679556426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &736956462937355063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043051051106565847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.7792044, y: 5.374891, z: 0.59085643}
+  m_Center: {x: -2.7854538, y: 0.00012667524, z: 2.6855068}
+--- !u!65 &7399428403394343183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043051051106565847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.9914536, y: 5.015576, z: 8.363244}
+  m_Center: {x: -2.9957268, y: -0.0077878265, z: -2.4870315}
 --- !u!1001 &4505056199650416166
 PrefabInstance:
   m_ObjectHideFlags: 0

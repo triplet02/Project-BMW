@@ -47,9 +47,11 @@ MonoBehaviour:
   areaPrefabs:
   - {fileID: 9164888321232446665, guid: ceee98c827a3f7b4f8edd634610348e1, type: 3}
   - {fileID: 6118702670630225297, guid: 5ee0d7059476af744ba670f3dcc56975, type: 3}
-  - {fileID: 6118702670630225297, guid: c32e1fb7d1021ce4f9aa71dee0a1169e, type: 3}
   - {fileID: 6118702670630225297, guid: 159599d28f9f0be4aa6cc04b6f938399, type: 3}
+  - {fileID: 6118702670630225297, guid: 5ee0d7059476af744ba670f3dcc56975, type: 3}
+  - {fileID: 6118702670630225297, guid: c32e1fb7d1021ce4f9aa71dee0a1169e, type: 3}
   - {fileID: 6118702670630225297, guid: 21f66eb9fbd90a941b4ddb4fa57a421b, type: 3}
   - {fileID: 6118702670630225297, guid: 1222b13ddc047bd4580fed08db02d5f0, type: 3}
+  - {fileID: 6118702670630225297, guid: 51ad3bbfcc3e0324a8b3df0a9faaa742, type: 3}
   - {fileID: 6118702670630225297, guid: bd37064ca0f1e23439b94dc30b522899, type: 3}
   - {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}

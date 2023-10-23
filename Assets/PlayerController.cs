@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
         
         if (collision.collider.gameObject.CompareTag("BoxObstacle"))
         {
-                        Debug.Log(collision.collider.gameObject.ToString());
+            Debug.Log(collision.collider.gameObject.ToString());
             BoxCollider boxCollider = collision.collider.gameObject.GetComponent<BoxCollider>();
             boxCollider.isTrigger = true;
             Destroy(collision.gameObject, 0.2f);
@@ -426,6 +426,8 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
             player.GetComponent<SceneController>().toSideViewScene();
+
+            SideViewGameplay1.sideViewGameplay1.currentMapIdx = 7;
         }
     }
 
