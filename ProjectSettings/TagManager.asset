@@ -13,7 +13,6 @@ TagManager:
   - Beer
   - SettingButton
   - Slope
-  - Trampoline
   - Deadzone
   - Portal
   - PortalSide1
@@ -22,6 +21,7 @@ TagManager:
   - BoxObstacle
   - MeshObstacle
   - Goal
+  - JumpingBoard
   layers:
   - Default
   - TransparentFX

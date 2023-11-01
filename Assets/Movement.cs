@@ -67,7 +67,7 @@ public class Movement : MonoBehaviour
 
     public void MoveToX(int x)
     {
-        if (isXMove == true) return;
+        if (isXMove) return;
         // if (isOnGround) return;
         // console.log()
         if (x > 0 && transform.position.x < moveXWidth)
@@ -123,6 +123,7 @@ public class Movement : MonoBehaviour
 
             yield return null;
         }
+        yield return new WaitForSeconds(0.5f);
         isXMove = false;
     }
 
@@ -151,9 +152,9 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Trampoline"))
+        if (other.tag.Equals("JumpingBoard"))
         {
-            Debug.Log("Enter Trampoline");
+            Debug.Log("Enter JumpingBoard");
             TryJump();
         }
     }
