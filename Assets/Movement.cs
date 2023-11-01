@@ -151,9 +151,9 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Trampoline"))
+        if (other.tag.Equals("JumpingBoard"))
         {
-            Debug.Log("Enter Trampoline");
+            Debug.Log("Enter JumpingBoard");
             TryJump();
         }
     }
