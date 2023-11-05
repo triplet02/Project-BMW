@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class MainCameraController : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject[] players;
     [SerializeField] float jumpCameraHeight;
     Vector3 cameraDistance = new Vector3(3.1f, 1.7f, -5.0f);
     Vector3 gameStartPlayerPosition = new Vector3(0.0f, 0.0f, 0.0f);
+
+    GameObject player;
 
     int jumpCount = 0;
     bool isGround = true;
     float yVelocity = 0.0f;
     Vector3 jumpCameraPosition;
-
     Vector3 vel;
 
     // Start is called before the first frame update
     void Start()
     {
+        for(int i=0; i<players.Length; i++)
+        {
+            if(CharacterInfo.characterNumber-1 == i)
+            {
+                player = players[i];
+            }
+        }
         this.transform.position = gameStartPlayerPosition + cameraDistance;
     }
 

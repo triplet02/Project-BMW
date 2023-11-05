@@ -44,7 +44,7 @@ public class SceneController : MonoBehaviour
         
     }
 
-    public void toGameplayScene()
+    public void toStageSelectionScene()
     {
         SceneManager.LoadScene("Stage Selection");
     }
@@ -114,6 +114,11 @@ public class SceneController : MonoBehaviour
     public void toCharacterSettingsScene()
     {
         SceneManager.LoadScene("Character Settings");
+    }
+
+    public void toGameClearScene()
+    {
+        SceneManager.LoadScene("GameClear");
     }
 
     public void SetScreenDirection()

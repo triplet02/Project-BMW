@@ -69,6 +69,8 @@ public class PlayerController : MonoBehaviour
         capsuleCollider = player.GetComponent<CapsuleCollider>();
         distance = capsuleCollider.bounds.extents.y + 0.05f;
         animator = player.GetComponentInChildren<Animator>();
+
+        Debug.Log("Animator : " + animator.ToString());
         
         skillGauge = GameObject.Find("SkillGauge").GetComponent<Slider>();
         skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
@@ -426,6 +428,15 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
             player.GetComponent<SceneController>().toSideViewScene();
+
+            SideViewGameplay1.sideViewGameplay1.currentMapIdx = 7;
+        }
+
+        if (other.tag.Equals("Goal")) 
+        {
+            Debug.Log("Stage Clear");
+            SideViewGameplay1.sideViewGameplay1.currentView = "side";
+            player.GetComponent<SceneController>().toGameClearScene();
 
             SideViewGameplay1.sideViewGameplay1.currentMapIdx = 7;
         }
