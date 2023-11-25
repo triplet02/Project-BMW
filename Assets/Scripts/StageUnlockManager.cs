@@ -7,8 +7,7 @@ public class StageUnlockManager : MonoBehaviour
     public GameObject[] stageImages;
     public GameObject[] stageLockLines;
     public GameObject[] stageNames;
-    enum StageAchive { UnlockAfternoon, UnlockNight }
-    StageAchive[] stageAchives;
+    string[] stageAchives = { "UnlockAfternoon", "UnlockNight" };
 
     // Start is called before the first frame update
     void Start()

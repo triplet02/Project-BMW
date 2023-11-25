@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class SceneController : MonoBehaviour
     };
 
     bool isPaused = false;
-    GameObject AudioManager; 
+    GameObject AudioManager;
 
     private void Awake()
     {
@@ -41,11 +42,12 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void toStageSelectionScene()
     {
+        PlayerPrefs.SetInt("Stage", 0);
         SceneManager.LoadScene("Stage Selection");
     }
 
@@ -56,14 +58,38 @@ public class SceneController : MonoBehaviour
 
     public void moveStage()
     {
+        bool readyToMove = false;
         GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
-        StageInfo.stageNumber = stageDict[clickedObject.name];
+        int stageNum = stageDict[clickedObject.name];
+        if (stageNum == 1)
+        {
+            StageInfo.stageNumber = stageNum;
+            readyToMove = true;
+        }
+        else
+        {
+            if (stageNum == 2 && PlayerPrefs.GetInt("UnlockAfternoon") == 1)
+            {
+                StageInfo.stageNumber = stageNum;
+                readyToMove = true;
+            }
+            if (stageNum == 3 && PlayerPrefs.GetInt("UnlockNight") == 1)
+            {
+                StageInfo.stageNumber = stageNum;
+                readyToMove = true;
+            }
+        }
         Debug.Log(StageInfo.stageNumber.ToString());
-        SceneManager.LoadScene("Character Selection");
+        if (readyToMove)
+        {
+            SceneManager.LoadScene("Character Selection");
+        }
+
     }
 
     public void toSideViewGameplayScene()
     {
+        PlayerPrefs.SetInt("Stage", 0);
         SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
     }
 
@@ -76,11 +102,13 @@ public class SceneController : MonoBehaviour
 
     public void gamePause()
     {
-        if(isPaused){
+        if (isPaused)
+        {
             Time.timeScale = 1;
             isPaused = false;
         }
-        else{
+        else
+        {
             Time.timeScale = 0;
             isPaused = true;
         }
@@ -108,6 +136,7 @@ public class SceneController : MonoBehaviour
 
     public void toLobby()
     {
+        PlayerPrefs.SetInt("StageNum", 0);
         SceneManager.LoadScene("Lobby");
     }
 
@@ -118,6 +147,7 @@ public class SceneController : MonoBehaviour
 
     public void toGameClearScene()
     {
+        PlayerPrefs.SetInt("Stage", StageInfo.stageNumber);
         SceneManager.LoadScene("GameClear");
     }
 

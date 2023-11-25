@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public static class CharacterInfo
 {
@@ -46,15 +47,16 @@ public class PlayerController : MonoBehaviour
 
     // UI, Debugging
     Text debuggingUI;
+    GameObject warning;
+    GameObject critical;
+    TextMeshProUGUI score;
+    [SerializeField] int scorePerCoin = 100;
 
     // Player Status
     int maxHealth = 3;
     int playerHealth;
     int additionalHealth;
     bool isPlayerImmuned = false;
-
-    // Chaser(Health(Distance) Decrease) System
-    [SerializeField] int healthDecrease;
 
     //Skills
     [SerializeField] float MouseBuffTime = 3.0f;
@@ -71,29 +73,28 @@ public class PlayerController : MonoBehaviour
         animator = player.GetComponentInChildren<Animator>();
 
         Debug.Log("Animator : " + animator.ToString());
-        
+        warning = GameObject.Find("Alert_Enermy_001");
+        critical = GameObject.Find("Alert_Enermy_002");
+        score = GameObject.Find("Text_Score").GetComponent<TextMeshProUGUI>();
+        debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
+        playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
         skillGauge = GameObject.Find("SkillGauge").GetComponent<Slider>();
         skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
-        debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
-
-        playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
     }
 
     // Update is called once per frame
     private void Update()
     {
         CheckGround();
+        UpdateHealth();
+        UpdateScore();
         /*
         if (isSlide)
         {
             StartCoroutine(Slide());
         }
         */
-        debuggingUI.text = /*"isJump : " + animator.GetBool("isJump").ToString() + "\n" +
-            "isDoubleJump : " + animator.GetBool("isDoubleJump").ToString() + "\n" +
-            "isSlide : " + animator.GetBool("isSlide").ToString() + "\n" +
-            "isGround : " + isGround.ToString() + "\n" +
-            "y_axis_coord : " + player.transform.position.y.ToString() + "\n\n" +*/
+        debuggingUI.text =
             "Stage : " + StageInfo.stageNumber + "\n" +
             "Coin : " + SideViewGameplay1.sideViewGameplay1.coin.ToString() + "\n" +
             "Health : " + SideViewGameplay1.sideViewGameplay1.playerHealth.ToString() + "\n" +
@@ -101,6 +102,30 @@ public class PlayerController : MonoBehaviour
             "isOnObstacle : " + isOnObstacle.ToString() + "\n" +
             "collider set to trigger : " + capsuleCollider.isTrigger.ToString() + "\n" +
             "Character Number : " + CharacterInfo.characterNumber.ToString();
+    }
+
+    public void UpdateHealth()
+    {
+        switch (playerHealth)
+        {
+            case 1:
+                critical.SetActive(true);
+                warning.SetActive(false);
+                break;
+            case 2:
+                critical.SetActive(false);
+                warning.SetActive(true);
+                break;
+            case 3:
+                critical.SetActive(false);
+                warning.SetActive(false);
+                break;
+        }
+    }
+
+    public void UpdateScore()
+    {
+        score.text = (SideViewGameplay1.sideViewGameplay1.coin * scorePerCoin).ToString();
     }
 
     public void TryJump()
@@ -148,7 +173,7 @@ public class PlayerController : MonoBehaviour
             }
             */
 
-            switch(CharacterInfo.characterNumber)
+            switch (CharacterInfo.characterNumber)
             {
                 case 1:
                     CaffeineDash();
@@ -165,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
     public void CaffeineDash()
     {
-        if (playerHealth<maxHealth)
+        if (playerHealth < maxHealth)
         {
             Debug.Log("[Caffeine Dash!]");
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat);
@@ -193,7 +218,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(MouseBuffTime);
 
         Debug.Log("���� �ð� ����");
-        if(playerHealth > 3)
+        if (playerHealth > 3)
         {
             playerHealth = 3;
             SideViewGameplay1.sideViewGameplay1.playerHealth = 3;
@@ -213,7 +238,7 @@ public class PlayerController : MonoBehaviour
         isPlayerImmuned = false;
 
     }
-    
+
     private void CheckGround()
     {
         Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;
@@ -226,7 +251,7 @@ public class PlayerController : MonoBehaviour
             if (isOnGround || isOnObstacle)
             {
                 jumpCount = 0;
-                
+
                 isDoubleJump = false;
 
                 animator.SetBool("isFalling", false);
@@ -280,7 +305,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("immune subroutine started");
         capsuleCollider.isTrigger = true;
         Debug.Log("isTrigger setted True");
-        
+
         yield return new WaitForSeconds(immuneTime);
         capsuleCollider.isTrigger = false;
         Debug.Log("isTrigger setted False");
@@ -289,7 +314,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("collision");
-        
+
         if (collision.collider.gameObject.CompareTag("BoxObstacle"))
         {
             Debug.Log(collision.collider.gameObject.ToString());
@@ -308,7 +333,7 @@ public class PlayerController : MonoBehaviour
                 //GetComponent<SceneController>().toGameoverScene();
                 animator.SetBool("isHit", true);
                 CameraShaker.Invoke();
-                if(playerHealth > 1)
+                if (playerHealth > 1)
                 {
                     if (!isPlayerImmuned)
                     {
@@ -317,10 +342,11 @@ public class PlayerController : MonoBehaviour
                         SideViewGameplay1.sideViewGameplay1.playerHealth--;
                         StartCoroutine(AfterCollisionImmune());
                     }
-                    else{
+                    else
+                    {
                         AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
                     }
-                    
+
                 }
                 else
                 {
@@ -329,7 +355,7 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("isDead", true);
                     player.GetComponent<SceneController>().toGameoverScene();
                 }
-                
+
             }
         }
         else if (collision.collider.gameObject.CompareTag("MeshObstacle"))
@@ -338,17 +364,21 @@ public class PlayerController : MonoBehaviour
             MeshCollider meshCollider = collision.collider.gameObject.GetComponent<MeshCollider>();
             meshCollider.isTrigger = true;
             Destroy(collision.gameObject, 0.2f);
+            Debug.Log("1");
 
             //GetComponent<SceneController>().toGameoverScene();
             animator.SetBool("isHit", true);
             CameraShaker.Invoke();
+            Debug.Log("2");
             if (playerHealth > 1)
             {
                 if (!isPlayerImmuned)
                 {
+                    Debug.Log("3");
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
                     playerHealth--;
                     SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    Debug.Log("4");
                     StartCoroutine(AfterCollisionImmune());
                 }
                 else
@@ -375,7 +405,7 @@ public class PlayerController : MonoBehaviour
             player.GetComponent<SceneController>().toGameoverScene();
         }
 
-        if(collision.collider.gameObject.CompareTag("Ground") && !isOnGround)
+        if (collision.collider.gameObject.CompareTag("Ground") && !isOnGround)
         {
             Debug.Log("Mid-air Collision!");
 
@@ -432,7 +462,7 @@ public class PlayerController : MonoBehaviour
             SideViewGameplay1.sideViewGameplay1.currentMapIdx = 7;
         }
 
-        if (other.tag.Equals("Goal")) 
+        if (other.tag.Equals("Goal"))
         {
             Debug.Log("Stage Clear");
             SideViewGameplay1.sideViewGameplay1.currentView = "side";

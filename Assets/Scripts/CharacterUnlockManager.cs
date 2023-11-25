@@ -6,8 +6,7 @@ public class CharacterUnlockManager : MonoBehaviour
 {
     public GameObject[] lockCharacter;
     public GameObject[] unlockCharacter;
-    enum CharacterAchive { UnlockMouse, UnlockDog }
-    CharacterAchive[] characterAchives;
+    string[] characterAchives = { "UnlockMouse", "UnlockDog" };
 
     // Start is called before the first frame update
     void Start()

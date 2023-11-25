@@ -35,7 +35,7 @@ public class AchiveManaver : MonoBehaviour
         PlayerPrefs.SetInt("Health", 0);
         PlayerPrefs.SetInt("SkillGauge", 0);
 
-        foreach(CharacterAchive characterAchive in characterAchives)
+        foreach (CharacterAchive characterAchive in characterAchives)
         {
             PlayerPrefs.SetInt(characterAchive.ToString(), 0);
         }
