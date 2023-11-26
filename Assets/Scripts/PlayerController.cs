@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         score = GameObject.Find("Text_Score").GetComponent<TextMeshProUGUI>();
         debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
         playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
-        skillGauge = GameObject.Find("SkillGauge").GetComponent<Slider>();
+        skillGauge = GameObject.Find("Skill_Gauge").GetComponentInParent<Slider>();
         skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
     }
 
@@ -459,7 +459,7 @@ public class PlayerController : MonoBehaviour
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
             player.GetComponent<SceneController>().toSideViewScene();
 
-            SideViewGameplay1.sideViewGameplay1.currentMapIdx = 7;
+            SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
         }
 
         if (other.tag.Equals("Goal"))
