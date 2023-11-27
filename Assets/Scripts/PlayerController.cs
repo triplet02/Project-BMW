@@ -444,6 +444,7 @@ public class PlayerController : MonoBehaviour
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
             SideViewGameplay1.sideViewGameplay1.coin += 1;
+            PlayerPrefs.SetInt("Score", SideViewGameplay1.sideViewGameplay1.coin * scorePerCoin);
         }
         if (other.tag.Equals("Portal"))
         {
