@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,14 +41,12 @@ public class TopviewPlayerController : MonoBehaviour
         {
             isLeftObstacle = true;
             Debug.Log("Hit obstacle " + hit.collider.gameObject.name);
-            Debug.DrawRay(transform.position, Vector3.left* hit.distance, Color.red);
         }
         else isLeftObstacle = false;
         if (Physics.Raycast(transform.position, Vector3.right, out hit, 2.0f, LayerMask.GetMask("Obstacle")))
         {
             isRightObstacle = true;
             Debug.Log("Hit obstacle " + hit.collider.gameObject.name);
-            Debug.DrawRay(transform.position, Vector3.right * hit.distance, Color.red);
         }
         else isRightObstacle = false;
     }
@@ -86,11 +85,12 @@ public class TopviewPlayerController : MonoBehaviour
     {
         if (Mathf.Abs(touchEnd.x - touchStart.x) >= dragDistance)
         {
-            bool isHeadingLeft = touchEnd.x - touchStart.x > 0 ? true : false;
+            bool isHeadingLeft = touchEnd.x - touchStart.x < 0;
+            bool isHeadingRight = touchEnd.x - touchStart.x > 0;
             if (isHeadingLeft && isLeftObstacle) {
                 return;
             } 
-            if (!isHeadingLeft && isRightObstacle) {
+            if (isHeadingRight && isRightObstacle) {
                 return;
             }
             movement.MoveToX((int)Mathf.Sign(touchEnd.x - touchStart.x));
