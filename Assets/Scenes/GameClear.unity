@@ -910,7 +910,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 990527394}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: toGameplayScene
+        m_MethodName: toSideViewGameplayScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

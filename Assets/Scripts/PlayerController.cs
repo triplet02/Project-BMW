@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("jump");
                 animator.SetBool("isJump", true);
                 isOnGround = false;
+                animator.SetBool("isOnGround", false);
                 rigidbody.velocity = Vector3.up * jumpForce;
             }
             else
@@ -247,6 +248,10 @@ public class PlayerController : MonoBehaviour
         if (rigidbody.velocity.y < -0.0f)
         {
             isOnGround = Physics.Raycast(centerPosition, Vector3.down, distance, groundLayerMask);
+            if (isOnGround)
+            {
+                animator.SetBool("isOnGround", true);
+            }
             isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, distance, obstacleLayerMask);
 
             if (isOnGround || isOnObstacle)
