@@ -90,6 +90,12 @@ public class SceneController : MonoBehaviour
     public void toSideViewGameplayScene()
     {
         PlayerPrefs.SetInt("Stage", 0);
+        SideViewGameplay1.sideViewGameplay1.skillValue = 100;
+        SideViewGameplay1.sideViewGameplay1.maxHealth = 3;
+        SideViewGameplay1.sideViewGameplay1.playerHealth = SideViewGameplay1.sideViewGameplay1.maxHealth;
+        SideViewGameplay1.sideViewGameplay1.coin = 0;
+        SideViewGameplay1.sideViewGameplay1.currentView = "side";
+        SideViewGameplay1.sideViewGameplay1.currentMapIdx = 0;
         SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
     }
 
@@ -121,12 +127,34 @@ public class SceneController : MonoBehaviour
 
     public void toTopViewScene()
     {
-        SceneManager.LoadScene("TopView Gameplay");
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "SideView Gameplay 1":
+                SceneManager.LoadScene("TopView Gameplay 1");
+                break;
+            case "SideView Gameplay 2":
+                SceneManager.LoadScene("TopView Gameplay 2");
+                break;
+            case "SideView Gameplay 3":
+                SceneManager.LoadScene("TopView Gameplay 3");
+                break;
+        }
     }
 
     public void toSideViewScene()
     {
-        SceneManager.LoadScene("SideView Gameplay 1");
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "TopView Gameplay 1":
+                SceneManager.LoadScene("SideView Gameplay 1");
+                break;
+            case "TopView Gameplay 2":
+                SceneManager.LoadScene("SideView Gameplay 2");
+                break;
+            case "TopView Gameplay 3":
+                SceneManager.LoadScene("SideView Gameplay 3");
+                break;
+        }
     }
 
     public void toCharacterSelectionScene()

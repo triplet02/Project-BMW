@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &45166524
+--- !u!1 &16047345
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,9 +131,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 45166525}
-  - component: {fileID: 45166527}
-  - component: {fileID: 45166526}
+  - component: {fileID: 16047346}
+  - component: {fileID: 16047348}
+  - component: {fileID: 16047347}
   m_Layer: 5
   m_Name: bg_Stage3
   m_TagString: Untagged
@@ -141,13 +141,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!224 &45166525
+--- !u!224 &16047346
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45166524}
+  m_GameObject: {fileID: 16047345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -159,15 +159,15 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.7000122, y: 0.5}
+  m_SizeDelta: {x: -0.69989014, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &45166526
+--- !u!114 &16047347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45166524}
+  m_GameObject: {fileID: 16047345}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -191,13 +191,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &45166527
+--- !u!222 &16047348
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45166524}
+  m_GameObject: {fileID: 16047345}
   m_CullTransparentMesh: 1
 --- !u!1 &64967095
 GameObject:
@@ -1281,7 +1281,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 655385201}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: toSideViewGameplayScene
+        m_MethodName: moveStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageImages:
   - {fileID: 1941433337}
-  - {fileID: 45166524}
+  - {fileID: 16047345}
   stageLockLines:
   - {fileID: 533260951}
   - {fileID: 2059095178}
@@ -2176,13 +2176,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 0
-  m_TargetGraphic: {fileID: 45166526}
+  m_TargetGraphic: {fileID: 984049023}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 655385201}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: toSideViewGameplayScene
+        m_MethodName: moveStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3399,7 +3399,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 45166525}
+  - {fileID: 16047346}
   - {fileID: 2059095179}
   m_Father: {fileID: 984049021}
   m_RootOrder: 0

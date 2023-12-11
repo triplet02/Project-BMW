@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public static class CharacterInfo
@@ -459,8 +460,18 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
             player.GetComponent<SceneController>().toSideViewScene();
-
-            SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "TopView Gameplay 1":
+                    SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
+                    break;
+                case "TopView Gameplay 2":
+                    SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
+                    break;
+                case "TopView Gameplay 3":
+                    SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
+                    break;
+            }
         }
 
         if (other.tag.Equals("Goal"))

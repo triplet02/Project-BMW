@@ -91,8 +91,12 @@ public class AudioManager : MonoBehaviour
                 return Bgm.Stage2;
             case "SideView Gameplay 3":
                 return Bgm.Stage3;
-            case "TopView Gameplay":
+            case "TopView Gameplay 1":
                 return Bgm.Stage1;
+            case "TopView Gameplay 2":
+                return Bgm.Stage2;
+            case "TopView Gameplay 3":
+                return Bgm.Stage3;
             case "Gameover":
                 return Bgm.Ending;
             default:
