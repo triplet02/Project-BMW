@@ -43,6 +43,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Slider skillGauge;
     [SerializeField] float immuneTime = 1.0f;
 
+    Vector3 standColliderCenter;
+    float standColliderHeight;
+    Vector3 slideColliderCenter;
+    float slideColliderHeight;
+
+
     // Animation Control
     Animator animator = null;
 
@@ -70,6 +76,8 @@ public class PlayerController : MonoBehaviour
 
         rigidbody = player.GetComponent<Rigidbody>();
         capsuleCollider = player.GetComponent<CapsuleCollider>();
+        standColliderCenter = capsuleCollider.center;
+        standColliderHeight = capsuleCollider.height;
         distance = capsuleCollider.bounds.extents.y + 0.05f;
         animator = player.GetComponentInChildren<Animator>();
 
@@ -95,10 +103,16 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Slide());
         }
         */
+        Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;
+        Debug.DrawRay(centerPosition, Vector3.down * distance, Color.red);
+
         debuggingUI.text =
             "Stage : " + StageInfo.stageNumber + "\n" +
             "Coin : " + SideViewGameplay1.sideViewGameplay1.coin.ToString() + "\n" +
             "Health : " + SideViewGameplay1.sideViewGameplay1.playerHealth.ToString() + "\n" +
+            "[@@@] y-vel : " + rigidbody.velocity.y.ToString() + "\n" +
+            "[@@@] isSlide : " + isSlide.ToString() + "\n" +
+            "[@@@] jumpcount : " + jumpCount.ToString() + "\n" +
             "isOnGround : " + isOnGround.ToString() + "\n" +
             "isOnObstacle : " + isOnObstacle.ToString() + "\n" +
             "collider set to trigger : " + capsuleCollider.isTrigger.ToString() + "\n" +
@@ -247,12 +261,11 @@ public class PlayerController : MonoBehaviour
 
         if (rigidbody.velocity.y < -0.0f)
         {
+            Debug.Log("[@@@]Ground Checking");
             isOnGround = Physics.Raycast(centerPosition, Vector3.down, distance, groundLayerMask);
-            if (isOnGround)
-            {
-                animator.SetBool("isOnGround", true);
-            }
+            Debug.Log("[@@@] isOnGround = " + isOnGround.ToString());
             isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, distance, obstacleLayerMask);
+            Debug.Log("[@@@]isOnGround = " + isOnGround.ToString());
 
             if (isOnGround || isOnObstacle)
             {
@@ -260,6 +273,7 @@ public class PlayerController : MonoBehaviour
 
                 isDoubleJump = false;
 
+                animator.SetBool("isOnGround", true);
                 animator.SetBool("isFalling", false);
                 animator.SetBool("isJump", false);
                 animator.SetBool("isDoubleJump", false);
@@ -298,12 +312,16 @@ public class PlayerController : MonoBehaviour
 
     public void EndSlide()
     {
+        Debug.Log("[@@@] isSlide : " + isSlide.ToString());
+        Debug.Log("[@@@] EndSlide");
         animator.SetBool("isStartSlide", false);
         animator.SetBool("isSliding", false);
         rigidbody.useGravity = true;
-        capsuleCollider.height = 1.5f;
-        capsuleCollider.center = new Vector3(0.0f, 0.75f, 0.0f);
+        capsuleCollider.height = standColliderHeight;
+        capsuleCollider.center = standColliderCenter;
         isSlide = false;
+        isOnGround = true;
+        Debug.Log("[@@@] isSlide : " + isSlide.ToString());
     }
 
     IEnumerator AfterCollisionImmune()
@@ -370,21 +388,17 @@ public class PlayerController : MonoBehaviour
             MeshCollider meshCollider = collision.collider.gameObject.GetComponent<MeshCollider>();
             meshCollider.isTrigger = true;
             Destroy(collision.gameObject, 0.2f);
-            Debug.Log("1");
 
             //GetComponent<SceneController>().toGameoverScene();
             animator.SetBool("isHit", true);
             CameraShaker.Invoke();
-            Debug.Log("2");
             if (playerHealth > 1)
             {
                 if (!isPlayerImmuned)
                 {
-                    Debug.Log("3");
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
                     playerHealth--;
                     SideViewGameplay1.sideViewGameplay1.playerHealth--;
-                    Debug.Log("4");
                     StartCoroutine(AfterCollisionImmune());
                 }
                 else

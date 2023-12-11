@@ -983,6 +983,10 @@ PrefabInstance:
       value: Platform_B_Road
       objectReference: {fileID: 0}
     - target: {fileID: 5835026000876932992, guid: 3f6bb3dc046a438479ddaa443689ae0e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835026000876932992, guid: 3f6bb3dc046a438479ddaa443689ae0e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

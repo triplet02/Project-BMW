@@ -22,6 +22,7 @@ TagManager:
   - MeshObstacle
   - Goal
   - JumpingBoard
+  - Trampoline
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Player
   - StartingBlock
   - Obstacle
-  - 
+  - Ground
   - 
   - 
   - 
