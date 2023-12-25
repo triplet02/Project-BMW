@@ -168,9 +168,9 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Lobby");
     }
 
-    public void toCharacterSettingsScene()
+    public void toTutorial()
     {
-        SceneManager.LoadScene("Character Settings");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void toGameClearScene()
