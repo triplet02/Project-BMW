@@ -191,4 +191,9 @@ public class SceneController : MonoBehaviour
             Screen.orientation = ScreenOrientation.LandscapeLeft;
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
