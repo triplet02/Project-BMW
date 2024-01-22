@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.9843137, g: 0.5568628, b: 0.3529412, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3930fc89a28b29746bde6a2389a513e0, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32331055, g: 0.31517047, b: 0.27105716, a: 1}
+  m_IndirectSpecularColor: {r: 0.9818978, g: 0.521049, b: 0.3400738, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1426,6 +1426,7 @@ MonoBehaviour:
   immuneTime: 1
   scorePerCoin: 100
   MouseBuffTime: 3
+  MouseCompanions: []
   DogImmuneTime: 3
 --- !u!114 &859501357
 MonoBehaviour:
@@ -2363,11 +2364,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4032313551334154997, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.001155823
+      value: -0.0011558337
       objectReference: {fileID: 0}
     - target: {fileID: 4032313551334154997, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0035770608
+      value: 0.0035770503
       objectReference: {fileID: 0}
     - target: {fileID: 4032313551334154997, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2391,15 +2392,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000007768221
+      value: -0.000007767289
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.020428663
+      value: -0.02042866
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0007745733
+      value: -0.0007745736
       objectReference: {fileID: 0}
     - target: {fileID: 7294680393811531142, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2419,7 +2420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7510401096861090997, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00088205666
+      value: 0.00088207156
       objectReference: {fileID: 0}
     - target: {fileID: 7510401096861090997, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2443,15 +2444,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7986346354754113825, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00038330065
+      value: -0.00038330018
       objectReference: {fileID: 0}
     - target: {fileID: 7986346354754113825, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.014478806
+      value: -0.014478807
       objectReference: {fileID: 0}
     - target: {fileID: 7986346354754113825, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00043508684
+      value: -0.000435087
       objectReference: {fileID: 0}
     - target: {fileID: 7986346354754113825, guid: ee86642e33b16c84da4c43b48c4ff369, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2550,6 +2551,7 @@ MonoBehaviour:
   immuneTime: 1
   scorePerCoin: 100
   MouseBuffTime: 3
+  MouseCompanions: []
   DogImmuneTime: 3
 --- !u!95 &1612600185
 Animator:

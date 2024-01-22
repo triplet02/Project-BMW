@@ -170,7 +170,8 @@ public class SceneController : MonoBehaviour
 
     public void toTutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        //SceneManager.LoadScene("Tutorial");
+
     }
 
     public void toGameClearScene()

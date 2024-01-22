@@ -66,13 +66,15 @@ public class PlayerController : MonoBehaviour
     bool isPlayerImmuned = false;
 
     //Skills
-    [SerializeField] float MouseBuffTime = 3.0f;
+    [SerializeField] float MouseBuffTime = 6.0f;
+    [SerializeField] GameObject[] MouseCompanions;
     [SerializeField] float DogImmuneTime = 3.0f;
+    bool mouseSkillActivate = false;
 
     // Start is called before the first frame update
     private void Start()
     {
-        player.transform.position = gameStartPlayerPosition;
+        //player.transform.position = gameStartPlayerPosition;
 
         rigidbody = player.GetComponent<Rigidbody>();
         capsuleCollider = player.GetComponent<CapsuleCollider>();
@@ -231,6 +233,11 @@ public class PlayerController : MonoBehaviour
         playerHealth += 2;
         SideViewGameplay1.sideViewGameplay1.playerHealth += 2;
 
+        mouseSkillActivate = true;
+        foreach (GameObject mouseCompanion in MouseCompanions){
+            mouseCompanion.SetActive(true);
+        }
+
         yield return new WaitForSeconds(MouseBuffTime);
 
         Debug.Log("���� �ð� ����");
@@ -242,6 +249,11 @@ public class PlayerController : MonoBehaviour
 
         maxHealth -= 2;
         SideViewGameplay1.sideViewGameplay1.maxHealth -= 2;
+
+        foreach (GameObject mouseCompanion in MouseCompanions)
+        {
+            mouseCompanion.SetActive(false);
+        }
 
     }
 

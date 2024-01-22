@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.47698158, g: 0.7989754, b: 0.8985044, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2348,6 +2348,7 @@ MonoBehaviour:
   immuneTime: 1
   scorePerCoin: 100
   MouseBuffTime: 3
+  MouseCompanions: []
   DogImmuneTime: 3
 --- !u!136 &677249497
 CapsuleCollider:
@@ -3183,6 +3184,7 @@ MonoBehaviour:
   immuneTime: 1
   scorePerCoin: 100
   MouseBuffTime: 3
+  MouseCompanions: []
   DogImmuneTime: 3
 --- !u!114 &859501357
 MonoBehaviour:
@@ -4202,6 +4204,7 @@ MonoBehaviour:
   immuneTime: 1
   scorePerCoin: 100
   MouseBuffTime: 3
+  MouseCompanions: []
   DogImmuneTime: 3
 --- !u!136 &1270355323
 CapsuleCollider:
@@ -5412,6 +5415,7 @@ MonoBehaviour:
   immuneTime: 1
   scorePerCoin: 100
   MouseBuffTime: 3
+  MouseCompanions: []
   DogImmuneTime: 3
 --- !u!95 &1612600185
 Animator:
@@ -5688,6 +5692,7 @@ MonoBehaviour:
   immuneTime: 1
   scorePerCoin: 100
   MouseBuffTime: 3
+  MouseCompanions: []
   DogImmuneTime: 3
 --- !u!114 &1644184286
 MonoBehaviour:

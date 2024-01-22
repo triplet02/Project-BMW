@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 2862116679645199219}
   - component: {fileID: 26090025026850745}
   - component: {fileID: 7883128147093966140}
-  - component: {fileID: 3154718781276819941}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Obstacle_B_bump_002
-  m_TagString: MeshObstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -99,19 +98,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1409171312206599169, guid: a92dfd490f1cae947a1bb8c62d441634, type: 3}
---- !u!54 &3154718781276819941
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971535181966192236}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
