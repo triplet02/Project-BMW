@@ -4,9 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject[] characterImageList;
+    public GameObject[] characterButtonList;
+
     Dictionary<string, int> stageDict = new Dictionary<string, int>()
     {
         {"Stage1", 1 },
@@ -89,14 +94,17 @@ public class SceneController : MonoBehaviour
 
     public void toSideViewGameplayScene()
     {
-        PlayerPrefs.SetInt("Stage", 0);
-        SideViewGameplay1.sideViewGameplay1.skillValue = 100;
-        SideViewGameplay1.sideViewGameplay1.maxHealth = 3;
-        SideViewGameplay1.sideViewGameplay1.playerHealth = SideViewGameplay1.sideViewGameplay1.maxHealth;
-        SideViewGameplay1.sideViewGameplay1.coin = 0;
-        SideViewGameplay1.sideViewGameplay1.currentView = "side";
-        SideViewGameplay1.sideViewGameplay1.currentMapIdx = 0;
-        SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
+        if(CharacterInfo.characterNumber != 0)
+        {
+            PlayerPrefs.SetInt("Stage", 0);
+            SideViewGameplay1.sideViewGameplay1.skillValue = 100;
+            SideViewGameplay1.sideViewGameplay1.maxHealth = 3;
+            SideViewGameplay1.sideViewGameplay1.playerHealth = SideViewGameplay1.sideViewGameplay1.maxHealth;
+            SideViewGameplay1.sideViewGameplay1.coin = 0;
+            SideViewGameplay1.sideViewGameplay1.currentView = "side";
+            SideViewGameplay1.sideViewGameplay1.currentMapIdx = 0;
+            SceneManager.LoadScene("SideView Gameplay " + StageInfo.stageNumber.ToString());
+        }
     }
 
     public void characterSelection()
@@ -104,6 +112,20 @@ public class SceneController : MonoBehaviour
         GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
         CharacterInfo.characterNumber = characterDict[clickedObject.name];
         Debug.Log(CharacterInfo.characterNumber.ToString());
+
+        for(int i=0; i<characterImageList.Length; i++)
+        {
+            if(i == CharacterInfo.characterNumber - 1)
+            {
+                characterImageList[i].SetActive(true);
+                characterButtonList[i].GetComponentsInChildren<Image>()[1].color = new Color(0,0,0,255/255f);
+            }
+            else
+            {
+                characterImageList[i].SetActive(false);
+                characterButtonList[i].GetComponentsInChildren<Image>()[1].color = new Color(0, 0, 0, 60 / 255f);
+            }
+        }
     }
 
     public void gamePause()

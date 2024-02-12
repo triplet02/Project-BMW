@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         warning = GameObject.Find("Alert_Enermy_001");
         critical = GameObject.Find("Alert_Enermy_002");
         score = GameObject.Find("Text_Score").GetComponent<TextMeshProUGUI>();
-        debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
+        //debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
         playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
         skillGauge = GameObject.Find("Skill_Gauge").GetComponentInParent<Slider>();
         skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
         Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;
         Debug.DrawRay(centerPosition, Vector3.down * distance, Color.red);
 
+        /*
         debuggingUI.text =
             "Stage : " + StageInfo.stageNumber + "\n" +
             "Coin : " + SideViewGameplay1.sideViewGameplay1.coin.ToString() + "\n" +
@@ -119,6 +120,7 @@ public class PlayerController : MonoBehaviour
             "isOnObstacle : " + isOnObstacle.ToString() + "\n" +
             "collider set to trigger : " + capsuleCollider.isTrigger.ToString() + "\n" +
             "Character Number : " + CharacterInfo.characterNumber.ToString();
+        */
     }
 
     public void UpdateHealth()

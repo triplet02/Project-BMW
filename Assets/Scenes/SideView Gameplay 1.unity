@@ -813,7 +813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &106070485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3347,6 +3347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImageList: []
+  characterButtonList: []
 --- !u!114 &502736534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3638,6 +3640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImageList: []
+  characterButtonList: []
 --- !u!114 &541141891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9052,6 +9056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImageList: []
+  characterButtonList: []
 --- !u!114 &1461707842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9723,6 +9729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImageList: []
+  characterButtonList: []
 --- !u!54 &1669027200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11255,6 +11263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImageList: []
+  characterButtonList: []
 --- !u!54 &1964858794
 Rigidbody:
   m_ObjectHideFlags: 0
