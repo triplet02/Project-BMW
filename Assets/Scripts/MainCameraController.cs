@@ -9,7 +9,7 @@ public class MainCameraController : MonoBehaviour
     Vector3 cameraDistance = new Vector3(3.1f, 1.7f, -5.0f);
     Vector3 gameStartPlayerPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
-    GameObject player;
+    public GameObject player;
 
     int jumpCount = 0;
     bool isGround = true;
@@ -33,6 +33,7 @@ public class MainCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(player.GetComponent<PlayerController>().ToString());
         jumpCount = player.GetComponent<PlayerController>().GetJumpCount();
         isGround = player.GetComponent<PlayerController>().GetIsGround();
         yVelocity = player.GetComponent<PlayerController>().Get_y_Velocity();

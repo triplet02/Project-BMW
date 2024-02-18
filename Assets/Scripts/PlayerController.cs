@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         distance = capsuleCollider.bounds.extents.y + 0.05f;
         animator = player.GetComponentInChildren<Animator>();
 
-        Debug.Log("Animator : " + animator.ToString());
+        //Debug.Log("[!!!!!!!!!]Animator : " + animator.ToString());
         warning = GameObject.Find("Alert_Enermy_001");
         critical = GameObject.Find("Alert_Enermy_002");
         score = GameObject.Find("Text_Score").GetComponent<TextMeshProUGUI>();
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpCount == 0)
             {
-                Debug.Log("jump");
+                //Debug.Log("jump");
                 animator.SetBool("isJump", true);
                 isOnGround = false;
                 animator.SetBool("isOnGround", false);
@@ -273,13 +273,13 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;
 
-        if (rigidbody.velocity.y < -0.0f)
+        if (rigidbody.velocity.y < -0.1f)
         {
-            Debug.Log("[@@@]Ground Checking");
+            //Debug.Log("[@@@]Ground Checking");
             isOnGround = Physics.Raycast(centerPosition, Vector3.down, distance, groundLayerMask);
-            Debug.Log("[@@@] isOnGround = " + isOnGround.ToString());
+            //Debug.Log("[@@@] isOnGround = " + isOnGround.ToString());
             isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, distance, obstacleLayerMask);
-            Debug.Log("[@@@]isOnGround = " + isOnGround.ToString());
+            //Debug.Log("[@@@]isOnGround = " + isOnGround.ToString());
 
             if (isOnGround || isOnObstacle)
             {
@@ -326,8 +326,8 @@ public class PlayerController : MonoBehaviour
 
     public void EndSlide()
     {
-        Debug.Log("[@@@] isSlide : " + isSlide.ToString());
-        Debug.Log("[@@@] EndSlide");
+        //Debug.Log("[@@@] isSlide : " + isSlide.ToString());
+        //Debug.Log("[@@@] EndSlide");
         animator.SetBool("isStartSlide", false);
         animator.SetBool("isSliding", false);
         rigidbody.useGravity = true;
@@ -335,7 +335,7 @@ public class PlayerController : MonoBehaviour
         capsuleCollider.center = standColliderCenter;
         isSlide = false;
         isOnGround = true;
-        Debug.Log("[@@@] isSlide : " + isSlide.ToString());
+        //Debug.Log("[@@@] isSlide : " + isSlide.ToString());
     }
 
     IEnumerator AfterCollisionImmune()
@@ -351,7 +351,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
+        //Debug.Log("!!!collision!!!");
 
         if (collision.collider.gameObject.CompareTag("BoxObstacle"))
         {
@@ -468,6 +468,35 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag.Equals("Obstacle"))
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+            Destroy(other.gameObject, 0.2f);
+            animator.SetBool("isHit", true);
+            CameraShaker.Invoke();
+            if (playerHealth > 1)
+            {
+                if (!isPlayerImmuned)
+                {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                    playerHealth--;
+                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    StartCoroutine(AfterCollisionImmune());
+                }
+                else
+                {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                }
+
+            }
+            else
+            {
+                // stop and show left(or moved) distance to user?
+                // ...
+                animator.SetBool("isDead", true);
+                player.GetComponent<SceneController>().toGameoverScene();
+            }
+        }
         if (other.tag.Equals("Beer"))
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Drink);
