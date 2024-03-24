@@ -23,6 +23,7 @@ TagManager:
   - Goal
   - JumpingBoard
   - Trampoline
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - StartingBlock
   - Obstacle
   - Ground
-  - 
+  - Platform
   - 
   - 
   - 

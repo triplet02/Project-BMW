@@ -2397,6 +2397,7 @@ MonoBehaviour:
   dragDistance: 50
   player: {fileID: 677249494}
   capsuleCollider: {fileID: 0}
+  platformDetectRange: 3
 --- !u!114 &677249500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3158,6 +3159,7 @@ MonoBehaviour:
   dragDistance: 50
   player: {fileID: 859501343}
   capsuleCollider: {fileID: 0}
+  platformDetectRange: 0
 --- !u!114 &859501356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4257,6 +4259,7 @@ MonoBehaviour:
   dragDistance: 50
   player: {fileID: 1270355320}
   capsuleCollider: {fileID: 0}
+  platformDetectRange: 3
 --- !u!114 &1270355326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5490,6 +5493,7 @@ MonoBehaviour:
   dragDistance: 50
   player: {fileID: 1612600177}
   capsuleCollider: {fileID: 0}
+  platformDetectRange: 0
 --- !u!114 &1635272778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5761,6 +5765,7 @@ MonoBehaviour:
   dragDistance: 50
   player: {fileID: 1644184284}
   capsuleCollider: {fileID: 0}
+  platformDetectRange: 3
 --- !u!114 &1644184290
 MonoBehaviour:
   m_ObjectHideFlags: 0

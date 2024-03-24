@@ -17,6 +17,13 @@ public class TopviewPlayerController : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] CapsuleCollider capsuleCollider;
 
+    [SerializeField] float platformDetectRange;
+    bool isLeftPlatform;
+    bool isRightPlatform;
+
+    bool isLeftAheadPlatform;
+    bool isRightAheadPlatform;
+
     private Movement movement;
 
     // Start is called before the first frame update
@@ -36,19 +43,55 @@ public class TopviewPlayerController : MonoBehaviour
         {
             OnPCPlatform();
         }
-        // detect obstacle
-        if (Physics.Raycast(transform.position, Vector3.left, out hit, 2.0f, LayerMask.GetMask("Obstacle")))
+
+        Debug.DrawRay(new Vector3(transform.position.x - 2.0f, 0f, platformDetectRange), Vector3.up * 2.0f, Color.blue);
+        Debug.DrawRay(new Vector3(transform.position.x + 2.0f, 0f, platformDetectRange), Vector3.up * 2.0f, Color.blue);
+
+
+        if (Physics.Raycast(new Vector3(transform.position.x - 2.0f, -2.0f, 0f), Vector3.up, out hit, 3.0f, LayerMask.GetMask("Platform")))
         {
-            isLeftObstacle = true;
-            Debug.Log("Hit obstacle " + hit.collider.gameObject.name);
+            isLeftPlatform = true;
+            Debug.DrawRay(new Vector3(transform.position.x - 0.7f, 0f, 0f), Vector3.up * 2.0f, Color.red);
+            //Debug.Log("Trailer is On Right!");
         }
-        else isLeftObstacle = false;
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, 2.0f, LayerMask.GetMask("Obstacle")))
+        else
         {
-            isRightObstacle = true;
-            Debug.Log("Hit obstacle " + hit.collider.gameObject.name);
+            isLeftPlatform = false;
         }
-        else isRightObstacle = false;
+
+        if (Physics.Raycast(new Vector3(transform.position.x - 2.0f, -2.0f, platformDetectRange), Vector3.up, out hit, 3.0f, LayerMask.GetMask("Platform")))
+        {
+            isLeftAheadPlatform = true;
+            Debug.DrawRay(new Vector3(transform.position.x - 0.7f, 0f, 0f), Vector3.up * 2.0f, Color.red);
+            //Debug.Log("Trailer is On Right!");
+        }
+        else
+        {
+            isLeftAheadPlatform = false;
+        }
+
+        if (Physics.Raycast(new Vector3(transform.position.x + 2.0f, -2.0f, 0f), Vector3.up, out hit, 3.0f, LayerMask.GetMask("Platform")))
+        {
+            isRightPlatform = true;
+            Debug.DrawRay(new Vector3(transform.position.x + 0.7f, 0f, 0f), Vector3.up * 2.0f, Color.red);
+            //Debug.Log("Trailer is On Right!");
+        }
+        else
+        {
+            isRightPlatform = false;
+        }
+
+        if (Physics.Raycast(new Vector3(transform.position.x + 2.0f, -2.0f, platformDetectRange), Vector3.up, out hit, 3.0f, LayerMask.GetMask("Platform")))
+        {
+            isRightAheadPlatform = true;
+            Debug.DrawRay(new Vector3(transform.position.x + 0.7f, 0f, 0f), Vector3.up * 2.0f, Color.red);
+            //Debug.Log("Trailer is On Right!");
+        }
+        else
+        {
+            isRightAheadPlatform = false;
+        }
+
     }
 
     private void OnMobilePlatform()
@@ -87,12 +130,19 @@ public class TopviewPlayerController : MonoBehaviour
         {
             bool isHeadingLeft = touchEnd.x - touchStart.x < 0;
             bool isHeadingRight = touchEnd.x - touchStart.x > 0;
-            if (isHeadingLeft && isLeftObstacle) {
-                return;
-            } 
-            if (isHeadingRight && isRightObstacle) {
-                return;
+
+            if(transform.position.y < 3.0f)
+            {
+                if (isHeadingLeft && (isLeftPlatform || isLeftAheadPlatform))
+                {
+                    return;
+                }
+                if (isHeadingRight && (isRightPlatform || isRightAheadPlatform))
+                {
+                    return;
+                }
             }
+            
             movement.MoveToX((int)Mathf.Sign(touchEnd.x - touchStart.x));
             return;
         }
