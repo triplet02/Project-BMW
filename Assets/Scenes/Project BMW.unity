@@ -981,6 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterImageList: []
+  characterButtonList: []
 --- !u!114 &1868236263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,13 +1265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fca5b7496eda444493c5c1e2ccfa2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockCharacter:
-  - {fileID: 0}
-  - {fileID: 0}
-  unlockCharacter:
-  - {fileID: 0}
-  - {fileID: 0}
-  achives: 
 --- !u!4 &2093709604
 Transform:
   m_ObjectHideFlags: 0

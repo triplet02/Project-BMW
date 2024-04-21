@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
 {
     [SerializeField]
     private GameObject coinEffectPrefab;
+    /*
     private float rotateSpeed;
 
     private void Awake()
@@ -17,6 +18,7 @@ public class Coin : MonoBehaviour
     {
         transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
     }
+    */
 
     private void OnTriggerEnter(Collider other)
     {

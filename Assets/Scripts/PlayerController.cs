@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Slider skillGauge;
     [SerializeField] float immuneTime = 1.0f;
 
+    bool isCharacterImmuned = false;
+
     Vector3 standColliderCenter;
     float standColliderHeight;
     Vector3 slideColliderCenter;
@@ -55,15 +57,19 @@ public class PlayerController : MonoBehaviour
     // UI, Debugging
     Text debuggingUI;
     GameObject warning;
-    GameObject critical;
+    GameObject criticalOn;
+    GameObject criticalOff;
     TextMeshProUGUI score;
     [SerializeField] int scorePerCoin = 100;
+    bool criticalVFXPlayed = false;
 
     // Player Status
     int maxHealth = 3;
     int playerHealth;
     int additionalHealth;
     bool isPlayerImmuned = false;
+    new Vector3 centerPosition;
+    new Vector3 playerPosition;
 
     //Skills
     [SerializeField] float MouseBuffTime = 6.0f;
@@ -84,8 +90,12 @@ public class PlayerController : MonoBehaviour
         animator = player.GetComponentInChildren<Animator>();
 
         //Debug.Log("[!!!!!!!!!]Animator : " + animator.ToString());
-        warning = GameObject.Find("Alert_Enermy_001");
-        critical = GameObject.Find("Alert_Enermy_002");
+        warning = GameObject.Find("Alert_Enemy_001");
+        criticalOn = GameObject.Find("Alert_Enemy_002_On");
+        criticalOff = GameObject.Find("Alert_Enemy_002_Off");
+        Debug.Log("warning : " + warning.ToString());
+        Debug.Log("criticalOn : " + criticalOn.ToString());
+        Debug.Log("criticalOff : " + criticalOff.ToString());
         score = GameObject.Find("Text_Score").GetComponent<TextMeshProUGUI>();
         //debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
         playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
@@ -96,6 +106,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        playerPosition = player.transform.position;
+        centerPosition = GetComponent<CapsuleCollider>().bounds.center;
+        Debug.DrawRay(centerPosition, Vector3.down * distance, Color.red);
+
         CheckGround();
         UpdateHealth();
         UpdateScore();
@@ -105,8 +119,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Slide());
         }
         */
-        Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;
-        Debug.DrawRay(centerPosition, Vector3.down * distance, Color.red);
+        
 
         /*
         debuggingUI.text =
@@ -128,15 +141,25 @@ public class PlayerController : MonoBehaviour
         switch (playerHealth)
         {
             case 1:
-                critical.SetActive(true);
+                criticalVFXPlayed = true;
+
+                criticalOn.SetActive(true);
+                criticalOff.SetActive(false);
                 warning.SetActive(false);
                 break;
             case 2:
-                critical.SetActive(false);
+                if (criticalVFXPlayed)
+                {
+                    criticalOn.SetActive(false);
+                    criticalOff.SetActive(true);
+                    criticalVFXPlayed = false;
+                }
+                criticalOn.SetActive(false);
                 warning.SetActive(true);
                 break;
             case 3:
-                critical.SetActive(false);
+                criticalOn.SetActive(false);
+                criticalOff.SetActive(false);
                 warning.SetActive(false);
                 break;
         }
@@ -341,14 +364,15 @@ public class PlayerController : MonoBehaviour
     IEnumerator AfterCollisionImmune()
     {
         Debug.Log("immune subroutine started");
-        capsuleCollider.isTrigger = true;
+        isCharacterImmuned = true;
         Debug.Log("isTrigger setted True");
 
         yield return new WaitForSeconds(immuneTime);
-        capsuleCollider.isTrigger = false;
+        isCharacterImmuned = false;
         Debug.Log("isTrigger setted False");
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("!!!collision!!!");
@@ -367,33 +391,35 @@ public class PlayerController : MonoBehaviour
 
             if (playerYPosition < obstacleTopYPosition)
             {
-                Debug.Log("collision");
-                //GetComponent<SceneController>().toGameoverScene();
-                animator.SetBool("isHit", true);
-                CameraShaker.Invoke();
-                if (playerHealth > 1)
+                if (!isCharacterImmuned)
                 {
-                    if (!isPlayerImmuned)
+                    Debug.Log("collision");
+                    //GetComponent<SceneController>().toGameoverScene();
+                    animator.SetBool("isHit", true);
+                    CameraShaker.Invoke();
+                    if (playerHealth > 1)
                     {
-                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                        playerHealth--;
-                        SideViewGameplay1.sideViewGameplay1.playerHealth--;
-                        StartCoroutine(AfterCollisionImmune());
+                        if (!isPlayerImmuned)
+                        {
+                            AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                            playerHealth--;
+                            SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                            StartCoroutine(AfterCollisionImmune());
+                        }
+                        else
+                        {
+                            AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                        }
+
                     }
                     else
                     {
-                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                        // stop and show left(or moved) distance to user?
+                        // ...
+                        animator.SetBool("isDead", true);
+                        player.GetComponent<SceneController>().toGameoverScene();
                     }
-
                 }
-                else
-                {
-                    // stop and show left(or moved) distance to user?
-                    // ...
-                    animator.SetBool("isDead", true);
-                    player.GetComponent<SceneController>().toGameoverScene();
-                }
-
             }
         }
         else if (collision.collider.gameObject.CompareTag("MeshObstacle"))
@@ -459,19 +485,28 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    */
+
     private void OnCollisionExit(Collision collision)
     {
         animator.SetBool("isHit", false);
         capsuleCollider.isTrigger = false;
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.tag.Equals("Obstacle"))
         {
+            animator.SetBool("isHit", false);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Ground") &&
+            collision.collider.gameObject.transform.position.y > centerPosition.y)
+        {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-            Destroy(other.gameObject, 0.2f);
             animator.SetBool("isHit", true);
             CameraShaker.Invoke();
             if (playerHealth > 1)
@@ -497,6 +532,49 @@ public class PlayerController : MonoBehaviour
                 player.GetComponent<SceneController>().toGameoverScene();
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Obstacle"))
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+            Destroy(other.gameObject, 0.2f);
+            animator.SetBool("isHit", true);
+            CameraShaker.Invoke();
+            if (playerHealth > 1)
+            {
+                if (!isPlayerImmuned)
+                {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                    playerHealth--;
+                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    if (mouseSkillActivate)
+                    {
+                        foreach (GameObject mouseCompanion in MouseCompanions)
+                        {
+                            if (mouseCompanion.activeSelf)
+                            {
+                                mouseCompanion.SetActive(false);
+                                break;
+                            }
+                        }
+                    }
+                    StartCoroutine(AfterCollisionImmune());
+                }
+                else
+                {
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                }
+            }
+            else
+            {
+                // stop and show left(or moved) distance to user?
+                // ...
+                animator.SetBool("isDead", true);
+                player.GetComponent<SceneController>().toGameoverScene();
+            }
+        }
         if (other.tag.Equals("Beer"))
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Drink);
@@ -509,14 +587,14 @@ public class PlayerController : MonoBehaviour
             SideViewGameplay1.sideViewGameplay1.coin += 1;
             PlayerPrefs.SetInt("Score", SideViewGameplay1.sideViewGameplay1.coin * scorePerCoin);
         }
-        if (other.tag.Equals("Portal"))
+        if (other.tag.Equals("Portal") && playerPosition.y < 2.8)
         {
             Debug.Log("From Side To Top View");
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "top";
             player.GetComponent<SceneController>().toTopViewScene();
         }
-        if (other.tag.Equals("Portal1"))
+        if (other.tag.Equals("Portal1") && playerPosition.y < 2.8)
         {
             Debug.Log("From Top To Side View");
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);

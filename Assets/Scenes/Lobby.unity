@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 142713364}
   - component: {fileID: 142713363}
   m_Layer: 5
-  m_Name: btn_Settings
+  m_Name: btn_Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1850,7 +1850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 489241751}
   m_Layer: 5
-  m_Name: Popup_Game_Settings
+  m_Name: Popup_Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1914,6 +1914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImageList: []
+  characterButtonList: []
 --- !u!114 &522522451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3445,7 +3447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm
+  m_text: Great!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3398faf5fb160fc4ab3d9afd49587de6, type: 2}
   m_sharedMaterial: {fileID: -3204214432481123534, guid: 3398faf5fb160fc4ab3d9afd49587de6, type: 2}
@@ -6322,7 +6324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Credit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3398faf5fb160fc4ab3d9afd49587de6, type: 2}
   m_sharedMaterial: {fileID: -3204214432481123534, guid: 3398faf5fb160fc4ab3d9afd49587de6, type: 2}
