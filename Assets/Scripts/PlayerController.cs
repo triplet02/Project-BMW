@@ -56,12 +56,24 @@ public class PlayerController : MonoBehaviour
 
     // UI, Debugging
     Text debuggingUI;
-    GameObject warning;
-    GameObject criticalOn;
-    GameObject criticalOff;
     TextMeshProUGUI score;
     [SerializeField] int scorePerCoin = 100;
     bool criticalVFXPlayed = false;
+
+    // Alert Particle System
+    [SerializeField] GameObject warning;
+    [SerializeField] GameObject AlertOnPrefab;
+    [SerializeField] GameObject AlertIdlePrefab;
+    [SerializeField] GameObject AlertOffPrefab;
+    [SerializeField] float AlertOnPlayTime;
+    [SerializeField] float AlertOffPlayTime;
+    [SerializeField] Transform Canvas;
+
+    GameObject AlertOnInstance;
+    GameObject AlertIdleInstance;
+    GameObject AlertOffInstance;
+
+    Vector3 AlertPosition;
 
     // Player Status
     int maxHealth = 3;
@@ -89,18 +101,14 @@ public class PlayerController : MonoBehaviour
         distance = capsuleCollider.bounds.extents.y + 0.05f;
         animator = player.GetComponentInChildren<Animator>();
 
-        //Debug.Log("[!!!!!!!!!]Animator : " + animator.ToString());
-        warning = GameObject.Find("Alert_Enemy_001");
-        criticalOn = GameObject.Find("Alert_Enemy_002_On");
-        criticalOff = GameObject.Find("Alert_Enemy_002_Off");
-        Debug.Log("warning : " + warning.ToString());
-        Debug.Log("criticalOn : " + criticalOn.ToString());
-        Debug.Log("criticalOff : " + criticalOff.ToString());
         score = GameObject.Find("Text_Score").GetComponent<TextMeshProUGUI>();
         //debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
         playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
         skillGauge = GameObject.Find("Skill_Gauge").GetComponentInParent<Slider>();
         skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
+
+        // Alert Particle System
+        AlertPosition = AlertOnPrefab.transform.position;
     }
 
     // Update is called once per frame
@@ -141,26 +149,25 @@ public class PlayerController : MonoBehaviour
         switch (playerHealth)
         {
             case 1:
-                criticalVFXPlayed = true;
-
-                criticalOn.SetActive(true);
-                criticalOff.SetActive(false);
                 warning.SetActive(false);
+                if (!criticalVFXPlayed)
+                {
+                    StartCoroutine(AlertOnCoroutine());
+                };
                 break;
             case 2:
                 if (criticalVFXPlayed)
                 {
-                    criticalOn.SetActive(false);
-                    criticalOff.SetActive(true);
                     criticalVFXPlayed = false;
+                    StartCoroutine(AlertOffCoroutine());
                 }
-                criticalOn.SetActive(false);
                 warning.SetActive(true);
                 break;
             case 3:
-                criticalOn.SetActive(false);
-                criticalOff.SetActive(false);
-                warning.SetActive(false);
+                if (warning.activeSelf)
+                {
+                    warning.SetActive(false);
+                }
                 break;
         }
     }
@@ -370,6 +377,30 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(immuneTime);
         isCharacterImmuned = false;
         Debug.Log("isTrigger setted False");
+    }
+    IEnumerator AlertOnCoroutine()
+    {
+        criticalVFXPlayed = true;
+        AlertOnInstance = Instantiate(AlertOnPrefab);
+        AlertOnInstance.transform.SetParent(Canvas);
+        AlertOnInstance.transform.position = AlertPosition;
+        AlertOnInstance.SetActive(true);
+        yield return new WaitForSeconds(AlertOnPlayTime);
+        Destroy(AlertOnInstance);
+        AlertIdleInstance = Instantiate(AlertIdlePrefab);
+        AlertIdleInstance.transform.SetParent(Canvas);
+        AlertIdleInstance.transform.position = AlertPosition;
+        AlertIdleInstance.SetActive(true);
+    }
+    IEnumerator AlertOffCoroutine()
+    {
+        Destroy(AlertIdleInstance);
+        AlertOffInstance = Instantiate(AlertOffPrefab);
+        AlertOffInstance.transform.SetParent(Canvas);
+        AlertOffInstance.transform.position = AlertPosition;
+        AlertOffInstance.SetActive(true);
+        yield return new WaitForSeconds(AlertOffPlayTime);
+        Destroy(AlertOffInstance);
     }
 
     /*
