@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     Text debuggingUI;
     TextMeshProUGUI score;
     [SerializeField] int scorePerCoin = 100;
-    bool criticalVFXPlayed = false;
+    bool criticalVFXPlayed;
 
     // Alert Particle System
     [SerializeField] GameObject warning;
@@ -109,11 +109,40 @@ public class PlayerController : MonoBehaviour
 
         // Alert Particle System
         AlertPosition = AlertOnPrefab.transform.position;
+
+        // Moved from Topview Scene
+        if (PlayerPrefs.GetInt("CriticalVFXPlayed") == 1)
+        {
+            criticalVFXPlayed = true;
+        }
+        else
+        {
+            criticalVFXPlayed = false;
+        }
+
+        switch (playerHealth)
+        {
+            case 1:
+                warning.SetActive(false);
+                AlertIdleInstance = Instantiate(AlertIdlePrefab);
+                AlertIdleInstance.transform.SetParent(Canvas);
+                AlertIdleInstance.transform.position = AlertPosition;
+                AlertIdleInstance.SetActive(true);
+                break;
+            case 2:
+                warning.SetActive(true);
+                break;
+            case 3:
+                warning.SetActive(false);
+                break;
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
+
+
         playerPosition = player.transform.position;
         centerPosition = GetComponent<CapsuleCollider>().bounds.center;
         Debug.DrawRay(centerPosition, Vector3.down * distance, Color.red);
@@ -158,6 +187,7 @@ public class PlayerController : MonoBehaviour
             case 2:
                 if (criticalVFXPlayed)
                 {
+                    PlayerPrefs.SetInt("CriticalVFXPlayed", 0);
                     criticalVFXPlayed = false;
                     StartCoroutine(AlertOffCoroutine());
                 }
@@ -380,6 +410,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator AlertOnCoroutine()
     {
+        PlayerPrefs.SetInt("CriticalVFXPlayed", 1);
         criticalVFXPlayed = true;
         AlertOnInstance = Instantiate(AlertOnPrefab);
         AlertOnInstance.transform.SetParent(Canvas);
@@ -402,121 +433,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(AlertOffPlayTime);
         Destroy(AlertOffInstance);
     }
-
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log("!!!collision!!!");
-
-        if (collision.collider.gameObject.CompareTag("BoxObstacle"))
-        {
-            Debug.Log(collision.collider.gameObject.ToString());
-            BoxCollider boxCollider = collision.collider.gameObject.GetComponent<BoxCollider>();
-            boxCollider.isTrigger = true;
-            Destroy(collision.gameObject, 0.2f);
-
-            float playerYPosition = player.transform.position.y;
-            float obstacleTopYPosition = boxCollider.bounds.center.y + boxCollider.bounds.extents.y - 0.03f;
-
-            Debug.Log(playerYPosition.ToString() + " / " + obstacleTopYPosition.ToString());
-
-            if (playerYPosition < obstacleTopYPosition)
-            {
-                if (!isCharacterImmuned)
-                {
-                    Debug.Log("collision");
-                    //GetComponent<SceneController>().toGameoverScene();
-                    animator.SetBool("isHit", true);
-                    CameraShaker.Invoke();
-                    if (playerHealth > 1)
-                    {
-                        if (!isPlayerImmuned)
-                        {
-                            AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                            playerHealth--;
-                            SideViewGameplay1.sideViewGameplay1.playerHealth--;
-                            StartCoroutine(AfterCollisionImmune());
-                        }
-                        else
-                        {
-                            AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
-                        }
-
-                    }
-                    else
-                    {
-                        // stop and show left(or moved) distance to user?
-                        // ...
-                        animator.SetBool("isDead", true);
-                        player.GetComponent<SceneController>().toGameoverScene();
-                    }
-                }
-            }
-        }
-        else if (collision.collider.gameObject.CompareTag("MeshObstacle"))
-        {
-            Debug.Log(collision.collider.gameObject.ToString());
-            MeshCollider meshCollider = collision.collider.gameObject.GetComponent<MeshCollider>();
-            meshCollider.isTrigger = true;
-            Destroy(collision.gameObject, 0.2f);
-
-            //GetComponent<SceneController>().toGameoverScene();
-            animator.SetBool("isHit", true);
-            CameraShaker.Invoke();
-            if (playerHealth > 1)
-            {
-                if (!isPlayerImmuned)
-                {
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                    playerHealth--;
-                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
-                    StartCoroutine(AfterCollisionImmune());
-                }
-                else
-                {
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
-                }
-
-            }
-            else
-            {
-                // stop and show left(or moved) distance to user?
-                // ...
-
-                animator.SetBool("isDead", true);
-                player.GetComponent<SceneController>().toGameoverScene();
-            }
-
-        }
-
-        if (collision.collider.gameObject.CompareTag("Deadzone"))
-        {
-            Debug.Log("DeadZone Detected!");
-            playerHealth = 0;
-            player.GetComponent<SceneController>().toGameoverScene();
-        }
-
-        if (collision.collider.gameObject.CompareTag("Ground") && !isOnGround)
-        {
-            Debug.Log("Mid-air Collision!");
-
-            if (playerHealth > 1)
-            {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                playerHealth--;
-                //rigidbody.velocity = new Vector3(-1.2f, 0.5f, 0) * jumpForce;
-                StartCoroutine(AfterCollisionImmune());
-            }
-            else
-            {
-                // stop and show left(or moved) distance to user?
-                // ...
-
-                player.GetComponent<SceneController>().toGameoverScene();
-            }
-        }
-    }
-    */
 
     private void OnCollisionExit(Collision collision)
     {

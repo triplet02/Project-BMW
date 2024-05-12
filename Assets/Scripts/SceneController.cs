@@ -97,6 +97,7 @@ public class SceneController : MonoBehaviour
         if(CharacterInfo.characterNumber != 0)
         {
             PlayerPrefs.SetInt("Stage", 0);
+            PlayerPrefs.SetInt("CriticalVFXPlayed", 0);
             SideViewGameplay1.sideViewGameplay1.skillValue = 100;
             SideViewGameplay1.sideViewGameplay1.maxHealth = 3;
             SideViewGameplay1.sideViewGameplay1.playerHealth = SideViewGameplay1.sideViewGameplay1.maxHealth;

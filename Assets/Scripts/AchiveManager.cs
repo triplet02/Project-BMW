@@ -34,6 +34,7 @@ public class AchiveManaver : MonoBehaviour
         PlayerPrefs.SetInt("Character", 0);
         PlayerPrefs.SetInt("Health", 0);
         PlayerPrefs.SetInt("SkillGauge", 0);
+        PlayerPrefs.SetInt("CriticalVFXPlayed", 0);
 
         foreach (CharacterAchive characterAchive in characterAchives)
         {
