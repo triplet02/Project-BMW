@@ -12,6 +12,8 @@ public class SceneController : MonoBehaviour
     public GameObject[] characterImageList;
     public GameObject[] characterButtonList;
 
+    [SerializeField] float viewConvertingTime;
+
     Dictionary<string, int> stageDict = new Dictionary<string, int>()
     {
         {"Stage1", 1 },
@@ -201,6 +203,16 @@ public class SceneController : MonoBehaviour
     {
         PlayerPrefs.SetInt("Stage", StageInfo.stageNumber);
         SceneManager.LoadScene("GameClear");
+    }
+
+    public void toSideViewToTopViewScene()
+    {
+        SceneManager.LoadScene("SideView to TopView");
+    }
+
+    public void toTopViewToSideViewScene()
+    {
+        SceneManager.LoadScene("TopView to SideView");
     }
 
     public void SetScreenDirection()

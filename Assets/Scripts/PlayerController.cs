@@ -539,14 +539,16 @@ public class PlayerController : MonoBehaviour
             Debug.Log("From Side To Top View");
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "top";
-            player.GetComponent<SceneController>().toTopViewScene();
+            //player.GetComponent<SceneController>().toTopViewScene();
+            SceneManager.LoadScene("SideView to TopView");
         }
         if (other.tag.Equals("Portal1") && playerPosition.y < 2.8)
         {
             Debug.Log("From Top To Side View");
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
-            player.GetComponent<SceneController>().toSideViewScene();
+            //player.GetComponent<SceneController>().toSideViewScene();
+            SceneManager.LoadScene("TopView to SideView");
             switch (SceneManager.GetActiveScene().name)
             {
                 case "TopView Gameplay 1":
@@ -559,6 +561,7 @@ public class PlayerController : MonoBehaviour
                     SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
                     break;
             }
+            
         }
 
         if (other.tag.Equals("Goal"))
