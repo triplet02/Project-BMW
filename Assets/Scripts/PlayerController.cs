@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject[] MouseCompanions;
     [SerializeField] float DogImmuneTime = 3.0f;
     bool mouseSkillActivate = false;
+    int mouseDummy = 0;
+    int setMouseDummy = 2;
 
     // Start is called before the first frame update
     private void Start()
@@ -199,6 +201,18 @@ public class PlayerController : MonoBehaviour
                     warning.SetActive(false);
                 }
                 break;
+            default:
+                if (criticalVFXPlayed)
+                {
+                    PlayerPrefs.SetInt("CriticalVFXPlayed", 0);
+                    criticalVFXPlayed = false;
+                    StartCoroutine(AlertOffCoroutine());
+                }
+                if (warning.activeSelf)
+                {
+                    warning.SetActive(false);
+                }
+                break;
         }
     }
 
@@ -289,28 +303,19 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("[United We Stand!]");
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Mouse);
-        maxHealth += 2;
-        SideViewGameplay1.sideViewGameplay1.maxHealth += 2;
 
-        playerHealth += 2;
-        SideViewGameplay1.sideViewGameplay1.playerHealth += 2;
+        mouseDummy = setMouseDummy;
 
         mouseSkillActivate = true;
         foreach (GameObject mouseCompanion in MouseCompanions){
             mouseCompanion.SetActive(true);
         }
 
+        StartCoroutine(skillGauge.GetComponentInChildren<SkillGauge>().GaugeReduce(MouseBuffTime));
+
         yield return new WaitForSeconds(MouseBuffTime);
 
-        Debug.Log("���� �ð� ����");
-        if (playerHealth > 3)
-        {
-            playerHealth = 3;
-            SideViewGameplay1.sideViewGameplay1.playerHealth = 3;
-        }
-
-        maxHealth -= 2;
-        SideViewGameplay1.sideViewGameplay1.maxHealth -= 2;
+        mouseDummy = 0;
 
         foreach (GameObject mouseCompanion in MouseCompanions)
         {
@@ -483,6 +488,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (player.tag.Equals("Dummy"))
+        {
+            return;
+        }
+
         if (other.tag.Equals("Obstacle"))
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
@@ -493,19 +503,38 @@ public class PlayerController : MonoBehaviour
             {
                 if (!isPlayerImmuned)
                 {
+                    /*
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
                     playerHealth--;
                     SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    */
                     if (mouseSkillActivate)
                     {
-                        foreach (GameObject mouseCompanion in MouseCompanions)
+                        if (mouseDummy > 0)
                         {
-                            if (mouseCompanion.activeSelf)
+                            mouseDummy -= 1;
+
+                            foreach (GameObject mouseCompanion in MouseCompanions)
                             {
-                                mouseCompanion.SetActive(false);
-                                break;
+                                if (mouseCompanion.activeSelf)
+                                {
+                                    mouseCompanion.SetActive(false);
+                                    break;
+                                }
                             }
                         }
+                        else
+                        {
+                            AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                            playerHealth--;
+                            SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                        }
+                    }
+                    else
+                    {
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                        playerHealth--;
+                        SideViewGameplay1.sideViewGameplay1.playerHealth--;
                     }
                     StartCoroutine(AfterCollisionImmune());
                 }
@@ -524,8 +553,18 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag.Equals("Beer"))
         {
+            if (mouseSkillActivate)
+            {
+                return;
+            }
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Drink);
-            SideViewGameplay1.sideViewGameplay1.skillValue += 1;
+            SideViewGameplay1.sideViewGameplay1.skillValue += 100;
+
+            if(SideViewGameplay1.sideViewGameplay1.skillValue > 100)
+            {
+                SideViewGameplay1.sideViewGameplay1.skillValue = 100;
+            }
+
             skillGauge.value = SideViewGameplay1.sideViewGameplay1.skillValue;
         }
         if (other.tag.Equals("Coin"))

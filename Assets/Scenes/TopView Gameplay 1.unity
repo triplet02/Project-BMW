@@ -7184,13 +7184,13 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
-  warning: {fileID: 0}
-  AlertOnPrefab: {fileID: 0}
-  AlertIdlePrefab: {fileID: 0}
-  AlertOffPrefab: {fileID: 0}
+  warning: {fileID: 147541397}
+  AlertOnPrefab: {fileID: 2023492863}
+  AlertIdlePrefab: {fileID: 1281977786}
+  AlertOffPrefab: {fileID: 823109279}
   AlertOnPlayTime: 0
   AlertOffPlayTime: 0
-  Canvas: {fileID: 0}
+  Canvas: {fileID: 1689280159}
   MouseBuffTime: 3
   MouseCompanions: []
   DogImmuneTime: 3
@@ -8851,13 +8851,13 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
-  warning: {fileID: 0}
-  AlertOnPrefab: {fileID: 0}
-  AlertIdlePrefab: {fileID: 0}
-  AlertOffPrefab: {fileID: 0}
+  warning: {fileID: 147541397}
+  AlertOnPrefab: {fileID: 2023492863}
+  AlertIdlePrefab: {fileID: 1281977786}
+  AlertOffPrefab: {fileID: 823109279}
   AlertOnPlayTime: 0
   AlertOffPlayTime: 0
-  Canvas: {fileID: 0}
+  Canvas: {fileID: 1689280159}
   MouseBuffTime: 3
   MouseCompanions:
   - {fileID: 1513643961}
@@ -13954,6 +13954,10 @@ PrefabInstance:
     - target: {fileID: 7212987889187860998, guid: dcfaeafbc8b027048a1e07bec2e27591, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212987889187860998, guid: dcfaeafbc8b027048a1e07bec2e27591, type: 3}
+      propertyPath: m_TagString
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 8021613423119624380, guid: dcfaeafbc8b027048a1e07bec2e27591, type: 3}
       propertyPath: m_RootOrder
@@ -19348,6 +19352,10 @@ PrefabInstance:
     - target: {fileID: 7212987889187860998, guid: dcfaeafbc8b027048a1e07bec2e27591, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212987889187860998, guid: dcfaeafbc8b027048a1e07bec2e27591, type: 3}
+      propertyPath: m_TagString
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 8021613423119624380, guid: dcfaeafbc8b027048a1e07bec2e27591, type: 3}
       propertyPath: m_RootOrder

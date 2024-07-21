@@ -26,4 +26,16 @@ public class SkillGauge : MonoBehaviour
             skillGaugeFill.color = Color.red;
         }
     }
+
+    public IEnumerator GaugeReduce(float skillTime)
+    {
+        //Debug.Log("GuageReduce Coroutine!!");
+        while (slider.value > 0)
+        {
+            //Debug.Log("GaugeReduce Working... / left : " + slider.value.ToString());
+            slider.value -= (100 / (skillTime));
+            yield return new WaitForSeconds(1f);
+        }
+        //Debug.Log("GaugeReduce Coroutine End!!");
+    }
 }

@@ -24,6 +24,7 @@ TagManager:
   - JumpingBoard
   - Trampoline
   - Platform
+  - Dummy
   layers:
   - Default
   - TransparentFX

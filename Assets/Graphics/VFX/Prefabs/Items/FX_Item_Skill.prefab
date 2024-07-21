@@ -9772,6 +9772,7 @@ GameObject:
   - component: {fileID: 5009862921054397902}
   - component: {fileID: 5009862921054397489}
   - component: {fileID: 881640921}
+  - component: {fileID: 8847381863972621952}
   m_Layer: 0
   m_Name: FX_Item_Skill
   m_TagString: Untagged
@@ -14601,6 +14602,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8847381863972621952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009862921054397488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ea8ae57399d47309aa7bf36a5b39bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinEffectPrefab: {fileID: 2593800246564849898, guid: d7e3a34398b83eb408bc051c0cd1c809, type: 3}
 --- !u!1 &8058950875470109424
 GameObject:
   m_ObjectHideFlags: 0

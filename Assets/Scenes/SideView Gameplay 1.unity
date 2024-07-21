@@ -12490,7 +12490,7 @@ GameObject:
   - component: {fileID: 502736533}
   m_Layer: 0
   m_Name: MouseCompanion2
-  m_TagString: Untagged
+  m_TagString: Dummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12509,6 +12509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!114 &502736534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12753,7 +12754,7 @@ GameObject:
   - component: {fileID: 541141890}
   m_Layer: 0
   m_Name: MouseCompanion1
-  m_TagString: Untagged
+  m_TagString: Dummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12772,6 +12773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!114 &541141891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22956,6 +22958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!114 &1461707842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23567,6 +23570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!54 &1669027200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23913,6 +23917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!1 &1735743630
 GameObject:
   m_ObjectHideFlags: 0
@@ -25079,6 +25084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!54 &1964858794
 Rigidbody:
   m_ObjectHideFlags: 0
