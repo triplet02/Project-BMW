@@ -152,6 +152,12 @@ public class PlayerController : MonoBehaviour
         CheckGround();
         UpdateHealth();
         UpdateScore();
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        {
+            animator.SetBool("isHit", false);
+        }
+
         /*
         if (isSlide)
         {
@@ -329,6 +335,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("[No Guts No Glory!]");
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Dog);
         isPlayerImmuned = true;
+        StartCoroutine(skillGauge.GetComponentInChildren<SkillGauge>().GaugeReduce(DogImmuneTime));
         yield return new WaitForSeconds(DogImmuneTime);
         isPlayerImmuned = false;
 
@@ -409,6 +416,7 @@ public class PlayerController : MonoBehaviour
         isCharacterImmuned = true;
         Debug.Log("isTrigger setted True");
 
+        //animator.SetBool("isHit", false);
         yield return new WaitForSeconds(immuneTime);
         isCharacterImmuned = false;
         Debug.Log("isTrigger setted False");
@@ -449,6 +457,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag.Equals("Obstacle"))
         {
+            Debug.Log("isHit anim go false");
             animator.SetBool("isHit", false);
         }
     }
@@ -461,6 +470,7 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
             animator.SetBool("isHit", true);
             CameraShaker.Invoke();
+
             if (playerHealth > 1)
             {
                 if (!isPlayerImmuned)
@@ -469,12 +479,14 @@ public class PlayerController : MonoBehaviour
                     playerHealth--;
                     SideViewGameplay1.sideViewGameplay1.playerHealth--;
                     StartCoroutine(AfterCollisionImmune());
+                    animator.SetBool("isHit", false);
                 }
                 else
                 {
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
                 }
-
+                Debug.Log("isHit anim go false");
+                animator.SetBool("isHit", false);
             }
             else
             {
