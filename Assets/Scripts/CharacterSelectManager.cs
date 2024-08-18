@@ -10,6 +10,9 @@ public class CharacterSelectManager : MonoBehaviour
     public GameObject[] slideButtons;
     public GameObject[] skillGauges;
 
+    public GameObject currentActiveJumpButton;
+    public GameObject currentActiveSlideButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,9 @@ public class CharacterSelectManager : MonoBehaviour
                 if (currentSceneName.Contains("SideView")){
                     jumpButtons[i].SetActive(true);
                     slideButtons[i].SetActive(true);
+
+                    currentActiveJumpButton = jumpButtons[i];
+                    currentActiveSlideButton = slideButtons[i];
                 }
             }
             else
@@ -42,5 +48,15 @@ public class CharacterSelectManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public GameObject GetCurrentActiveJumpButton()
+    {
+        return currentActiveJumpButton;
+    }
+
+    public GameObject GetCurrentActiveSlideButton()
+    {
+        return currentActiveSlideButton;
     }
 }

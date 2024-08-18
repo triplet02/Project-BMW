@@ -6,7 +6,7 @@ public class MainCameraController : MonoBehaviour
 {
     [SerializeField] GameObject[] players;
     [SerializeField] float jumpCameraHeight;
-    Vector3 cameraDistance = new Vector3(3.1f, 1.7f, -5.0f);
+    Vector3 cameraDistance = new Vector3(3.0f, 2.5f, -6.5f);
     Vector3 gameStartPlayerPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
     public GameObject player;
@@ -35,7 +35,7 @@ public class MainCameraController : MonoBehaviour
     {
         Debug.Log(player.GetComponent<PlayerController>().ToString());
         jumpCount = player.GetComponent<PlayerController>().GetJumpCount();
-        isGround = player.GetComponent<PlayerController>().GetIsGround();
+        isGround = player.GetComponent<PlayerController>().GetIsRunning();
         yVelocity = player.GetComponent<PlayerController>().Get_y_Velocity();
 
         float playerXPosition = player.transform.position.x;

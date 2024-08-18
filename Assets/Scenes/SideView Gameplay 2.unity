@@ -914,6 +914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!114 &146933477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,6 +942,7 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
+  characterSelectManager: {fileID: 1586665063}
   warning: {fileID: 2051993244}
   AlertOnPrefab: {fileID: 225494156}
   AlertIdlePrefab: {fileID: 542761895}
@@ -2422,6 +2424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!114 &284430717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2449,6 +2452,7 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
+  characterSelectManager: {fileID: 0}
   warning: {fileID: 0}
   AlertOnPrefab: {fileID: 0}
   AlertIdlePrefab: {fileID: 0}
@@ -6231,6 +6235,7 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
+  characterSelectManager: {fileID: 0}
   warning: {fileID: 0}
   AlertOnPrefab: {fileID: 0}
   AlertIdlePrefab: {fileID: 0}
@@ -6255,6 +6260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!1 &987316636
 GameObject:
   m_ObjectHideFlags: 0
@@ -6324,6 +6330,8 @@ MonoBehaviour:
   coin: 0
   currentView: 
   currentMapIdx: 0
+  sideViewMaps: []
+  topViewMaps: []
 --- !u!4 &1007011719
 Transform:
   m_ObjectHideFlags: 0
@@ -6906,6 +6914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!114 &1099405923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6933,6 +6942,7 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
+  characterSelectManager: {fileID: 1586665063}
   warning: {fileID: 2051993244}
   AlertOnPrefab: {fileID: 225494156}
   AlertIdlePrefab: {fileID: 542761895}
@@ -7933,6 +7943,7 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
+  characterSelectManager: {fileID: 1586665063}
   warning: {fileID: 2051993244}
   AlertOnPrefab: {fileID: 225494156}
   AlertIdlePrefab: {fileID: 542761895}
@@ -7957,6 +7968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!136 &1273365015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19367,6 +19379,8 @@ MonoBehaviour:
   - {fileID: 258874592}
   - {fileID: 700093841}
   - {fileID: 291834726}
+  currentActiveJumpButton: {fileID: 0}
+  currentActiveSlideButton: {fileID: 0}
 --- !u!4 &1586665065
 Transform:
   m_ObjectHideFlags: 0
@@ -26148,6 +26162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageList: []
   characterButtonList: []
+  viewConvertingTime: 0
 --- !u!114 &2050951680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26175,6 +26190,7 @@ MonoBehaviour:
   skillGauge: {fileID: 0}
   immuneTime: 1
   scorePerCoin: 100
+  characterSelectManager: {fileID: 0}
   warning: {fileID: 0}
   AlertOnPrefab: {fileID: 0}
   AlertIdlePrefab: {fileID: 0}

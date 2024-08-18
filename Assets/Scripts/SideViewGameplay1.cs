@@ -14,6 +14,8 @@ public class SideViewGameplay1 : MonoBehaviour
     public int coin;
     public string currentView;  //side, top
     public int currentMapIdx;  //sideview area index
+    public GameObject[] sideViewMaps;
+    public GameObject[] topViewMaps;
 
     private void Awake()
     {

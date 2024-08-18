@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 9164888321232446664}
   - component: {fileID: 8796333049142061373}
   m_Layer: 0
-  m_Name: St1_S_Module_Start
+  m_Name: St1_001_start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

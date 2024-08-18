@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     float distance = 0.0f;
     bool isOnGround = true;
     bool isOnObstacle = false;
+    bool isRunning = true;
 
     // Physics and Collision
     new Rigidbody rigidbody;
@@ -42,8 +43,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask obstacleLayerMask = 0;
     [SerializeField] Slider skillGauge;
     [SerializeField] float immuneTime = 1.0f;
-
-    bool isCharacterImmuned = false;
+    [SerializeField] float fallingGravity = 0.0f;
+    Vector3 fallingForceBias;
+    Vector3 resetGravity = new Vector3(0.0f, -9.81f, 0.0f);
 
     Vector3 standColliderCenter;
     float standColliderHeight;
@@ -53,12 +55,14 @@ public class PlayerController : MonoBehaviour
 
     // Animation Control
     Animator animator = null;
+    bool pastIsRunning;
 
     // UI, Debugging
     Text debuggingUI;
     TextMeshProUGUI score;
     [SerializeField] int scorePerCoin = 100;
     bool criticalVFXPlayed;
+    GameObject jumpButton, SlideButton;
 
     // Alert Particle System
     [SerializeField] GameObject warning;
@@ -103,6 +107,8 @@ public class PlayerController : MonoBehaviour
         distance = capsuleCollider.bounds.extents.y + 0.05f;
         animator = player.GetComponentInChildren<Animator>();
 
+        fallingForceBias = new Vector3(0.0f, -fallingGravity, 0.0f);
+
         score = GameObject.Find("Text_Score").GetComponent<TextMeshProUGUI>();
         //debuggingUI = GameObject.Find("Game UI").GetComponent<Text>();
         playerHealth = SideViewGameplay1.sideViewGameplay1.playerHealth;
@@ -111,6 +117,12 @@ public class PlayerController : MonoBehaviour
 
         // Alert Particle System
         AlertPosition = AlertOnPrefab.transform.position;
+
+        //UI
+        GameObject characterSelectManager = GameObject.Find("CharacterSelectManager");
+        jumpButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveJumpButton();
+        SlideButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveSlideButton();
+
 
         // Moved from Topview Scene
         if (PlayerPrefs.GetInt("CriticalVFXPlayed") == 1)
@@ -149,7 +161,17 @@ public class PlayerController : MonoBehaviour
         centerPosition = GetComponent<CapsuleCollider>().bounds.center;
         Debug.DrawRay(centerPosition, Vector3.down * distance, Color.red);
 
+        pastIsRunning = isRunning;
         CheckGround();
+        if(pastIsRunning != isRunning && isRunning)
+        {
+            animator.SetBool("isJustLanded", true);
+        }
+        else
+        {
+            animator.SetBool("isJustLanded", false);
+        }
+
         UpdateHealth();
         UpdateScore();
 
@@ -237,17 +259,22 @@ public class PlayerController : MonoBehaviour
             {
                 //Debug.Log("jump");
                 animator.SetBool("isJump", true);
-                isOnGround = false;
+                isRunning = false;
                 animator.SetBool("isOnGround", false);
                 rigidbody.velocity = Vector3.up * jumpForce;
             }
             else
             {
+                Physics.gravity = resetGravity;
                 animator.SetBool("isDoubleJump", true);
                 isDoubleJump = true;
                 rigidbody.velocity = Vector3.up * jumpForce;
             }
             jumpCount++;
+            if(jumpCount >= maxJumpCount)
+            {
+                jumpButton.GetComponent<Button>().interactable = false;
+            }
         }
     }
     /*
@@ -344,20 +371,38 @@ public class PlayerController : MonoBehaviour
     private void CheckGround()
     {
         Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;
+        if(player.transform.position.y >= 0.1)
+        {
+            SlideButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            SlideButton.GetComponent<Button>().interactable = true;
+        }
+
+        isOnGround = Physics.Raycast(centerPosition, Vector3.down, distance, groundLayerMask);
+        isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, distance, obstacleLayerMask);
+
+        if(isOnGround || isOnObstacle)
+        {
+            animator.SetBool("isOnGround", true);
+            isRunning = true;
+        }
+        else
+        {
+            animator.SetBool("isOnGround", false);
+            isRunning = false;
+        }
 
         if (rigidbody.velocity.y < -0.1f)
         {
-            //Debug.Log("[@@@]Ground Checking");
-            isOnGround = Physics.Raycast(centerPosition, Vector3.down, distance, groundLayerMask);
-            //Debug.Log("[@@@] isOnGround = " + isOnGround.ToString());
-            isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, distance, obstacleLayerMask);
-            //Debug.Log("[@@@]isOnGround = " + isOnGround.ToString());
-
             if (isOnGround || isOnObstacle)
             {
-                jumpCount = 0;
+                Physics.gravity = resetGravity;
 
+                jumpCount = 0;
                 isDoubleJump = false;
+                jumpButton.GetComponent<Button>().interactable = true;
 
                 animator.SetBool("isOnGround", true);
                 animator.SetBool("isFalling", false);
@@ -367,6 +412,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                Physics.gravity = fallingForceBias;
                 animator.SetBool("isFalling", true);
             }
         }
@@ -388,12 +434,15 @@ public class PlayerController : MonoBehaviour
 
     public void StartSlide()
     {
-        isSlide = true;
-        animator.SetBool("isStartSlide", true);
-        animator.SetBool("isSliding", true);
-        capsuleCollider.height = 0.8f;
-        capsuleCollider.center = new Vector3(0.0f, 0.4f, -0.2f);
-        rigidbody.useGravity = false;
+        if (isRunning)
+        {
+            isSlide = true;
+            animator.SetBool("isStartSlide", true);
+            animator.SetBool("isSliding", true);
+            capsuleCollider.height = 0.8f;
+            capsuleCollider.center = new Vector3(0.0f, 0.4f, -0.2f);
+            rigidbody.useGravity = false;
+        }
     }
 
     public void EndSlide()
@@ -406,19 +455,19 @@ public class PlayerController : MonoBehaviour
         capsuleCollider.height = standColliderHeight;
         capsuleCollider.center = standColliderCenter;
         isSlide = false;
-        isOnGround = true;
+        isRunning = true;
         //Debug.Log("[@@@] isSlide : " + isSlide.ToString());
     }
 
     IEnumerator AfterCollisionImmune()
     {
         Debug.Log("immune subroutine started");
-        isCharacterImmuned = true;
+        isPlayerImmuned = true;
         Debug.Log("isTrigger setted True");
 
         //animator.SetBool("isHit", false);
         yield return new WaitForSeconds(immuneTime);
-        isCharacterImmuned = false;
+        isPlayerImmuned = false;
         Debug.Log("isTrigger setted False");
     }
     IEnumerator AlertOnCoroutine()
@@ -471,9 +520,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isHit", true);
             CameraShaker.Invoke();
 
-            if (playerHealth > 1)
+            if (!isPlayerImmuned)
             {
-                if (!isPlayerImmuned)
+                if (playerHealth > 1)
                 {
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
                     playerHealth--;
@@ -483,17 +532,15 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                    // stop and show left(or moved) distance to user?
+                    // ...
+                    animator.SetBool("isDead", true);
+                    player.GetComponent<SceneController>().toGameoverScene();
                 }
-                Debug.Log("isHit anim go false");
-                animator.SetBool("isHit", false);
             }
             else
             {
-                // stop and show left(or moved) distance to user?
-                // ...
-                animator.SetBool("isDead", true);
-                player.GetComponent<SceneController>().toGameoverScene();
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
             }
         }
     }
@@ -504,22 +551,17 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-
         if (other.tag.Equals("Obstacle"))
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
             Destroy(other.gameObject, 0.2f);
             animator.SetBool("isHit", true);
             CameraShaker.Invoke();
-            if (playerHealth > 1)
+            if (!isPlayerImmuned)
             {
-                if (!isPlayerImmuned)
+
+                if (playerHealth > 1)
                 {
-                    /*
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                    playerHealth--;
-                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
-                    */
                     if (mouseSkillActivate)
                     {
                         if (mouseDummy > 0)
@@ -535,33 +577,29 @@ public class PlayerController : MonoBehaviour
                                 }
                             }
                         }
-                        else
-                        {
-                            AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                            playerHealth--;
-                            SideViewGameplay1.sideViewGameplay1.playerHealth--;
-                        }
-                    }
-                    else
-                    {
-                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                        playerHealth--;
-                        SideViewGameplay1.sideViewGameplay1.playerHealth--;
                     }
                     StartCoroutine(AfterCollisionImmune());
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                    playerHealth--;
+                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
                 }
                 else
                 {
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
+                    // stop and show left(or moved) distance to user?
+                    // ...
+                    animator.SetBool("isDead", true);
+                    player.GetComponent<SceneController>().toGameoverScene();
                 }
             }
             else
             {
-                // stop and show left(or moved) distance to user?
-                // ...
-                animator.SetBool("isDead", true);
-                player.GetComponent<SceneController>().toGameoverScene();
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Immune);
             }
+        }
+        if (other.tag.Equals("Deadzone"))
+        {
+            player.GetComponent<SceneController>().toGameoverScene();
+            playerHealth = 0;
         }
         if (other.tag.Equals("Beer"))
         {
@@ -590,6 +628,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("From Side To Top View");
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "top";
+            SideViewGameplay1.sideViewGameplay1.currentMapIdx = 0;
             //player.GetComponent<SceneController>().toTopViewScene();
             SceneManager.LoadScene("SideView to TopView");
         }
@@ -603,7 +642,7 @@ public class PlayerController : MonoBehaviour
             switch (SceneManager.GetActiveScene().name)
             {
                 case "TopView Gameplay 1":
-                    SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
+                    SideViewGameplay1.sideViewGameplay1.currentMapIdx = 12;
                     break;
                 case "TopView Gameplay 2":
                     SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
@@ -614,7 +653,6 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-
         if (other.tag.Equals("Goal"))
         {
             Debug.Log("Stage Clear");
@@ -636,7 +674,7 @@ public class PlayerController : MonoBehaviour
         return jumpCount;
     }
 
-    public bool GetIsGround()
+    public bool GetIsRunning()
     {
         return (isOnGround || isOnObstacle);
     }
