@@ -25,6 +25,7 @@ TagManager:
   - Trampoline
   - Platform
   - Dummy
+  - Truck
   layers:
   - Default
   - TransparentFX

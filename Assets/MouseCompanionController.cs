@@ -22,22 +22,7 @@ public class MouseCompanionController : MonoBehaviour
     void Update()
     {
         parentMousePosition = parentMouse.transform.position;
-        Debug.Log("[ParentMouse Position] : " + parentMousePosition.ToString());
         companion.transform.position = parentMousePosition - positionBias;
-        Debug.Log("[Companion Position] : (Bias)" + positionBias.ToString() + " / " + companion.transform.position.ToString());
-
-        string parentAnimatorStatus = parentAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-        string companionAnimationStatus = companionAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-
-        //Debug.Log("[Parent] : " + parentAnimatorStatus);
-        //sDebug.Log("[Companion] : " + companionAnimationStatus);
-
-        /*
-        if (!companionAnimationStatus.Equals(parentAnimatorStatus))
-        {
-            companionAnimator.Play(parentAnimatorStatus);
-        }
-        */
     }
 
     public Vector3 GetPositionBias()

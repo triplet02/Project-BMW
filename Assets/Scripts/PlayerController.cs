@@ -547,6 +547,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("[Collision(not trigger)] : " + collision.collider.gameObject.tag.ToString());
         if (collision.collider.gameObject.CompareTag("Ground") &&
             collision.collider.gameObject.transform.position.y > centerPosition.y)
         {
@@ -587,6 +588,12 @@ public class PlayerController : MonoBehaviour
         if (player.tag.Equals("Dummy"))
         {
             return;
+        }
+        if (other.tag.Equals("Truck"))
+        {
+            animator.SetBool("isDead", true);
+            MouseCompanionAnimatorSetter("isDead", true);
+            player.GetComponent<SceneController>().toGameoverScene();
         }
         if (other.tag.Equals("Obstacle"))
         {
