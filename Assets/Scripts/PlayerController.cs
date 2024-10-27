@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     TextMeshProUGUI score;
     [SerializeField] int scorePerCoin = 100;
     bool criticalVFXPlayed;
+    GameObject characterSelectManager;
     GameObject jumpButton, SlideButton;
 
     // Alert Particle System
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour
     bool mouseSkillActivate = false;
     int mouseDummy = 0;
     int setMouseDummy = 2;
+    [SerializeField] Vector3[] mouseCompanionPositionBias;
 
     // Start is called before the first frame update
     private void Start()
@@ -119,9 +121,12 @@ public class PlayerController : MonoBehaviour
         AlertPosition = AlertOnPrefab.transform.position;
 
         //UI
-        GameObject characterSelectManager = GameObject.Find("CharacterSelectManager");
+        characterSelectManager = GameObject.Find("CharacterSelectManager");
         jumpButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveJumpButton();
         SlideButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveSlideButton();
+
+        Debug.Log("[JumpButton] : " + jumpButton.ToString());
+        Debug.Log("[SlideButton] : " + SlideButton.ToString());
 
 
         // Moved from Topview Scene
@@ -155,8 +160,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
-
+        if(jumpButton == null)
+        {
+            jumpButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveJumpButton();
+        }
+        if(SlideButton == null)
+        {
+            SlideButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveSlideButton();
+        }
         playerPosition = player.transform.position;
         centerPosition = GetComponent<CapsuleCollider>().bounds.center;
         Debug.DrawRay(centerPosition, Vector3.down * distance, Color.red);
@@ -166,10 +177,12 @@ public class PlayerController : MonoBehaviour
         if(pastIsRunning != isRunning && isRunning)
         {
             animator.SetBool("isJustLanded", true);
+            MouseCompanionAnimatorSetter("isJustLanded", true);
         }
         else
         {
             animator.SetBool("isJustLanded", false);
+            MouseCompanionAnimatorSetter("isJustLanded", false);
         }
 
         UpdateHealth();
@@ -178,6 +191,7 @@ public class PlayerController : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {
             animator.SetBool("isHit", false);
+            MouseCompanionAnimatorSetter("isHit", false);
         }
 
         /*
@@ -259,14 +273,17 @@ public class PlayerController : MonoBehaviour
             {
                 //Debug.Log("jump");
                 animator.SetBool("isJump", true);
+                MouseCompanionAnimatorSetter("isJump", true);
                 isRunning = false;
                 animator.SetBool("isOnGround", false);
+                MouseCompanionAnimatorSetter("isOnGround", false);
                 rigidbody.velocity = Vector3.up * jumpForce;
             }
             else
             {
                 Physics.gravity = resetGravity;
                 animator.SetBool("isDoubleJump", true);
+                MouseCompanionAnimatorSetter("isDoubleJump", true);
                 isDoubleJump = true;
                 rigidbody.velocity = Vector3.up * jumpForce;
             }
@@ -328,7 +345,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("�̹� �ִ� �Ÿ��Դϴ�.");
+            Debug.Log("Health is Already Full.");
         }
     }
 
@@ -341,6 +358,9 @@ public class PlayerController : MonoBehaviour
 
         mouseSkillActivate = true;
         foreach (GameObject mouseCompanion in MouseCompanions){
+            Vector3 positionBias = mouseCompanion.GetComponent<MouseCompanionController>().GetPositionBias();
+            Debug.Log("[dummy position log] player : " + player.transform.position.ToString() + " / bias : " + positionBias.ToString() + " / final : " + (player.transform.position - positionBias).ToString());
+            mouseCompanion.transform.position = player.transform.position - positionBias;
             mouseCompanion.SetActive(true);
         }
 
@@ -348,6 +368,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(MouseBuffTime);
 
+        mouseSkillActivate = false;
         mouseDummy = 0;
 
         foreach (GameObject mouseCompanion in MouseCompanions)
@@ -386,11 +407,13 @@ public class PlayerController : MonoBehaviour
         if(isOnGround || isOnObstacle)
         {
             animator.SetBool("isOnGround", true);
+            MouseCompanionAnimatorSetter("isOnGround", true);
             isRunning = true;
         }
         else
         {
             animator.SetBool("isOnGround", false);
+            MouseCompanionAnimatorSetter("isOnGround", false);
             isRunning = false;
         }
 
@@ -408,12 +431,17 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isFalling", false);
                 animator.SetBool("isJump", false);
                 animator.SetBool("isDoubleJump", false);
+                MouseCompanionAnimatorSetter("isOnGround", true);
+                MouseCompanionAnimatorSetter("isFalling", false);
+                MouseCompanionAnimatorSetter("isJump", false);
+                MouseCompanionAnimatorSetter("isDoubleJump", false);
 
             }
             else
             {
                 Physics.gravity = fallingForceBias;
                 animator.SetBool("isFalling", true);
+                MouseCompanionAnimatorSetter("isFalling", true);
             }
         }
     }
@@ -438,7 +466,9 @@ public class PlayerController : MonoBehaviour
         {
             isSlide = true;
             animator.SetBool("isStartSlide", true);
+            MouseCompanionAnimatorSetter("isStartSlide", true);
             animator.SetBool("isSliding", true);
+            MouseCompanionAnimatorSetter("isSliding", true);
             capsuleCollider.height = 0.8f;
             capsuleCollider.center = new Vector3(0.0f, 0.4f, -0.2f);
             rigidbody.useGravity = false;
@@ -450,7 +480,9 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("[@@@] isSlide : " + isSlide.ToString());
         //Debug.Log("[@@@] EndSlide");
         animator.SetBool("isStartSlide", false);
+        MouseCompanionAnimatorSetter("isStartSlide", false);
         animator.SetBool("isSliding", false);
+        MouseCompanionAnimatorSetter("isSliding", false);
         rigidbody.useGravity = true;
         capsuleCollider.height = standColliderHeight;
         capsuleCollider.center = standColliderCenter;
@@ -499,6 +531,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         animator.SetBool("isHit", false);
+        MouseCompanionAnimatorSetter("isHit", false);
         capsuleCollider.isTrigger = false;
     }
 
@@ -508,6 +541,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("isHit anim go false");
             animator.SetBool("isHit", false);
+            MouseCompanionAnimatorSetter("isHit", false);
         }
     }
 
@@ -518,6 +552,7 @@ public class PlayerController : MonoBehaviour
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
             animator.SetBool("isHit", true);
+            MouseCompanionAnimatorSetter("isHit", true);
             CameraShaker.Invoke();
 
             if (!isPlayerImmuned)
@@ -529,12 +564,14 @@ public class PlayerController : MonoBehaviour
                     SideViewGameplay1.sideViewGameplay1.playerHealth--;
                     StartCoroutine(AfterCollisionImmune());
                     animator.SetBool("isHit", false);
+                    MouseCompanionAnimatorSetter("isHit", false);
                 }
                 else
                 {
                     // stop and show left(or moved) distance to user?
                     // ...
                     animator.SetBool("isDead", true);
+                    MouseCompanionAnimatorSetter("isDead", true);
                     player.GetComponent<SceneController>().toGameoverScene();
                 }
             }
@@ -554,12 +591,16 @@ public class PlayerController : MonoBehaviour
         if (other.tag.Equals("Obstacle"))
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-            Destroy(other.gameObject, 0.2f);
+
+            if (!other.gameObject.name.Contains("Crane"))
+            {
+                Destroy(other.gameObject, 0.2f);
+            }
             animator.SetBool("isHit", true);
+            MouseCompanionAnimatorSetter("isHit", true);
             CameraShaker.Invoke();
             if (!isPlayerImmuned)
             {
-
                 if (playerHealth > 1)
                 {
                     if (mouseSkillActivate)
@@ -578,16 +619,20 @@ public class PlayerController : MonoBehaviour
                             }
                         }
                     }
-                    StartCoroutine(AfterCollisionImmune());
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
-                    playerHealth--;
-                    SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    else
+                    {
+                        StartCoroutine(AfterCollisionImmune());
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Collision);
+                        playerHealth--;
+                        SideViewGameplay1.sideViewGameplay1.playerHealth--;
+                    }
                 }
                 else
                 {
                     // stop and show left(or moved) distance to user?
                     // ...
                     animator.SetBool("isDead", true);
+                    MouseCompanionAnimatorSetter("isDead", true);
                     player.GetComponent<SceneController>().toGameoverScene();
                 }
             }
@@ -658,6 +703,18 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Stage Clear");
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
             player.GetComponent<SceneController>().toGameClearScene();
+        }
+    }
+
+    public void MouseCompanionAnimatorSetter(string status, bool value)
+    {
+        if(MouseCompanions.Length > 0)
+        {
+            foreach(GameObject mouseCompanion in MouseCompanions)
+            {
+                Animator mouseCompanionAnimator = mouseCompanion.GetComponent<Animator>();
+                mouseCompanionAnimator.SetBool(status, value);
+            }
         }
     }
 

@@ -12486,8 +12486,7 @@ GameObject:
   - component: {fileID: 502736537}
   - component: {fileID: 502736536}
   - component: {fileID: 502736535}
-  - component: {fileID: 502736534}
-  - component: {fileID: 502736533}
+  - component: {fileID: 502736539}
   m_Layer: 0
   m_Name: MouseCompanion2
   m_TagString: Dummy
@@ -12495,61 +12494,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &502736533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502736532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterImageList: []
-  characterButtonList: []
-  viewConvertingTime: 0
---- !u!114 &502736534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502736532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0579ddec41fd1e94e9e39c72609b8150, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 502736532}
-  mainCamera: {fileID: 0}
-  standByTime: 1.3
-  jumpForce: 7
-  maxJumpCount: 2
-  slideTime: 1.3
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 535
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  skillGauge: {fileID: 0}
-  immuneTime: 1
-  fallingGravity: 0
-  scorePerCoin: 100
-  warning: {fileID: 0}
-  AlertOnPrefab: {fileID: 0}
-  AlertIdlePrefab: {fileID: 0}
-  AlertOffPrefab: {fileID: 0}
-  AlertOnPlayTime: 0
-  AlertOffPlayTime: 0
-  Canvas: {fileID: 0}
-  MouseBuffTime: 3
-  MouseCompanions:
-  - {fileID: 0}
-  - {fileID: 0}
-  DogImmuneTime: 3
 --- !u!136 &502736535
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12607,16 +12551,31 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502736532}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5212117, y: 0.05, z: -1.0363483}
+  m_LocalRotation: {x: -0, y: 0.76604444, z: -0, w: 0.6427877}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1633162089}
   - {fileID: 982376802}
-  m_Father: {fileID: 596126353}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &502736539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502736532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347c48dbf7f55cb428e3d52a126a0d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  companion: {fileID: 502736532}
+  parentMouse: {fileID: 1964858790}
+  positionBias: {x: 1.5, y: 0, z: -0.9}
 --- !u!1 &531397728
 GameObject:
   m_ObjectHideFlags: 0
@@ -12751,8 +12710,7 @@ GameObject:
   - component: {fileID: 541141894}
   - component: {fileID: 541141893}
   - component: {fileID: 541141892}
-  - component: {fileID: 541141891}
-  - component: {fileID: 541141890}
+  - component: {fileID: 541141896}
   m_Layer: 0
   m_Name: MouseCompanion1
   m_TagString: Dummy
@@ -12760,61 +12718,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &541141890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541141889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98d923fe78b1cc469213abbbad6d6fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterImageList: []
-  characterButtonList: []
-  viewConvertingTime: 0
---- !u!114 &541141891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541141889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0579ddec41fd1e94e9e39c72609b8150, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 541141889}
-  mainCamera: {fileID: 0}
-  standByTime: 1.3
-  jumpForce: 7
-  maxJumpCount: 2
-  slideTime: 1.3
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 535
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  skillGauge: {fileID: 0}
-  immuneTime: 1
-  fallingGravity: 0
-  scorePerCoin: 100
-  warning: {fileID: 0}
-  AlertOnPrefab: {fileID: 0}
-  AlertIdlePrefab: {fileID: 0}
-  AlertOffPrefab: {fileID: 0}
-  AlertOnPlayTime: 0
-  AlertOffPlayTime: 0
-  Canvas: {fileID: 0}
-  MouseBuffTime: 3
-  MouseCompanions:
-  - {fileID: 0}
-  - {fileID: 0}
-  DogImmuneTime: 3
 --- !u!136 &541141892
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12872,16 +12775,31 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541141889}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35417312, y: 0.05, z: -1.1907022}
+  m_LocalRotation: {x: -0, y: 0.76604444, z: -0, w: 0.6427877}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 298306139}
   - {fileID: 1053461716}
-  m_Father: {fileID: 596126353}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &541141896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541141889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347c48dbf7f55cb428e3d52a126a0d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  companion: {fileID: 541141889}
+  parentMouse: {fileID: 1964858790}
+  positionBias: {x: 1.4, y: 0, z: 0.5}
 --- !u!1 &542181689
 GameObject:
   m_ObjectHideFlags: 0
@@ -18583,11 +18501,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580282063}
   m_CullTransparentMesh: 1
---- !u!4 &596126353 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8021613423119624380, guid: dcfaeafbc8b027048a1e07bec2e27591, type: 3}
-  m_PrefabInstance: {fileID: 1964858789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &603518620
 GameObject:
   m_ObjectHideFlags: 0
@@ -19621,7 +19534,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 541141891}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TryJump
         m_Mode: 1
@@ -19633,7 +19546,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 502736534}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TryJump
         m_Mode: 1
@@ -23003,6 +22916,7 @@ MonoBehaviour:
   MouseBuffTime: 6
   MouseCompanions: []
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!136 &1461707843
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -23552,7 +23466,7 @@ MonoBehaviour:
     m_Bits: 256
   skillGauge: {fileID: 0}
   immuneTime: 1
-  fallingGravity: 15
+  fallingGravity: 20
   scorePerCoin: 100
   warning: {fileID: 1995215733}
   AlertOnPrefab: {fileID: 739766465}
@@ -23564,6 +23478,7 @@ MonoBehaviour:
   MouseBuffTime: 6
   MouseCompanions: []
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!114 &1669027199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24182,7 +24097,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 541141891}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StartSlide
           m_Mode: 1
@@ -24194,7 +24109,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 502736534}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StartSlide
           m_Mode: 1
@@ -24222,7 +24137,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 541141891}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: EndSlide
           m_Mode: 1
@@ -24234,7 +24149,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 502736534}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: EndSlide
           m_Mode: 1
@@ -25065,7 +24980,7 @@ MonoBehaviour:
     m_Bits: 256
   skillGauge: {fileID: 0}
   immuneTime: 1
-  fallingGravity: 15
+  fallingGravity: 20
   scorePerCoin: 100
   warning: {fileID: 1995215733}
   AlertOnPrefab: {fileID: 739766465}
@@ -25079,6 +24994,9 @@ MonoBehaviour:
   - {fileID: 541141889}
   - {fileID: 502736532}
   DogImmuneTime: 3
+  mouseCompanionPositionBias:
+  - {x: 1.2, y: 0, z: 0.3}
+  - {x: 2.6, y: 0, z: 1.2}
 --- !u!114 &1964858793
 MonoBehaviour:
   m_ObjectHideFlags: 0

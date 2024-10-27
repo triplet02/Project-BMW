@@ -16,6 +16,7 @@ public class CharacterSelectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("[Character Info] : " + CharacterInfo.characterNumber.ToString());
         string currentSceneName = SceneManager.GetActiveScene().name;
         for(int i = 0; i < characterGroup.Length; i++)
         {

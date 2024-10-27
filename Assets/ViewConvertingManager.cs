@@ -43,10 +43,10 @@ public class ViewConvertingManager : MonoBehaviour
                 SideViewGameplay1.sideViewGameplay1.currentMapIdx = 12;
                 break;
             case "TopView Gameplay 2":
-                SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
+                SideViewGameplay1.sideViewGameplay1.currentMapIdx = 12;
                 break;
             case "TopView Gameplay 3":
-                SideViewGameplay1.sideViewGameplay1.currentMapIdx = 4;
+                SideViewGameplay1.sideViewGameplay1.currentMapIdx = 12;
                 break;
         }
         yield return new WaitForSeconds(viewConvertingTime);
