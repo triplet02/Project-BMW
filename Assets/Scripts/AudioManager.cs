@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public enum Bgm { Ending, Stage1, Stage2, Stage3, Title }
+    public enum Bgm { Ending, Stage1, Stage2, Stage3, Title, Mute }
     public enum Sfx { Coin, Drink, Collision, Portal, Cat, Mouse, Dog, Immune }
 
     public static AudioManager instance;
@@ -74,6 +74,10 @@ public class AudioManager : MonoBehaviour
         {
             Debug.Log(currentBgm.ToString() + " / " + nextBgm.ToString());
             bgmPlayer.Stop();
+            if(bgmClips.Length <= (int)nextBgm)
+            {
+                return;
+            }
             bgmPlayer.clip = bgmClips[(int)nextBgm];
             bgmPlayer.Play();
             currentBgm = nextBgm;
@@ -99,6 +103,8 @@ public class AudioManager : MonoBehaviour
                 return Bgm.Stage3;
             case "Gameover":
                 return Bgm.Ending;
+            case "Opening":
+                return Bgm.Mute;
             default:
                 return Bgm.Title;
         }

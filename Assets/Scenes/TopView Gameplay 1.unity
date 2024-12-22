@@ -6407,7 +6407,7 @@ RectTransform:
   m_GameObject: {fileID: 450298329}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49030584, y: 0.5022612, z: 1}
+  m_LocalScale: {x: 0.49030584, y: 0.5022612, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1608877814}
@@ -7183,6 +7183,7 @@ MonoBehaviour:
     m_Bits: 256
   skillGauge: {fileID: 0}
   immuneTime: 1
+  fallingGravity: 0
   scorePerCoin: 100
   warning: {fileID: 147541397}
   AlertOnPrefab: {fileID: 2023492863}
@@ -7194,6 +7195,7 @@ MonoBehaviour:
   MouseBuffTime: 3
   MouseCompanions: []
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!136 &677249497
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7926,6 +7928,7 @@ MonoBehaviour:
     m_Bits: 0
   skillGauge: {fileID: 0}
   immuneTime: 1
+  fallingGravity: 0
   scorePerCoin: 100
   warning: {fileID: 0}
   AlertOnPrefab: {fileID: 0}
@@ -7937,6 +7940,7 @@ MonoBehaviour:
   MouseBuffTime: 3
   MouseCompanions: []
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!114 &859501357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8850,6 +8854,7 @@ MonoBehaviour:
     m_Bits: 256
   skillGauge: {fileID: 0}
   immuneTime: 1
+  fallingGravity: 0
   scorePerCoin: 100
   warning: {fileID: 147541397}
   AlertOnPrefab: {fileID: 2023492863}
@@ -8863,6 +8868,7 @@ MonoBehaviour:
   - {fileID: 1513643961}
   - {fileID: 1360286227}
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!136 &1270355323
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14087,6 +14093,7 @@ MonoBehaviour:
     m_Bits: 256
   skillGauge: {fileID: 0}
   immuneTime: 1
+  fallingGravity: 0
   scorePerCoin: 100
   warning: {fileID: 0}
   AlertOnPrefab: {fileID: 0}
@@ -14100,6 +14107,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!114 &1360286231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14190,6 +14198,8 @@ MonoBehaviour:
   - {fileID: 1608877813}
   - {fileID: 455420711}
   - {fileID: 435658791}
+  currentActiveJumpButton: {fileID: 0}
+  currentActiveSlideButton: {fileID: 0}
 --- !u!4 &1375322113
 Transform:
   m_ObjectHideFlags: 0
@@ -19485,6 +19495,7 @@ MonoBehaviour:
     m_Bits: 256
   skillGauge: {fileID: 0}
   immuneTime: 1
+  fallingGravity: 0
   scorePerCoin: 100
   warning: {fileID: 0}
   AlertOnPrefab: {fileID: 0}
@@ -19498,6 +19509,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!114 &1513643965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20214,6 +20226,7 @@ MonoBehaviour:
     m_Bits: 0
   skillGauge: {fileID: 0}
   immuneTime: 1
+  fallingGravity: 0
   scorePerCoin: 100
   warning: {fileID: 0}
   AlertOnPrefab: {fileID: 0}
@@ -20225,6 +20238,7 @@ MonoBehaviour:
   MouseBuffTime: 3
   MouseCompanions: []
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!95 &1612600185
 Animator:
   serializedVersion: 4
@@ -20486,7 +20500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1644184284}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 963807375}
   standByTime: 1.3
   jumpForce: 7
   maxJumpCount: 2
@@ -20497,8 +20511,9 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  skillGauge: {fileID: 0}
+  skillGauge: {fileID: 1608877815}
   immuneTime: 1
+  fallingGravity: 0
   scorePerCoin: 100
   warning: {fileID: 147541397}
   AlertOnPrefab: {fileID: 2023492863}
@@ -20510,6 +20525,7 @@ MonoBehaviour:
   MouseBuffTime: 3
   MouseCompanions: []
   DogImmuneTime: 3
+  mouseCompanionPositionBias: []
 --- !u!114 &1644184286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21511,27 +21527,27 @@ PrefabInstance:
     - target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
       propertyPath: areaPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: b02d1dd3360cf62418cedb96686fda27, type: 3}
+      objectReference: {fileID: 907672168104150324, guid: a0f1a4be2515be0409a7ffecabb066be, type: 3}
     - target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
       propertyPath: areaPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 485d7db045125fd448dd6cfea3a7ecb4, type: 3}
+      objectReference: {fileID: 8652467461316973053, guid: 2c3d648842ba00340b9ee202409de5f9, type: 3}
     - target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
       propertyPath: areaPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: dce4da87c48f1ee4b94efc92bb255cd4, type: 3}
+      objectReference: {fileID: 5493164732081450989, guid: e60e197fd1dad324097f2b3d0003f78d, type: 3}
     - target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
       propertyPath: areaPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 21b56731b55aa3b41b161a47cb9324b3, type: 3}
+      objectReference: {fileID: 1453090388287077044, guid: 6e2a770792daa8a43bf71c4452bef015, type: 3}
     - target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
       propertyPath: areaPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 71a4aeadbe367fc42ae020d33a28f166, type: 3}
+      objectReference: {fileID: 2277357285385856971, guid: f5caf4541aff7ec4aa97023593a5032e, type: 3}
     - target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
       propertyPath: areaPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 377c96c8e33109748a8f752c76a38105, type: 3}
+      objectReference: {fileID: 8311258032764729558, guid: dc5ab39dc5c34a143a5a3f5e7035c2c2, type: 3}
     - target: {fileID: 8434822362100358513, guid: b627b13e3ade6455ab3280b1fae653e4, type: 3}
       propertyPath: areaPrefabs.Array.data[6]
       value: 

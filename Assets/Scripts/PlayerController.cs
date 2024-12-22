@@ -160,11 +160,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(jumpButton == null)
+        if(jumpButton == null && SceneManager.GetActiveScene().name.Contains("SideView"))
         {
             jumpButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveJumpButton();
         }
-        if(SlideButton == null)
+        if(SlideButton == null && SceneManager.GetActiveScene().name.Contains("SideView"))
         {
             SlideButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveSlideButton();
         }
@@ -391,6 +391,10 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGround()
     {
+        if (SceneManager.GetActiveScene().name.Contains("TopView"))
+        {
+            return;
+        }
         Vector3 centerPosition = GetComponent<CapsuleCollider>().bounds.center;
         if(player.transform.position.y >= 0.1)
         {
@@ -608,7 +612,7 @@ public class PlayerController : MonoBehaviour
             CameraShaker.Invoke();
             if (!isPlayerImmuned)
             {
-                if (playerHealth > 1)
+                if (playerHealth > 0)
                 {
                     if (mouseSkillActivate)
                     {
@@ -625,6 +629,10 @@ public class PlayerController : MonoBehaviour
                                 }
                             }
                         }
+                        if(mouseDummy == 0)
+                        {
+                            mouseSkillActivate = false;
+                        }
                     }
                     else
                     {
@@ -634,7 +642,7 @@ public class PlayerController : MonoBehaviour
                         SideViewGameplay1.sideViewGameplay1.playerHealth--;
                     }
                 }
-                else
+                if(playerHealth <= 0)
                 {
                     // stop and show left(or moved) distance to user?
                     // ...
