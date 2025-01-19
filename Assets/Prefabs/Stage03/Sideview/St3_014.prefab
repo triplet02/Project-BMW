@@ -1360,6 +1360,7 @@ Transform:
   m_Children:
   - {fileID: 1809811527801051601}
   - {fileID: 6810883019013794375}
+  - {fileID: 6127889287394655121}
   m_Father: {fileID: 6118702670630225296}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1473,7 +1474,6 @@ Transform:
   - {fileID: 5733256187148961976}
   - {fileID: 6414831379569003097}
   - {fileID: 2750606072119126196}
-  - {fileID: 6127889287394655121}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -2817,6 +2817,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 8925021668498596188, guid: 574220513a4f8da41b5dbe3eba082152, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574220513a4f8da41b5dbe3eba082152, type: 3}
 --- !u!4 &6810883019013794375 stripped
@@ -2829,7 +2833,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6118702670630225296}
+    m_TransformParent: {fileID: 6118702670137719781}
     m_Modifications:
     - target: {fileID: 1663793632129107481, guid: 85ebf8d866b18fe468bb722653e0846e, type: 3}
       propertyPath: m_IsTrigger
@@ -2845,11 +2849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6595555295295522426, guid: 85ebf8d866b18fe468bb722653e0846e, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6595555295295522426, guid: 85ebf8d866b18fe468bb722653e0846e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3076998
+      value: 1.3076997
       objectReference: {fileID: 0}
     - target: {fileID: 6595555295295522426, guid: 85ebf8d866b18fe468bb722653e0846e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4201,6 +4205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6118702670137719781}
     m_Modifications:
+    - target: {fileID: 5549140187219841920, guid: c2dc85d4b99b6dd44b5a23a150e90959, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7309962415911553429, guid: c2dc85d4b99b6dd44b5a23a150e90959, type: 3}
       propertyPath: m_Name
       value: T_Platform_metroHead_1
