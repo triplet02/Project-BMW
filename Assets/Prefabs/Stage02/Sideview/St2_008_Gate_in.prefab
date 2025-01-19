@@ -30,6 +30,7 @@ Transform:
   m_Children:
   - {fileID: 4971520753187979967}
   - {fileID: 3617464627864278226}
+  - {fileID: 5326093789620804043}
   m_Father: {fileID: 6118702670630225296}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,7 +62,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5326093789620804043}
   - {fileID: 7902759718129505325}
   m_Father: {fileID: 6118702670911695813}
   m_RootOrder: 2
@@ -421,26 +421,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8847381863972621952, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 6989978447397512463, guid: 144c857b15f9c244bb21ef42091a8b01, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
---- !u!1 &6614493294205261363 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5009862921054397488, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
-  m_PrefabInstance: {fileID: 2183679930030092803}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2698079189381206061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6614493294205261363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ea8ae57399d47309aa7bf36a5b39bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinEffectPrefab: {fileID: 2593800246564849898, guid: d7e3a34398b83eb408bc051c0cd1c809, type: 3}
 --- !u!4 &6614493294205261772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5009862921054397903, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
@@ -523,6 +509,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6118702670630225296}
     m_Modifications:
+    - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin (3)
@@ -589,6 +579,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6118702670630225296}
     m_Modifications:
+    - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin (4)
@@ -1015,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4126917659117331220, guid: e180f9278ceeede409b0c7775967fbde, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4126917659117331220, guid: e180f9278ceeede409b0c7775967fbde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1069,7 +1063,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6118702670231340467}
+    m_TransformParent: {fileID: 6118702670137719781}
     m_Modifications:
     - target: {fileID: 1605596010520613970, guid: 72cc174a05c6ebf4fa97bc4721a7cf19, type: 3}
       propertyPath: m_Name
@@ -1081,7 +1075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2090771645851356904, guid: 72cc174a05c6ebf4fa97bc4721a7cf19, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2090771645851356904, guid: 72cc174a05c6ebf4fa97bc4721a7cf19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1849,6 +1843,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6118702670630225296}
     m_Modifications:
+    - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin (2)
@@ -1915,6 +1913,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6118702670630225296}
     m_Modifications:
+    - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin
@@ -2067,6 +2069,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6118702670630225296}
     m_Modifications:
+    - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin (5)

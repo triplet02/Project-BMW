@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1586259273}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TryJump
         m_Mode: 1
@@ -1721,7 +1721,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1786641277}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StartSlide
           m_Mode: 1
@@ -1737,7 +1737,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1786641277}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: EndSlide
           m_Mode: 1
@@ -2534,76 +2534,76 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.size
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 9164888321232446665, guid: ceee98c827a3f7b4f8edd634610348e1, type: 3}
+      objectReference: {fileID: 9164888321232446665, guid: de07aeba36ab77d4587642dfecf17e9d, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 5ee0d7059476af744ba670f3dcc56975, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 681809915c668b341bf7070387470ae7, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 159599d28f9f0be4aa6cc04b6f938399, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 5b9c4ba7b94c890408e12621085e7927, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 5ee0d7059476af744ba670f3dcc56975, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: d34f6017d25897c4d80c2054b3263c52, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 51ad3bbfcc3e0324a8b3df0a9faaa742, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 738fc8d0924547b4ea97df1f478c081b, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: f320d9f95463e2b4cab1e67d249ae170, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: c32e1fb7d1021ce4f9aa71dee0a1169e, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 16c2c33fe70750443bbf9df319975890, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[7]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 21f66eb9fbd90a941b4ddb4fa57a421b, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: bfca1c90e287f894d9a282e6a52eefe8, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[8]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 1222b13ddc047bd4580fed08db02d5f0, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 46837ff9fa81fd54ca46703e495f9dee, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[9]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: bd37064ca0f1e23439b94dc30b522899, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 585996a44b84d3d418b1bd4b28154db3, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[10]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 8dd9886cfc1b54f4b84c4def6a5e8f3b, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[11]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 7d7aa935ab5b8884abc973931d3a4952, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[12]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: f9a50765f28777244959819e3e28eb82, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[13]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 91949c31bfb5aa842992bfcf7927ae02, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[14]
       value: 
-      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: ed48833cf8ba5ee45abec05fbd467137, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[15]
       value: 
-      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[16]
       value: 
-      objectReference: {fileID: 5326689026232395275, guid: f320fe11e0078a74ba2c24df19491415, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: ef76c58c3e5868644b0050fe683ec268, type: 3}
     - target: {fileID: 8434822362100358526, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: m_Name
       value: AreaSpawner
@@ -3104,7 +3104,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1586259273}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TrySkill
         m_Mode: 1
@@ -3716,7 +3716,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1353581709}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StartSlide
           m_Mode: 1
@@ -3732,7 +3732,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1353581709}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: EndSlide
           m_Mode: 1
@@ -4070,7 +4070,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1786641277}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TrySkill
         m_Mode: 1
@@ -5169,7 +5169,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1353581709}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TrySkill
         m_Mode: 1
@@ -11895,7 +11895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042321788218991052, guid: 6edcecb49d9dcbc45b5e902853fab23a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7705811753182509942, guid: 6edcecb49d9dcbc45b5e902853fab23a, type: 3}
       propertyPath: m_RootOrder
@@ -13266,7 +13266,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1353581709}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TryJump
         m_Mode: 1
@@ -13472,7 +13472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6125867801844402929, guid: c6737aeb01cf6af47b42db913b8692d0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6793861335558918219, guid: c6737aeb01cf6af47b42db913b8692d0, type: 3}
       propertyPath: m_RootOrder
@@ -13480,15 +13480,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6793861335558918219, guid: c6737aeb01cf6af47b42db913b8692d0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.05
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6793861335558918219, guid: c6737aeb01cf6af47b42db913b8692d0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.05
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6793861335558918219, guid: c6737aeb01cf6af47b42db913b8692d0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.05
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6793861335558918219, guid: c6737aeb01cf6af47b42db913b8692d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13565,7 +13565,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  skillGauge: {fileID: 0}
+  skillGauge: {fileID: 1052666861}
   immuneTime: 1
   fallingGravity: 20
   scorePerCoin: 100
@@ -13605,7 +13605,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.2
   m_Height: 1.3015342
   m_Direction: 1
   m_Center: {x: 1.1244397e-10, y: 0.5974045, z: -0.030000001}
@@ -13674,9 +13674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1353581707}
+  - {fileID: 1786641275}
+  - {fileID: 1586259272}
   jumpCameraHeight: 1.5
   player: {fileID: 0}
 --- !u!81 &1589771746
@@ -14438,7 +14438,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1786641277}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: TryJump
         m_Mode: 1
@@ -19655,7 +19655,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  skillGauge: {fileID: 0}
+  skillGauge: {fileID: 977312229}
   immuneTime: 1
   fallingGravity: 20
   scorePerCoin: 100
@@ -26100,7 +26100,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1586259273}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StartSlide
           m_Mode: 1
@@ -26116,7 +26116,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1586259273}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: EndSlide
           m_Mode: 1

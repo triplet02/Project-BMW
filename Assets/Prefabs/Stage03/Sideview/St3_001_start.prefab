@@ -384,6 +384,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9164888321232446664}
     m_Modifications:
+    - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin
@@ -520,6 +524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9164888321232446664}
     m_Modifications:
+    - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin (1)
@@ -642,6 +650,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8847381863972621952, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
+      propertyPath: coinEffectPrefab
+      value: 
+      objectReference: {fileID: 6989978447397512463, guid: 144c857b15f9c244bb21ef42091a8b01, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
 --- !u!4 &8826944381542114313 stripped
@@ -649,24 +661,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5009862921054397903, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
   m_PrefabInstance: {fileID: 4609716713094349254}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8826944381542114806 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5009862921054397488, guid: 7d3fa187f0fc6b04ea1cedadd4767282, type: 3}
-  m_PrefabInstance: {fileID: 4609716713094349254}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6656376799544196005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8826944381542114806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ea8ae57399d47309aa7bf36a5b39bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinEffectPrefab: {fileID: 2593800246564849898, guid: d7e3a34398b83eb408bc051c0cd1c809, type: 3}
 --- !u!1001 &8258593611268914626
 PrefabInstance:
   m_ObjectHideFlags: 0

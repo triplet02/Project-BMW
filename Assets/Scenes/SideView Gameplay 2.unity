@@ -1008,7 +1008,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  skillGauge: {fileID: 0}
+  skillGauge: {fileID: 291834727}
   immuneTime: 1
   fallingGravity: 20
   scorePerCoin: 100
@@ -1281,63 +1281,63 @@ PrefabInstance:
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 9164888321232446665, guid: 0de69ddbb72dc4a49adc547a3b623563, type: 3}
+      objectReference: {fileID: 9164888321232446665, guid: dbf70b69de57ac8438f8190e9f0380b7, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 201addcdf21491645a51f2f659d49ba6, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 2af6131359f3cbc44a6f9182f049fdaf, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 683edc0324ae84949847cd536eb72232, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: ba6d43124f46fac409c24da9cf09da9e, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: bc39366bd3f011443ae35266aff63f01, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: f11a91799a2623848a18398e10cb6493, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 9b41c6a261db8ac46b3515b915ce7a81, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 49d971123a70f774a8f86582a8f7a2e4, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 6ac2f9f59878041479a55b6777be2fc7, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 9470af8ea487b3d4c897a5c74397e6de, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 8fa7256f56f4f4240875312e2c371b5f, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: bf7b90a16f14b5941b5895fbb25a4f06, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[7]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 44cf59e1d020d854ea9f67e2d9f4c528, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: d403aa98badf0dc4d9f310244dee1f1d, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[8]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: c1227e288bfe4b04b96e0dc3c13179ab, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 29cb014d78cad454089ba682fb9ae47e, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[9]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 8da7c3cef60171d489ec9e2e3eaaf119, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 32ddde33180e6ce4985f6d9a58a9bd5e, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[10]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: 59a4245c38c620548bdf35b88db4bfe1, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 01ec9e597a9248f4891480705802dea8, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[11]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: e490781b493420a4eb468609de73eee9, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: beee99042f8a57b439106f97f0d8d150, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[12]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: dba75bd7001f7eb4aa7649164b68bf39, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: e177687c929fa074287ebdb0a0d1e636, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[13]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: ec75377431733184691cc05218732bf7, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: e0692011e0fa62142907c5c951d30f57, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[14]
       value: 
-      objectReference: {fileID: 6118702670630225297, guid: ca94846227fac8c4dbc94656562e4ad4, type: 3}
+      objectReference: {fileID: 6118702670630225297, guid: 767fd27582fd25b42b9059484012c0a4, type: 3}
     - target: {fileID: 8434822362100358513, guid: f6ecc842840ce4f6d86dabeaeffa35fa, type: 3}
       propertyPath: areaPrefabs.Array.data[15]
       value: 
@@ -6558,7 +6558,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  skillGauge: {fileID: 0}
+  skillGauge: {fileID: 700093843}
   immuneTime: 1
   fallingGravity: 20
   scorePerCoin: 100

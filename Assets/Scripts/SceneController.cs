@@ -215,6 +215,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("TopView to SideView");
     }
 
+    public void toEndingScene()
+    {
+        SceneManager.LoadScene("Ending");
+    }
+
     public void SetScreenDirection()
     {
         Scene CurrentScene = SceneManager.GetActiveScene();

@@ -717,7 +717,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Stage Clear");
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
-            player.GetComponent<SceneController>().toGameClearScene();
+            player.GetComponent<SceneController>().toEndingScene();
+            //player.GetComponent<SceneController>().toGameClearScene();
         }
     }
 
