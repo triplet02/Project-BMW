@@ -217,7 +217,7 @@ Transform:
   - {fileID: 7857435130572277769}
   - {fileID: 5023342995255047093}
   - {fileID: 3410828061012537418}
-  - {fileID: 4850460184240069876}
+  - {fileID: 4725042254943586474}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -352,7 +352,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5009862921054397903, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
   m_PrefabInstance: {fileID: 13761618123331194}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &492810037318072635
+--- !u!1001 &293898551938166117
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 2655380685916196475, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: coinEffectPrefab
       value: 
-      objectReference: {fileID: 4850460184240069899}
+      objectReference: {fileID: 8686017845270098359, guid: 6237b33cbbbe49044a8d7b78cdc88d64, type: 3}
     - target: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_Name
       value: FX_Item_Coin (8)
@@ -377,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009862921054397903, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.21
+      value: -19.68
       objectReference: {fileID: 0}
     - target: {fileID: 5009862921054397903, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -417,15 +417,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
---- !u!4 &4850460184240069876 stripped
+--- !u!4 &4725042254943586474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5009862921054397903, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
-  m_PrefabInstance: {fileID: 492810037318072635}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4850460184240069899 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5009862921054397488, guid: 9180713b34a5d9047a5db174a189d3c9, type: 3}
-  m_PrefabInstance: {fileID: 492810037318072635}
+  m_PrefabInstance: {fileID: 293898551938166117}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2922181220441173446
 PrefabInstance:

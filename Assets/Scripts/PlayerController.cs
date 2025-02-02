@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DG.Tweening;
 
 public static class CharacterInfo
 {
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
     bool criticalVFXPlayed;
     GameObject characterSelectManager;
     GameObject jumpButton, SlideButton;
+    [SerializeField] GameObject ViewConverter;
+    RectTransform ViewConverterRectTransform;
 
     // Alert Particle System
     [SerializeField] GameObject warning;
@@ -125,9 +128,8 @@ public class PlayerController : MonoBehaviour
         jumpButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveJumpButton();
         SlideButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveSlideButton();
 
-        Debug.Log("[JumpButton] : " + jumpButton.ToString());
-        Debug.Log("[SlideButton] : " + SlideButton.ToString());
-
+        ViewConverter.SetActive(false);
+        ViewConverterRectTransform = ViewConverter.GetComponent<RectTransform>();
 
         // Moved from Topview Scene
         if (PlayerPrefs.GetInt("CriticalVFXPlayed") == 1)
@@ -690,7 +692,9 @@ public class PlayerController : MonoBehaviour
             SideViewGameplay1.sideViewGameplay1.currentView = "top";
             SideViewGameplay1.sideViewGameplay1.currentMapIdx = 0;
             //player.GetComponent<SceneController>().toTopViewScene();
-            SceneManager.LoadScene("SideView to TopView");
+            ViewConverter.SetActive(true);
+            ViewConverterRectTransform.anchoredPosition = new Vector2(1400f, 0f);
+            ViewConverterRectTransform.DOAnchorPosX(0f, 0.5f).OnComplete(() => SceneManager.LoadScene("SideView to TopView"));
         }
         if (other.tag.Equals("Portal1") && playerPosition.y < 2.8)
         {
@@ -747,6 +751,11 @@ public class PlayerController : MonoBehaviour
         Vector3 newPosition = currentPosition + new Vector3(x, y, z);
 
         player.transform.position = newPosition;
+    }
+
+    public void ViewConverterInitiate()
+    {
+
     }
 
     public int GetJumpCount()
