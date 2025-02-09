@@ -417,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle_B_bump_003
       objectReference: {fileID: 0}
+    - target: {fileID: 1971535181966192236, guid: b4728a86dcbbf1f43af7797d3fc77b8d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 7883128147093966140, guid: b4728a86dcbbf1f43af7797d3fc77b8d, type: 3}
       propertyPath: m_IsTrigger
       value: 1

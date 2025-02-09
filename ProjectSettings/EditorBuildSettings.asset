@@ -55,10 +55,13 @@ EditorBuildSettings:
     guid: b471baf486e4d4445bc049aaf526f00c
   - enabled: 1
     path: Assets/Scenes/TopView to SideView.unity
-    guid: 67b2b5d5181f0b3469d79ca95afab103
+    guid: c0030bfe9da65814e89f15e19ce2f5e6
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: 71d5a5f58e28fd145a7d4a2912ba5f49
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

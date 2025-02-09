@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     bool isSlide = false;
 
     // Raycast for Ground Check
-    float distance = 0.0f;
+    float distance = 0.03f;
     bool isOnGround = true;
     bool isOnObstacle = false;
     bool isRunning = true;
@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     GameObject jumpButton, SlideButton;
     [SerializeField] GameObject ViewConverter;
     RectTransform ViewConverterRectTransform;
+    bool viewConverting;
 
     // Alert Particle System
     [SerializeField] GameObject warning;
@@ -128,8 +129,12 @@ public class PlayerController : MonoBehaviour
         jumpButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveJumpButton();
         SlideButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveSlideButton();
 
+        viewConverting = false;
+
         ViewConverter.SetActive(false);
         ViewConverterRectTransform = ViewConverter.GetComponent<RectTransform>();
+
+        
 
         // Moved from Topview Scene
         if (PlayerPrefs.GetInt("CriticalVFXPlayed") == 1)
@@ -162,6 +167,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!viewConverting)
+        {
+            viewConverting = true;
+            if (SceneManager.GetActiveScene().name.Contains("SideView"))
+            {
+                ViewConverter.SetActive(true);
+                ViewConverterRectTransform.anchoredPosition = new Vector2(0f, 0f);
+                ViewConverterRectTransform.DOAnchorPosX(-1400f, 1f).OnComplete(() => ViewConverter.SetActive(false));
+            }
+            else
+            {
+                ViewConverter.SetActive(true);
+                ViewConverterRectTransform.anchoredPosition = new Vector2(0f, 0f);
+                ViewConverterRectTransform.DOAnchorPosY(-8800f, 1f).OnComplete(() => ViewConverter.SetActive(false));
+            }
+        }
         if(jumpButton == null && SceneManager.GetActiveScene().name.Contains("SideView"))
         {
             jumpButton = characterSelectManager.GetComponent<CharacterSelectManager>().GetCurrentActiveJumpButton();
@@ -406,9 +427,9 @@ public class PlayerController : MonoBehaviour
         {
             SlideButton.GetComponent<Button>().interactable = true;
         }
-
-        isOnGround = Physics.Raycast(centerPosition, Vector3.down, distance, groundLayerMask);
-        isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, distance, obstacleLayerMask);
+        float yHeight = GetComponent<CapsuleCollider>().bounds.extents.y;
+        isOnGround = Physics.Raycast(centerPosition, Vector3.down, yHeight + distance, groundLayerMask);
+        isOnObstacle = Physics.Raycast(centerPosition, Vector3.down, yHeight + distance, obstacleLayerMask);
 
         if(isOnGround || isOnObstacle)
         {
@@ -702,7 +723,9 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
             SideViewGameplay1.sideViewGameplay1.currentView = "side";
             //player.GetComponent<SceneController>().toSideViewScene();
-            SceneManager.LoadScene("TopView to SideView");
+            ViewConverter.SetActive(true);
+            ViewConverterRectTransform.anchoredPosition = new Vector2(0f, 8800f);
+            ViewConverterRectTransform.DOAnchorPosY(0f, 0.5f).OnComplete(() => SceneManager.LoadScene("TopView to SideView"));
             switch (SceneManager.GetActiveScene().name)
             {
                 case "TopView Gameplay 1":
